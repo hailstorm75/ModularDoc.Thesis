@@ -1,0 +1,96 @@
+%%% Titulní strana práce a další povinné informační strany
+
+%%% Titulní strana práce
+
+\pagestyle{empty}
+\hypersetup{pageanchor=false}
+
+\begin{center}
+\Huge\sffamily
+\VSE\\
+\FIS
+
+\vspace{\stretch{1}}
+
+\includegraphics[width=.3\textwidth]{img/logo-FIS}
+
+\vspace{\stretch{2}}
+
+\bfseries\NazevPrace
+
+\vspace{8mm}
+\mdseries\TypPraceText
+
+\vspace{8mm}
+\large
+\begin{tabular}{rl}
+\StudijniProgramText: & \StudijniProgram \\
+\ifthenelse{\equal{\Specializace}{}}{%
+	% empty value
+	}{
+	\rule{0pt}{6mm}%
+	\SpecializaceText: & \Specializace \\
+}
+\ifthenelse{\equal{\StudijniObor}{}}{%
+	% empty value
+	}{
+	\rule{0pt}{6mm}%
+	\StudijniOborText: & \StudijniObor \\
+}
+\end{tabular}
+
+\vspace{\stretch{8}}
+
+\begin{tabular}{rl}
+\AutorText: & \AutorPrace \\
+\noalign{\vspace{2mm}}
+\VedouciText: & \Vedouci \\
+\ifthenelse{\equal{\Konzultant}{}}{%
+	% empty value
+	}{
+	\rule{0pt}{6mm}%
+	\KonzultantText: & \Konzultant \\
+}
+\end{tabular}
+
+\vspace{8mm}
+\Praha, \DatumOdevzdani
+\end{center}
+
+
+%%% Poděkování
+\hypersetup{pageanchor=true}
+\cleardoublepage
+\pagestyle{plain}
+\openright
+\vspace*{\fill}
+\section*{\PodekovaniText}
+\noindent
+\Podekovani
+\vspace{1cm}
+
+
+%%% Povinná informační strana bakalářské práce
+\openright
+\section*{Abstrakt}
+\noindent
+\Abstrakt
+\subsection*{Klíčová slova}
+\noindent
+\KlicovaSlova
+\subsection*{JEL klasifikace}
+\noindent
+\JEL
+
+\bigskip\bigskip\bigskip\bigskip\bigskip
+\section*{Abstract}
+\noindent
+\AbstraktEN
+\subsection*{Keywords}
+\noindent
+\KlicovaSlovaEN
+\subsection*{JEL classification}
+\noindent
+\JEL
+
+\openright

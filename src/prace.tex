@@ -1,0 +1,110 @@
+%%% Verze pro jednostranný tisk:
+%\documentclass[11pt,a4paper]{report}
+%\usepackage[top=25mm,bottom=25mm,right=25mm,left=30mm,head=12.5mm,foot=12.5mm]{geometry}
+%\let\openright=\clearpage
+
+%%% For two-sided printing:
+\documentclass[11pt,a4paper,twoside,openright]{report}
+\usepackage[top=25mm,bottom=25mm,right=25mm,left=30mm,head=12.5mm,foot=12.5mm]{geometry}
+\let\openright=\cleardoublepage
+
+%%% Definition of useful macros
+\input{makra}
+
+%%% DEFINICE ZÁKLADNÍCH PROMĚNNÝCH
+\def\TypPrace{BP}                % bakalářská práce/bachelor thesis
+%\def\TypPrace{DP}               % diplomová práce/master thesis
+%\def\Jazyk{cze}                  % čeština/czech
+%\def\Jazyk{slo}                 % slovenština/slovak
+\def\Jazyk{eng}                 % angličtina/english
+
+%%% Title of the thesis in the language used in the text (exact according to assignment)
+\def\NazevPrace{Development of a documentation generating application for .NET libraries}
+
+\input{makra.txt}
+
+%%% Author's name - Firstname and Lastname
+\def\AutorPrace{Denis Akopyan}
+
+%%% Year of submission and month (verbally) - month YYYY
+\def\DatumOdevzdani{měsíc RRRR}
+
+%%% Supervisor: First name and surname with titles
+\def\Vedouci{Ing. Jarmila Pavlíčková, Ph.D.}
+
+%%% Consultant: First name and surname with titles
+\def\Konzultant{}
+
+%%% Study program
+\def\StudijniProgram{Applied Informatics}
+
+%%% Study program - specialization
+\def\Specializace{}
+
+%%% Field of study
+\def\StudijniObor{Applied Informatics}
+
+%%% Optional thanks (the supervisor, the consultant, the borrower of software, literature, etc.)
+\def\Podekovani{%
+Poděkování.
+}
+
+%%% Abstrakt (doporučený rozsah cca 150-250 slov; nejedná se o zadání práce)
+\def\Abstrakt{%
+Abstrakt.
+}
+\def\AbstraktEN{%
+Abstract.
+}
+
+%%% 3 až 5 klíčových slov (doporučeno)
+\def\KlicovaSlova{vývoj, tvorba, aplikace, generování, dokumentace, dotnet, .NET, knihoven}
+\def\KlicovaSlovaEN{development, application, generating, documentation, dotnet, .NET, libraries}
+
+%%% Kody podle klasifikace JEL
+\def\JEL{JEL1, JEL2, JEL3}
+
+
+%%% Title page and various mandatory information pages
+\begin{document}
+\include{zacatek}
+
+%%% A page with automatically generated content of the thesis
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%%% List of figures in the thesis
+\openright
+\listoffigures
+
+%%% List of tables in the thesis (optionally)
+\clearpage
+\listoftables
+
+%%% List of abbreviations in the thesis (optionally)
+\include{zkratky}
+
+\pagestyle{fancy}
+%%% The individual chapters of the thesis are stored in separate files for clarity
+\include{introduction}
+\include{kap01}
+\include{kap02}
+\include{kap03}
+\include{kap04}
+% \include{...}
+% \include{...}
+\include{summary}
+
+%%% Bibliography
+\include{literatura}
+
+%%% Attachments to thesis, if any. Each attachment must be referenced at 
+%%% least once in your own text. The appendices are numbered.
+\part*{\Prilohy}
+\appendix
+\include{app01}
+\include{app02}
+% \include{...}
+% \include{...}
+
+\end{document}

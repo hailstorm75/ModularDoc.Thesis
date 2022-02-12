@@ -1,0 +1,145 @@
+%%% Tento soubor obsahuje definice různých užitečných maker a prostředí %%%
+%%% Další makra připisujte sem, ať nepřekáží v ostatních souborech.     %%%
+
+\usepackage[a-2u]{pdfx}     % výsledné PDF bude ve standardu PDF/A-2u
+
+\usepackage{ifpdf}
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+
+%%% Nastavení pro použití samostatné bibliografické databáze.
+\usepackage[
+   backend=biber
+%  ,style=iso-authoryear
+  ,style=iso-numeric
+  ,sortlocale=cs_CZ
+  ,alldates=iso
+  ,bibencoding=UTF8
+  %,block=ragged
+]{biblatex}
+\let\cite\parencite
+\bibliography{literatura}
+
+%% Přepneme na českou sazbu, fonty Latin Modern a kódování češtiny
+\ifthenelse{\boolean{xetex}\OR\boolean{luatex}}
+   { % use fontspec and OpenType fonts with utf8 engines
+			\usepackage[english,slovak,czech]{babel}
+			\usepackage[autostyle,english=british,czech=quotes]{csquotes}
+			\usepackage{fontspec}
+			\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+   }
+   {
+			\usepackage[english,slovak,czech]{babel}
+			\usepackage{lmodern}
+			\usepackage[T1]{fontenc}
+			\usepackage{textcomp}
+			\usepackage[utf8]{inputenc}
+			\usepackage[autostyle,english=british,czech=quotes]{csquotes}
+	 }
+\ifluatex
+\makeatletter
+\let\pdfstrcmp\pdf@strcmp
+\makeatother
+\fi
+
+%%% Další užitečné balíčky (jsou součástí běžných distribucí LaTeXu)
+\usepackage{amsmath}        % rozšíření pro sazbu matematiky
+\usepackage{amsfonts}       % matematické fonty
+\usepackage{amssymb}        % symboly
+\usepackage{amsthm}         % sazba vět, definic apod.
+\usepackage{bm}             % tučné symboly (příkaz \bm)
+\usepackage{graphicx}       % vkládání obrázků
+\usepackage{listings}       % vylepšené prostředí pro strojové písmo
+\usepackage{fancyhdr}       % prostředí pohodlnější nastavení hlavy a paty stránek
+\usepackage{icomma}         % inteligetní čárka v matematickém módu
+\usepackage{dcolumn}        % lepší zarovnání sloupců v tabulkách
+\usepackage{booktabs}       % lepší vodorovné linky v tabulkách
+\makeatletter
+\@ifpackageloaded{xcolor}{
+   \@ifpackagewith{xcolor}{usenames}{}{\PassOptionsToPackage{usenames}{xcolor}}
+  }{\usepackage[usenames]{xcolor}} % barevná sazba
+\makeatother
+\usepackage{multicol}       % práce s více sloupci na stránce
+\usepackage{caption}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt, partopsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt, partopsep=0pt}
+\setlist[description]{noitemsep, topsep=0pt, partopsep=0pt}
+
+\usepackage{tocloft}
+\setlength\cftparskip{0pt}
+\setlength\cftbeforechapskip{1.5ex}
+\setlength\cftfigindent{0pt}
+\setlength\cfttabindent{0pt}
+\setlength\cftbeforeloftitleskip{0pt}
+\setlength\cftbeforelottitleskip{0pt}
+\setlength\cftbeforetoctitleskip{0pt}
+\renewcommand{\cftlottitlefont}{\Huge\bfseries\sffamily}
+\renewcommand{\cftloftitlefont}{\Huge\bfseries\sffamily}
+\renewcommand{\cfttoctitlefont}{\Huge\bfseries\sffamily}
+
+% vyznaceni odstavcu
+\parindent=0pt
+\parskip=11pt
+
+% zakaz vdov a sirotku - jednoradkovych pocatku ci koncu odstavcu na prechodu mezi strankami
+\clubpenalty=1000
+\widowpenalty=1000
+\displaywidowpenalty=1000
+
+% nastaveni radkovani
+\renewcommand{\baselinestretch}{1.20}
+
+% nastaveni pro nadpisy - tucne a bezpatkove
+\usepackage{sectsty}    
+\allsectionsfont{\sffamily}
+
+% nastavení hlavy a paty stránek
+\fancyhf{}
+\fancyhead[RO,LE]{\rightmark}
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\footrulewidth}{.5pt}
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\fancyfoot[RO,LE]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}}
+
+% Tato makra přesvědčují mírně ošklivým trikem LaTeX, aby hlavičky kapitol
+% sázel příčetněji a nevynechával nad nimi spoustu místa. Směle ignorujte.
+\makeatletter
+\def\@makechapterhead#1{
+  {\parindent \z@ \raggedright \sffamily
+   \Huge\bfseries \thechapter. #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\def\@makeschapterhead#1{
+  {\parindent \z@ \raggedright \sffamily
+   \Huge\bfseries #1
+   \par\nobreak
+   \vskip 20\p@
+}}
+\makeatother
+
+% Trochu volnější nastavení dělení slov, než je default.
+\lefthyphenmin=2
+\righthyphenmin=2
+
+% Zapne černé "slimáky" na koncích řádků, které přetekly, abychom si
+% jich lépe všimli.
+\overfullrule=1mm
+
+%% Balíček hyperref, kterým jdou vyrábět klikací odkazy v PDF,
+%% ale hlavně ho používáme k uložení metadat do PDF (včetně obsahu).
+%% Většinu nastavítek přednastaví balíček pdfx.
+\hypersetup{unicode}
+\hypersetup{breaklinks=true}
+\hypersetup{hidelinks}
+
+%%% Prostředí pro sazbu kódu, případně vstupu/výstupu počítačových
+%%% programů. (Vyžaduje balíček listings -- fancy verbatim.)
+\lstnewenvironment{code}{\lstset{basicstyle=\small, frame=single}}{}
+
+
+

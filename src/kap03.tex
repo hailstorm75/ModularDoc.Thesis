@@ -1,0 +1,42 @@
+%%% Fiktivní kapitola s ukázkami citací
+
+\chapter{Práce s literaturu}
+
+Šablona předpokládá použití bibliografické databáze z důvodu větší flexibility. Použití bibliografické databáze není nutnou podmínkou, lze si vystačit i se standardním prostředím \texttt{thebibliography}. V takovém případě je však zapotřebí provést zásahy do některých souborů, jak je uvedeno dále.
+
+\section{Použití bibliografické databáze}
+
+\begin{enumerate}
+\item\textbf{Změna názvu databáze}\\
+V šabloně se předpokládá databáze uložená v souboru \texttt{literatura.bib}. Pokud se databáze jmenuje jinak, pak je nutné v souboru \texttt{makra.tex} změnit hodnotu parametru příkazu \verb'\bibliography'.
+\item\textbf{Změna citačního stylu}\\
+Standardně se citace v textu uvádějí v číselné variantě. Na použití kombinace příjmení a roku lze snadno přepnout změnou v souboru \texttt{makra.tex}, kde se prohodí komentářový znak v parametrech pro balíček \texttt{biblatex}.
+\end{enumerate}
+
+
+\section{Použití prostředí \texttt{thebibliography}}
+\begin{enumerate}
+\item V souboru \texttt{makra.tex} vymazat na počátku tyto řádky:
+\begin{verbatim}
+%%% Nastavení pro použití samostatné bibliografické databáze.
+\usepackage[
+   backend=biber
+  ,style=iso-authoryear %iso-numeric
+  ,sortlocale=cs_CZ
+  ,bibencoding=UTF8
+  %,block=ragged
+]{biblatex}
+\bibliography{literatura}
+\end{verbatim}
+\item V souboru \texttt{literatura.tex} odstranit řádek s příkazem \verb'\printbibliography' a odstranit příznak komentáře v další části obsahující prostředí \texttt{thebibliography.}
+\end{enumerate}
+
+
+\section{Jak citovat v textu}
+\begin{center}
+\begin{tabular}{l@{~~$\longrightarrow$~~}l}
+\verb|\cite{Cermak2018}|&\cite{Cermak2018}\\
+\verb|\cite{Hladik2018,Jasek2018}|&\cite{Hladik2018,Jasek2018}\\
+\verb|\cite[kap. 3]{Pecakova2018}|&\cite[kap. 3]{Pecakova2018}\\
+\end{tabular}
+\end{center}
