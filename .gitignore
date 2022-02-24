@@ -30,3 +30,6 @@
 *-blx.bib # biblatex control file.
 # hyperref:
 *.out # contains information about the sectional units that will be used to write the outlines.
+src/prace.log
+src/prace.pdf
+src/prace.synctex.gz
