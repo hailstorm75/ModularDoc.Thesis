@@ -1,7 +1,7 @@
 name: Build LaTeX document
 on: [push]
 jobs:
-  build_latex:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Git repository
@@ -9,9 +9,13 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: src/prace.tex
+          working_directory: src/
+          root_file: prace.tex
+      - name: move
+        run: mkdir -p github_artifacts && mv src/prace.pdf ./github_artifacts/
       - name: Upload pdf as artifact	
         uses: actions/upload-artifact@v2	
         with:
-          name: src/prace.pdf
+          name: prace.pdf
+          path: ./github_artifacts
           path: ./github_artifacts
