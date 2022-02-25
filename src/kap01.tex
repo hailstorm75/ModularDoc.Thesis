@@ -17,6 +17,35 @@ na definici.
 Delší převzatý text jiného autora je nutné vymezit uvozovkami nebo jinak vyznačit a řádně
 citovat.
 
+% \begin{figure}
+%     \centering
+%     \caption{What output formats do you wish to have for your documentation?}
+%     \begin{tikzpicture}
+%         \begin{axis}
+%         [
+%             ybar,
+%             enlargelimits=0.15,
+%             ylabel={\#Average Marks}, % the ylabel must precede a # symbol.
+%             xlabel={\ Students Name},
+%             symbolic x coords={Static HTML, PDF, Markdown, XML, \LaTeX, Other}, % these are the specification of coordinates on the x-axis.  
+%             xtick=data,
+%             nodes near coords, % this command is used to mention the y-axis points on the top of the particular bar.  
+%             nodes near coords align={vertical},
+%             ]
+%         \addplot coordinates {(Static HTML,16) (PDF,7) (Markdown,6) (XML,6) (\LaTeX,1) (Other,3) };
+
+%         \end{axis}
+%     \end{tikzpicture}
+% \end{figure}
+
+\begin{figure}
+    \centering
+    \caption{Would you integrate such a tool in your CI/CD process?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{9/Yes, 2/No, 9/Maybe}
+    \end{tikzpicture}
+\end{figure}
+
 \section{Jednoduché příklady}
 
 Mezi číslo a jednotku patří úzká mezera: šířka stránky A4 činí $210\,\rm mm$, což si
