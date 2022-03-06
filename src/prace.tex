@@ -12,14 +12,18 @@
 \usepackage{pgf-pie}
 \usepackage{pgfplots}
 
+%%% Footnotes
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
 %%% Definition of useful macros
 \input{makra}
 
 %%% DEFINICE ZÁKLADNÍCH PROMĚNNÝCH
-\def\TypPrace{BP}                % bakalářská práce/bachelor thesis
-%\def\TypPrace{DP}               % diplomová práce/master thesis
-%\def\Jazyk{cze}                  % čeština/czech
-%\def\Jazyk{slo}                 % slovenština/slovak
+\def\TypPrace{BP}               % bakalářská práce/bachelor thesis
+%\def\TypPrace{DP}              % diplomová práce/master thesis
+%\def\Jazyk{cze}                % čeština/czech
+%\def\Jazyk{slo}                % slovenština/slovak
 \def\Jazyk{eng}                 % angličtina/english
 
 %%% Title of the thesis in the language used in the text (exact according to assignment)
@@ -31,7 +35,7 @@
 \def\AutorPrace{Denis Akopyan}
 
 %%% Year of submission and month (verbally) - month YYYY
-\def\DatumOdevzdani{měsíc RRRR}
+\def\DatumOdevzdani{měsíc 2022}
 
 %%% Supervisor: First name and surname with titles
 \def\Vedouci{Ing. Jarmila Pavlíčková, Ph.D.}
@@ -48,7 +52,7 @@
 %%% Field of study
 \def\StudijniObor{Applied Informatics}
 
-%%% Optional thanks (the supervisor, the consultant, the borrower of software, literature, etc.)
+%%% Optional thanks (the supervisor, the consultant, the borrower of software, literature, etc)
 \def\Podekovani{%
 Poděkování.
 }
@@ -57,30 +61,24 @@ Poděkování.
 \def\Abstrakt{%
 Zaměřením dané bakalářské práce je výzkum a vývoj aplikace pro generování dokumentace .NET knihoven. Hlavním cílem bylo vytvoření nástroje pro .NET vývojáře, jež chtějí extrahovat dokumentaci zdrojového kódu a exportovat ji do požadovaného výstupu, a zároveň zachovat aplikaci rozšiřitelnou, multiplatformní a uživatelsky přístupnou.\
 
-Teoretická část práce se zabývá plánováním vývoje a očekáváným výsledkem projektu.
+Teoretická část práce se bude zabývát plánováním vývoje a očekáváným výsledkem projektu.
 
-Empirická část popisuje vývoj samotný a zaměřuje se na tvorbu oddělené projektové struktury.
+Empirická část popíše vývoj samotný a zaměřuje se na tvorbu oddělené projektové struktury.
 
-Výsledkem bakalářské práce byla funkční, multiplatformní a open-source aplikace, která umožňuje generování dokumentace z .NET knihoven, a zároveň je rozšiřitelná prostřednictvím modulů.
-
-Práce došla k závěru, že je prostor pro rozšíření projektu o další moduly a funkce. Zavedení sofistikovaného testování navíc zajistí vysoce kvalitní kód, přiláká přispěvatele a zvýší důvěru uživatelů.
+Očekáváným výsledkem bakalářské práce byde funkční, multiplatformní a open-source aplikace, která umožňuje generování dokumentace z .NET knihoven, a zároveň je rozšiřitelná prostřednictvím modulů.
 }
 \def\AbstraktEN{%
-This thesis aimed to research and develop a documentation-generating application for .NET libraries. 
-The main objective was to create a tool for .NET developers that want to extract source code documentation and export it into their desired format while keeping the application extensible, cross platform, and easy to use.
+This thesis aims to research and develop a documentation-generating application for .NET libraries.
+The main objective was to create a tool for .NET developers that want to extract source code documentation and export it into their desired format while keeping the application extensible, cross-platform, and easy to use.
 
-The theoretical part of the thesis covered the development planning and the expected result of the 
+The theoretical part of the thesis shall cover the development planning and the expected result of the
 project.
 
-The empirical part of the thesis describes the exact process of development. Designing a decoupled 
+The empirical part of the thesis will illustrate the exact process of development. Designing a decoupled
 project structure had the most attention dedicated to it.
 
-The result of this thesis project was a working cross-platform and open-source application, which can 
+The expected result of this thesis project is a working cross-platform and open-source application that can
 generate documentation from .NET libraries and is extensible via plugins.
-
-The thesis concludes that there is a prospect to enhance the project with more plugins and features. 
-Additionally, the introduction of sophisticated testing will ensure a high-quality codebase, attract 
-contributors, and raise trust amongst users
 }
 
 %%% 3 až 5 klíčových slov (doporučeno)
