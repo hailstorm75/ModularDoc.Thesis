@@ -1,4 +1,4 @@
-%%% Verze pro jednostranný tisk:
+%%% For single-sided printing
 %\documentclass[11pt,a4paper]{report}
 %\usepackage[top=25mm,bottom=25mm,right=25mm,left=30mm,head=12.5mm,foot=12.5mm]{geometry}
 %\let\openright=\clearpage
@@ -7,6 +7,18 @@
 \documentclass[11pt,a4paper,twoside,openright]{report}
 \usepackage[top=25mm,bottom=25mm,right=25mm,left=30mm,head=12.5mm,foot=12.5mm]{geometry}
 \let\openright=\cleardoublepage
+
+%%% References
+\usepackage{hyperref}
+
+%% Description reference labels
+\makeatletter
+\def\namedlabel#1#2{\begingroup
+    #2%
+    \def\@currentlabel{#2}%
+    \phantomsection\label{#1}\endgroup
+}
+\makeatother
 
 %%% Charts
 \usepackage{pgf-pie}
@@ -106,12 +118,12 @@ generate documentation from .NET libraries and is extensible via plugins.
 \listoftables
 
 %%% List of abbreviations in the thesis (optionally)
-\include{zkratky}
+\include{abbreviations}
 
 \pagestyle{fancy}
 %%% The individual chapters of the thesis are stored in separate files for clarity
 \include{introduction}
-\include{kap01}
+\include{chap01}
 \include{kap02}
 \include{kap03}
 \include{kap04}
