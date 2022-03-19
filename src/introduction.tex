@@ -3,8 +3,11 @@
 
 The motivation for creating a custom tool for generating documentation from .NET libraries is a personal need to provide easy access to code documentation. Since most open source projects are hosted either on GitHub.com\footnote{A Microsoft-owned Git hosting platform} or GitLab.com\footnote{An independent Git hosting platform}, it makes sense to utilize said platforms for hosting source code documentation for consistency.
 
-When attempting to find tools that generate documentation, none had the desired extensibility and were mainly limited to only creating static \ref{itm:html} pages. Since Git hosting platforms predominantly\footnote{GitLab also supports RDoc, AsciiDoc, and Org} utilize Markdown for displaying formatted text, static HTML pages aren't directly supported.
+When attempting to find tools that generate documentation, none had the desired extensibility and were mainly limited to only creating static \ref{itm:html} pages
+\footnote{A static web page is a page that is built using \ref{itm:html} code and features the same presentation and content, regardless of user identity or other factors \cite{techopedia_what_2017}}.
+Since Git hosting platforms predominantly\footnote{GitLab also supports RDoc, AsciiDoc, and Org} utilize Markdown for displaying formatted text, static HTML pages aren't directly supported.
 
 And so, the idea to develop a custom tool that would create Markdown documentation from .NET libraries for Git platforms came to fruition. However, focusing only on one output format would be a waste of time and effort, as few to none would need such a tool. Thus, the result of the development should be a generic tool that allows anyone to modify it to output to any desirable format.
 
 Accomplishing this task will require analyzing the currently available documentation tools, getting user feedback, planning out the project structure, and finally developing the project itself.
+
