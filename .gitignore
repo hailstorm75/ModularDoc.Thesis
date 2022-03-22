@@ -45,3 +45,5 @@ src/*.out
 src/*.fls
 src/*.toc
 src/*.run.xml
+src/appendices/*.aux
+src/chapters/*.aux

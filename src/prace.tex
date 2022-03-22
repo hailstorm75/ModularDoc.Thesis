@@ -103,7 +103,7 @@ generate documentation from .NET libraries and is extensible via plugins.
 
 %%% Title page and various mandatory information pages
 \begin{document}
-\include{zacatek}
+\include{beginning}
 
 %%% A page with automatically generated content of the thesis
 \setcounter{tocdepth}{2}
@@ -120,13 +120,13 @@ generate documentation from .NET libraries and is extensible via plugins.
 %%% List of abbreviations in the thesis (optionally)
 \include{abbreviations}
 
+\include{glossary}
+
 \pagestyle{fancy}
 %%% The individual chapters of the thesis are stored in separate files for clarity
 \include{introduction}
-\include{chap01}
-\include{kap02}
-\include{kap03}
-\include{kap04}
+\include{chapters/chap01}
+\include{chapters/chap02}
 % \include{...}
 % \include{...}
 \include{summary}
@@ -134,12 +134,12 @@ generate documentation from .NET libraries and is extensible via plugins.
 %%% Bibliography
 \include{literatura}
 
-%%% Attachments to thesis, if any. Each attachment must be referenced at 
+%%% Attachments to thesis, if any. Each attachment must be referenced at
 %%% least once in your own text. The appendices are numbered.
 \part*{\Prilohy}
 \appendix
-\include{app01}
-\include{app02}
+\include{appendices/app01}
+\include{appendices/app02}
 % \include{...}
 % \include{...}
 

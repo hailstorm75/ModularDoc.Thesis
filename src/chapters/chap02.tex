@@ -1,0 +1,52 @@
+\chapter{Documentation tools}
+\section{What is available?}
+The current documentation tool market provides the following solutions:
+
+\begin{enumerate}
+    \item \href{https://github.com/dotnet/docfx}{DocFX}
+    \item \href{https://www.doxygen.nl/}{Doxygen}
+    \item \href{https://github.com/KirillOsenkov/SourceBrowser}{Source Browser}
+    \item \href{https://github.com/lijunle/Vsxmd}{Vsxmd}
+    \item \href{https://github.com/discosultan/vsdoc-2-md}{vsdoc-2-md}
+\end{enumerate}
+
+What follows are evaluations of each tool. This helped get a better understanding of the current offering and gain prospect on features and improvements that the custom tool can take advantage of.
+
+\subsection{DocFX}
+
+\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports .NET languages C\#, F\#, and Visual Basic, but also Java, JavaScript, TypeScript, Python and REST. Additionally, it can use raw Markdown files as input.
+
+However, the \textit{DocFX} only outputs static \ref{itm:html} pages. The only available customizability is via templates for said static pages.
+
+The tool is capable, and is the go-to solution for .NET projects, but it doesn't solve the task of outputting Markdown files.
+
+\subsection{Doxygen}
+
+\textit{Doxygen} is the industry-standard documentation generating tool originally made for C++ source code documentation. Nevertheless, it has over time added support for many popular programming languages such as C, C\#, Java, Python, and many more.
+
+The tool provides an extensive set of supported output formats:
+\begin{itemize}
+    \item Static \ref{itm:html}
+    \item \LaTeX\footnote{Document preparation system}
+    \item Man pages\footnote{User manual type that is part of Unix operating systems \cite{credocs_limited_latex_2022}}
+    \item \ref{itm:rtf}
+    \item \ref{itm:xml}
+\end{itemize}
+
+\subsection{Source Browser}
+
+\textit{Source Browser} is a tool that generates a website for browsing source code and its documentation. The tool is used by Microsoft to, for example, allows developers to browse the source code of .NET.
+
+The generated output is not fully static and has to be hosted on a ASP.NET Core website to support searching.
+
+\subsection{Vsxmd} \label{ssec:vsxmd}
+
+\textit{Vsxmd} generates a single Markdown file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a NuGet\footnote{NuGet is the package manager for .NET \cite{microsoft_nuget_nodate}} package, that is added to the project designated for documentation generation. Thus, configuring this tool is done via .NET project settings.
+
+It is not possible to navigate the documentation, as no links are generated.
+
+\subsection{Vsdoc-2-md}
+
+\textit{Vsdoc-2-md} is an entirely unusable tool, as it is purely web-based and generates documentation from the provided \ref{itm:xml} documentation source file. The tool is limited to processing only one file at a time.
+
+Just like \textit{\nameref{ssec:vsxmd}}, no links are generated; thus, it is not possible to navigate the documentation.
