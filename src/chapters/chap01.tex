@@ -21,7 +21,39 @@ Documentation comments start with \lstinline[language=csh]{///} followed by \ref
 \end{lstlisting}
 
 \section{Documentation tags}
+
+The following is a list of supported \ref{itm:xml} tags for documenting source code.
+
 \subsection{General tags}
+
+\subsubsection*{Summary}
+\begin{itemize}
+    \item Contains a brief description of the documented type or member
+    \item It is a root tag; therefor, it cannot be placed within another tag
+    \item It is a paired tag, and can contain subset of other tags within itself
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// This is a brief description of the class
+    /// <c>An example of a code formatting tag within the summary tag</c>
+    /// </summary>
+\end{lstlisting}
+
+\subsubsection*{Remarks}
+\begin{itemize}
+    \item Contains additional information (remarks) about the documented type or member
+    \item It is a root tag; therefor, it cannot be placed within another tag
+    \item It is a paired tag, and can contain subset of other tags within itself
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <remarks>
+    /// This is a remark
+    /// <c>An example of a code formatting tag within the remark tag</c>
+    /// </remarks>
+\end{lstlisting}
+
 \subsection{Document members}
 \subsection{Formatting tags}
 \subsection{Documentation reuse tags}
