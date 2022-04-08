@@ -53,7 +53,7 @@ Just like \textit{\nameref{ssec:vsxmd}}, no links are generated; thus, it is not
 
 \section{What do users want?}
 Surveying of potential users of the tool is necessary to ensure that the developed product is utilized by more than its developer.
-Thus, creating the questionnaire was the first step to success. Its purpose was to figure out the following key points:
+Thus, creating a questionnaire was the first step to success. Its purpose was to figure out the following key points:
 \begin{itemize}
     \item Whether users already use documentation generation tools, and if so, which ones
     \item What do users feel is missing from the tools they use
@@ -63,4 +63,101 @@ Thus, creating the questionnaire was the first step to success. Its purpose was 
     \item What operating systems do users want the tool to work on
     \item Would users find a \ref{itm:gui} beneficial for such a tool
     \item Would users appreciate the tool being extensible via plugins
+    \item Would users be interested in contributing to the project
 \end{itemize}
+
+\subsection{Questionnaire results}
+
+What follows are the responses of the 22 participants of the questionnaire.
+
+\subsubsection*{What output formats do you wish to have for your documentation?}
+
+\subsubsection*{Would you integrate such a tool in your CI/CD process?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you integrate such a tool in your CI/CD process?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{9/Yes, 2/No, 11/Maybe}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{How crucial is it for the tool to support these platforms?}
+
+\subsubsection*{Would it be beneficial to have a GUI instead of only a console?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would it be beneficial to have a GUI instead of only a console?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{12/Yes, 9/No, 1/Other}
+    \end{tikzpicture}
+\end{figure}
+
+\textit{Other responses:}
+\begin{itemize}
+    \item I don't want separate docs, readable code is better
+\end{itemize}
+
+\subsubsection*{Would you appreciate the tool being extensible via plugins?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you appreciate the tool being extensible via plugins?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{17/Yes, 5/No}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{Are you using tools for documentation generation?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Are you using tools for documentation generation?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{8/Yes, 14/No}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{What documentation generating tools do you use?}
+
+\begin{figure}[H]
+    \centering
+    \caption{What documentation generating tools do you use?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{3/DocFX, 2/Doxygen, 1/Slate, 1/Hugo}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{What features from those tools you'd like to see in the resulting project?}
+
+\textit{Responses:}
+\begin{itemize}
+    \item \ref{itm:gui} for less technical people
+    \item Links to external \ref{gloss:dotnetlabel} type references
+    \item Easy templating
+    \item Extended Markdown - custom shortcodes
+    \item Fast build speed for \ref{gloss:cicd}
+    \item A capable \ref{itm:cli}
+    \item Class structures
+\end{itemize}
+
+\subsubsection*{What features are missing in your current tool and would make you consider using the resulting project, if they were to be provided by it?}
+
+\textit{Responses:}
+\begin{itemize}
+    \item Better support for diagrams (like mermaid.js)
+    \item A tool that could build a static site with a) editorial (Markdown) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella
+\end{itemize}
+
+\subsubsection*{Would you be interested in contributing to this project?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you be interested in contributing to this project?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{14/No, 6/Maybe}
+    \end{tikzpicture}
+\end{figure}
+
+\subsection{Questionnaire evaluation}
