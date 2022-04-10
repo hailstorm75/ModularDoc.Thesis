@@ -72,6 +72,40 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \subsubsection*{What output formats do you wish to have for your documentation?}
 
+\begin{figure}[H]
+    \centering
+    \caption{What output formats do you wish to have for your documentation?}
+    \begin{tikzpicture}
+        \begin{axis}[
+            symbolic x coords={Static HTML, PDF, Markdown, XML, LaTeX, Other},
+            xtick=data,
+            width=12cm,
+            height=8cm,
+            ymin=0,
+            ymax=18,
+            bar width=20pt,
+            ylabel={Number of votes},
+            enlarge y limits={value=0.2,upper},
+            legend pos=north west,
+            nodes near coords
+        ]
+            \addplot+[ybar] coordinates {
+                (Static HTML,   16)
+                (PDF,            9)
+                (Markdown,       6)
+                (XML,            7)
+                (LaTeX,         1)
+                (Other,          1)
+            };
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\textit{Other responses:}
+\begin{itemize}
+    \item AsciiDoc
+\end{itemize}
+
 \subsubsection*{Would you integrate such a tool in your CI/CD process?}
 
 \begin{figure}[H]
@@ -83,6 +117,32 @@ What follows are the responses of the 22 participants of the questionnaire.
 \end{figure}
 
 \subsubsection*{How crucial is it for the tool to support these platforms?}
+
+\begin{figure}[H]
+    \centering
+    \caption{How crucial is it for the tool to support these platforms?}
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar stacked,
+            bar width=20pt,
+            height=10cm,
+            width=8cm,
+            nodes near coords,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.25)},
+            anchor=north,legend columns=-1},
+            ylabel={Number of participants},
+            symbolic x coords={Windows, Linux, MacOS},
+            xtick=data,
+            x tick label style={rotate=45,anchor=east},
+            ]
+        \addplot+[ybar] plot coordinates {(Windows,17) (Linux,4) (MacOS,1)};
+        \addplot+[ybar] plot coordinates {(Windows,4) (Linux,16) (MacOS,2)};
+        \addplot+[ybar] plot coordinates {(Windows,1) (Linux,2) (MacOS,19)};
+        \legend{\strut First choice, \strut Middle choice, \strut Last choice}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
 
 \subsubsection*{Would it be beneficial to have a GUI instead of only a console?}
 
