@@ -14,11 +14,11 @@ What follows are evaluations of each tool. This helped get a better understandin
 
 \subsection{DocFX}
 
-\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports .NET languages C\#, F\#, and Visual Basic, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw Markdown files as input.
+\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports \ref{gloss:dotnetlabel} languages C\#, F\#, and Visual Basic, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw \ref{gloss:markdown} files as input.
 
 However, the \textit{DocFX} only outputs static \ref{itm:html} pages. The only available customizability is via templates for said static pages.
 
-The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projects, but it doesn't solve the task of outputting Markdown files.
+The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projects, but it doesn't solve the task of outputting \ref{gloss:markdown} files.
 
 \subsection{Doxygen}
 
@@ -41,7 +41,7 @@ The generated output is not fully static and has to be hosted on an \ref{gloss:a
 
 \subsection{Vsxmd} \label{ssec:vsxmd}
 
-\textit{Vsxmd} generates a single Markdown file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a \ref{gloss:nuget} package, that is added to the project designated for documentation generation. Thus, configuring this tool is done via \ref{gloss:dotnetlabel} project settings.
+\textit{Vsxmd} generates a single \ref{gloss:markdown} file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a \ref{gloss:nuget} package, that is added to the project designated for documentation generation. Thus, configuring this tool is done via \ref{gloss:dotnetlabel} project settings.
 
 It is not possible to navigate the documentation, as no links are generated.
 
@@ -196,7 +196,7 @@ What follows are the responses of the 22 participants of the questionnaire.
     \item \ref{itm:gui} for less technical people
     \item Links to external \ref{gloss:dotnetlabel} type references
     \item Easy templating
-    \item Extended Markdown - custom shortcodes
+    \item Extended \ref{gloss:markdown} - custom shortcodes
     \item Fast build speed for \ref{itm:cicd}
     \item A capable \ref{itm:cli}
     \item Class structures
@@ -207,7 +207,7 @@ What follows are the responses of the 22 participants of the questionnaire.
 \textit{Responses:}
 \begin{itemize}
     \item Better support for diagrams (like mermaid.js)
-    \item A tool that could build a static site with a) editorial (Markdown) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella
+    \item A tool that could build a static site with a) editorial (\ref{gloss:markdown}) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella
 \end{itemize}
 
 \subsubsection*{Would you be interested in contributing to this project?}
