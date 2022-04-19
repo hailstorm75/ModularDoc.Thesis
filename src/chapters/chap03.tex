@@ -3,7 +3,7 @@
 What follows are milestones for the project development.
 Achieving each one is a step closer to the end goal of a functioning documentation-generating tool.
 
-Said milestones are based on the analysis of current documentation tools (see \ref{sec:whatisavailable}), developer needs (see \ref{sec:whatdouserswant}), personal experience, and general project development guidelines.
+The basis for said milestones is on the analysis of current documentation tools (see \ref{sec:whatisavailable}), the developer needs (see \ref{sec:whatdouserswant}), personal experience, and general project development guidelines.
 
 \section{Proof of concept}
 
@@ -39,3 +39,19 @@ Meanwhile, the planning phase shouldn't take unreasonable effort, as the ratio o
 \end{figure}
 
 \section{Basic structure}
+
+Setting up the project structure and introducing interfaces will pave its foundation. The resulting project structure should cohere with the plan from the previous milestone.
+
+Ensuring minimum coupling of interfaces will be the priority of this milestone, as it will maximize the modularity of the parts composing the project.
+Other goals include:
+\begin{itemize}
+    \item Setting up a \ref{itm:cicd} build environment
+    \item Documenting the interfaces
+    \item Preparing an empty test console application for the next milestone
+\end{itemize}
+
+\section{Processing libraries}
+
+The focus of this milestone will be the creation of working processing libraries that will serve as the core of the application. Said libraries will take some input and generate documentation as an output. The types of libraries and their implementation depend on the previous milestones. The result of this milestone will be a set of working libraries testable via a console application.
+
+\section{GUI application}
