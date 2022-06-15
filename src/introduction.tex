@@ -9,9 +9,9 @@ In the rare cases where source code documentation is taken seriously, it is also
 
 For Microsoft \ref{gloss:dotnetlabel} projects there is a selection of documentation generating tools available, which includes: DocFX, Doxygen, SourceBrowser, and others. These solutions primarily generate output in \ref{itm:html}, which is sufficient for the majority of projects. However, most of them lack in support for other output formats like \ref{itm:pdf}, \ref{gloss:markdown}, or custom formats. Moreover, customization of these tools is very limited, which handicaps projects from using said documentation generating tools fit their exact needs. More often than not, these tools lack in \ref{itm:ui}/\ref{itm:ux}, introducing an unnecessary learning curve.
 
-With that in mind, there is visible room for improvement. A desirable documentation generating tool would be easy to use, modern, extensible, and rich in output format support. Satisfying the desires of an extensible modern application requires thorough use of programming design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}.
+With that in mind, there is visible room for improvement. A desirable documentation generating tool would be easy to use, modern, extensible, rich in output format support, and performant. Satisfying the desires of an extensible modern application requires thorough use of programming design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}.
 
-Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using common design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats.
+Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using common design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats. All of this has to be achieved without introducing worse performance than existing tools on the market.
 
 \section*{Motivation}
 
@@ -23,5 +23,10 @@ Since \ref{gloss:git} hosting platform wiki pages predominantly utilize \ref{glo
 
 And so, the idea to develop a custom tool that would create \ref{gloss:markdown} documentation from \ref{gloss:dotnetlabel} libraries for \ref{gloss:git} platforms came to fruition. However, focusing only on one output format would be a waste of time and effort, as few to none would need such a tool. Thus, the result of the development should be a generic tool that allows anyone to modify it to output to any desirable format.
 
+To backup this motivation, a questionnair had been conducted to find developer needs for documentation generating tools in the \ref{gloss:dotnetlabel} world. The result of the questionnair (see \ref{sec:whatdouserswant}) confirmed general low interest in writing documentation; however, it highlighted the desires of those few developers who do care about maintaining source code documentation.
+
+With that in mind, it is clear that the target group for such a tool is minor; thus, focusing on the extensibility feature of the tool is crucial to cover thir needs.
+
 \section*{Strategy}
-asdf
+
+TODO place milestones here
