@@ -23,14 +23,17 @@ Documentation comments start with \lstinline[language=csh]{///} followed by \ref
 \section{Documentation tags}
 
 The following is a list of supported \ref{itm:xml} tags for documenting source code.
+Tags that are described as root tags are top-level; therefor, they cannot be placed within other documentation tags.
+Tags that are described as paired tags can contain a subset of other tags within themselves, along with text values.
+Meanwhile, non-paired tags can only provide additional information via their attributes.
 
 \subsection{General tags}
 
 \subsubsection*{Summary}
 \begin{itemize}
     \item Contains a brief description of the documented type or member
-    \item It is a root tag; therefor, it cannot be placed within another tag
-    \item It is a paired tag, and can contain subset of other tags within itself
+    \item Root tag
+    \item Paired tag
 \end{itemize}
 
 \begin{lstlisting}[language=csh]
@@ -42,9 +45,9 @@ The following is a list of supported \ref{itm:xml} tags for documenting source c
 
 \subsubsection*{Remarks}
 \begin{itemize}
-    \item Contains additional information (remarks) about the documented type or member
-    \item It is a root tag; therefor, it cannot be placed within another tag
-    \item It is a paired tag, and can contain subset of other tags within itself
+    \item Provides additional information (remarks) about the documented type or member
+    \item Root tag
+    \item Paired tag
 \end{itemize}
 
 \begin{lstlisting}[language=csh]
@@ -55,7 +58,107 @@ The following is a list of supported \ref{itm:xml} tags for documenting source c
 \end{lstlisting}
 
 \subsection{Document members}
+
+\subsubsection*{Returns}
+\begin{itemize}
+    \item Documents the returned type by the member
+    \item Root tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <returns>
+    /// The number of items
+    /// </returns>
+    int GetItemsCount();
+\end{lstlisting}
+
+\subsubsection*{Param}
+\begin{itemize}
+    \item Documents a given method parameter
+    \item Root tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <param name="bar">Instance of bar to process</param>
+    void Foo(Bar bar);
+\end{lstlisting}
+
+\subsubsection*{Paramref}
+\begin{itemize}
+    \item References a methods parameter
+    \item Can reference a parameter only in the context of the same method
+    \item Useful when the given parameter name is changed
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// Loads data from <paramref name="bar"/>
+    /// </summary>
+    /// <param name="bar">Instance of bar to process</param>
+    void Foo(Bar bar);
+\end{lstlisting}
+
+\subsubsection*{Exception}
+\begin{itemize}
+    \item Warns that a given method throws an exception
+    \item Root tag
+    \item Paired tag, can be unpaired
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <exception cref="FileNotFoundException"/>
+    /// <exception cref="ArgumentNullException">Throw when <paramref="bar"/> is found to be <c>null</c></exception>
+    void Foo(Bar bar);
+\end{lstlisting}
+
+\subsubsection*{Value}
+TODO
+
 \subsection{Formatting tags}
+
+\subsubsection*{Para}
+TODO
+
+\subsubsection*{List}
+TODO
+
+\subsubsection*{C}
+TODO
+
+\subsubsection*{Code}
+TODO
+
+\subsubsection*{Example}
+TODO
+
 \subsection{Documentation reuse tags}
+
+\subsubsection*{Inheritdoc}
+TODO
+
+\subsubsection*{Include}
+TODO
+
 \subsection{Reference tags}
+
+\subsubsection*{See}
+TODO
+
+\subsubsection*{Seealso}
+TODO
+
+\subsubsection*{Cref}
+TODO
+
+\subsubsection*{Href}
+TODO
+
 \subsection{Generic types tags}
+
+\subsubsection*{Typeparam}
+TODO
+
+\subsubsection*{Typeparamref}
+TODO
