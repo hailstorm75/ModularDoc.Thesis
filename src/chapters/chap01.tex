@@ -26,6 +26,7 @@ The following is a list of supported \ref{itm:xml} tags for documenting source c
 Tags that are described as root tags are top-level; therefor, they cannot be placed within other documentation tags.
 Tags that are described as paired tags can contain a subset of other tags within themselves, along with text values.
 Meanwhile, non-paired tags can only provide additional information via their attributes.
+Style tags are used to change the way the documentation text is displayed.
 
 \subsection{General tags}
 
@@ -114,29 +115,130 @@ Meanwhile, non-paired tags can only provide additional information via their att
 \end{lstlisting}
 
 \subsubsection*{Value}
-TODO
+\begin{itemize}
+    \item Describes the value represented by the property
+    \item Root tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <value>
+    /// Numeric representation of users age
+    /// </value>
+    int Age { get; }
+\end{lstlisting}
 
 \subsection{Formatting tags}
 
 \subsubsection*{Para}
-TODO
+\begin{itemize}
+    \item Indicates that a new line (new paragraph) should be inserted into the documentation text
+    \item Style tag
+    \item Paired tag, can be unpaired
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// Some text<para/>this text shall be on a new line
+    /// </summary>
+    void Foo();
+\end{lstlisting}
 
 \subsubsection*{List}
 TODO
 
 \subsubsection*{C}
-TODO
+\begin{itemize}
+    \item Indicates that a given part of text should be styled as inline code
+    \item Style tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// This is code <c>var i = 5;</c>
+    /// </summary>
+    void Foo();
+\end{lstlisting}
 
 \subsubsection*{Code}
-TODO
+\begin{itemize}
+    \item Indicates that a given part of text should be styled as a code block
+    \item The code block is automatically started on a new line
+    \item Style tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <remarks>
+    /// This method should be called before initialization:
+    /// <code>
+    /// Foo();
+    /// Initialize();
+    /// </code>
+    /// </remarks>
+    void Foo();
+\end{lstlisting}
 
 \subsubsection*{Example}
-TODO
+\begin{itemize}
+    \item Specifies an example usage of given member
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+
+    /// <example>
+    /// This is some example
+    /// <code>
+    /// Foo();
+    /// </code>
+    /// </example>
+    void Foo();
+
+\end{lstlisting}
 
 \subsection{Documentation reuse tags}
 
 \subsubsection*{Inheritdoc}
-TODO
+\begin{itemize}
+    \item Copies documentation from the base type
+    \item Root tag
+    \item Unpaired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    public interface IFirst
+    {
+        /// <summary>
+        /// This will be copied over via inheritdoc
+        /// </summary>
+        void Foo();
+
+        /// <summary>
+        /// This can also be copied over via inheritdoc
+        /// </summary>
+        void Bar();
+    }
+
+    public interface ISecond
+    {
+        /// <summary>
+        /// This will be copied because it was explicitely chosen
+        /// </summary>
+        void Bar();
+    }
+
+    public class MyClass : IFirst, ISecond
+    {
+        /// <inheritdoc/>
+        public void Foo();
+
+        /// <inheritdoc cref="ISecond"/>
+        public void Bar();
+    }
+
+\end{lstlisting}
 
 \subsubsection*{Include}
 TODO
@@ -144,16 +246,39 @@ TODO
 \subsection{Reference tags}
 
 \subsubsection*{See}
-TODO
+\begin{itemize}
+    \item Creates a link to a member or website
+    \item Used to link from within text
+    \item Paired tag, can be unpaired
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// This is some method, what follows are references:
+    /// <para/>
+    /// <see cref="MyNamespace.BarType"/>
+    /// <para/>
+    /// <see href="https://example.com">Link example</see>
+    /// </summary>
+    BarType Foo();
+\end{lstlisting}
 
 \subsubsection*{Seealso}
-TODO
+\begin{itemize}
+    \item Creates a link to a member or website
+    \item Used to place given link in a see also section
+    \item Root tag
+    \item Paired tag, can be unpaired
+\end{itemize}
 
-\subsubsection*{Cref}
-TODO
-
-\subsubsection*{Href}
-TODO
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// This is some method
+    /// </summary>
+    /// <seealso cref="MyNamespace.BarType"/>
+    /// <seealso href="https://example.com">Link example</seealso>
+    BarType Foo();
+\end{lstlisting}
 
 \subsection{Generic types tags}
 
