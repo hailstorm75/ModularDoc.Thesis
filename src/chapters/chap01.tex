@@ -145,7 +145,85 @@ Style tags are used to change the way the documentation text is displayed.
 \end{lstlisting}
 
 \subsubsection*{List}
-TODO
+\begin{itemize}
+    \item Complex style tag for creating:
+    \begin{itemize}
+        \item Bullet lists
+        \item Numbered lists
+        \item Definition lists (either a bullet or numbered list of terms and their definitions, where the term is highlighted)
+        \item Tables
+    \end{itemize}
+    \item Paired tag
+\end{itemize}
+
+Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to describe the list or table.
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// This method can do one of the following:
+    /// <list type="bullet">
+    /// <item>
+    /// <description>Do nothing</description>
+    /// </item>
+    /// <item>
+    /// <description>Throw an exception</description>
+    /// </item>
+    /// <item>
+    /// <description>Do what was intended</description>
+    /// </item>
+    /// </list>
+    /// </summary>
+    void BulletListDoc();
+
+    /// <summary>
+    /// This method performs the following steps:
+    /// <list type="number">
+    /// <item>
+    /// <description>Initializes class</description>
+    /// </item>
+    /// <item>
+    /// <description>Extracts data</description>
+    /// </item>
+    /// <item>
+    /// <description>Starts the process</description>
+    /// </item>
+    /// </list>
+    /// </summary>
+    void NumberedListDoc();
+
+    /// <summary>
+    /// This method an be executed in the following scenarios:
+    /// <list type="bullet">
+    /// <item>
+    /// <term>Initialization</term>
+    /// <description>Program start</description>
+    /// </item>
+    /// <item>
+    /// <term>Termination</term>
+    /// <description>Porgram end</description>
+    /// </item>
+    /// </list>
+    /// </summary>
+    void DefinitionListDoc();
+
+    /// <summary>
+    /// Transforms location based on active direction
+    /// <list type="table">
+    /// <listheader>
+    /// <term>Direction</term>
+    /// <term>Description</term>
+    /// </listheader>
+    /// <item>
+    /// <term>Forward</term>
+    /// <term>Move forwards in a straight line.</term>
+    /// </item>
+    /// <item>
+    /// <term>Backward</term>
+    /// <term>Move backwards in a straight line.</term>
+    /// </item>
+    /// </list>
+    void TableDoc();
+\end{lstlisting}
 
 \subsubsection*{C}
 \begin{itemize}
