@@ -2,4 +2,15 @@
 
 Creation of a proof of concept application is the ideal first step when numerous unknowns are present. Thus, investing time into this stage should reveal the potential complexity of the full project, provide an opportunity for research, and present a big picture of the project, allowing further planning for the most efficient execution of development.
 
-Development of the proof of concept took place in November, 2018. During said time, .NET Framework was still the dominant platform for desktop application development; thus, .NET Core, or .NET 5 and following version available today were not used in this stage. Specific differences between the .NET versions are out of the scope of this thesis. For more information see //TODO insert link.
+\textbf{Disclaimer:}
+development of the proof of concept took place in November, 2018. During said time, .NET Framework was still the dominant platform for desktop application development; thus, .NET Core, or .NET 5 and following version available today, were not used in this stage. Specific differences between the .NET versions are out of the scope of this thesis.
+
+\section*{Documentation extract methodologies}
+When it comes to retrieving documentation for source code, the most obvious method would be to parse said source code and extract all required data straight from there. Such a strategy would, most likely, involve complex regular expressions, or writing a custom character-by-character parser. The problem with this method is the non-deterministic nature of written code, as a programmer might decide to incorrectly format said code. This results in unknowns that would have to be handled by the source code parser.
+
+Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examine or modify loaded assemblies during runtime. Moreover, it is possible to enable documentation extraction during compilation into an \ref{itm:xml} file. Given these facts, it should be possible to extract type signatures from assemblies, and documentation from the \ref{itm:xml} files. The benefit of this method is that reflection handles loading all defined types, their members, and references. Moreover, the \ref{itm:xml} files already have the documentation inside and it has be simply mapped to the relevant types and members.
+
+Thus, the proof of concept project will be used to test said assumption. If it is possible to extract all relevant information via reflection and \ref{itm:xml} files, then this method would be applied in the real project.
+
+\section*{Development goals}
+This development stage would focus on whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies
