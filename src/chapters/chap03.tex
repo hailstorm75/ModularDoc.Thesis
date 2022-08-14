@@ -1,16 +1,245 @@
-\chapter{Proof of concept}
 
-Creation of a proof of concept application is the ideal first step when numerous unknowns are present. Thus, investing time into this stage should reveal the potential complexity of the full project, provide an opportunity for research, and present a big picture of the project, allowing further planning for the most efficient execution of development.
+\chapter{Documentation tools}
+\section{What is available?} \label{sec:whatisavailable}
+The current documentation tool market provides the following solutions:
 
-\textbf{Disclaimer:}
-development of the proof of concept took place in November, 2018. During said time, .NET Framework was still the dominant platform for desktop application development; thus, .NET Core, or .NET 5 and following version available today, were not used in this stage. Specific differences between the .NET versions are out of the scope of this thesis.
+\begin{enumerate}
+    \item DocFX\footnote{\href{https://github.com/dotnet/docfx}{https://github.com/dotnet/docfx}}
+    \item Doxygen\footnote{\href{https://www.doxygen.nl/}{https://www.doxygen.nl/}}
+    \item Source Browser\footnote{\href{https://github.com/KirillOsenkov/SourceBrowser}{https://github.com/KirillOsenkov/SourceBrowser}}
+    \item Vsxmd\footnote{\href{https://github.com/lijunle/Vsxmd}{https://github.com/lijunle/Vsxmd}}
+    \item vsdoc-2-md\footnote{\href{https://github.com/discosultan/vsdoc-2-md}{https://github.com/discosultan/vsdoc-2-md}}
+\end{enumerate}
 
-\section*{Documentation extract methodologies}
-When it comes to retrieving documentation for source code, the most obvious method would be to parse said source code and extract all required data straight from there. Such a strategy would, most likely, involve complex regular expressions, or writing a custom character-by-character parser. The problem with this method is the non-deterministic nature of written code, as a programmer might decide to incorrectly format said code. This results in unknowns that would have to be handled by the source code parser.
+What follows are evaluations of each tool. This helped get a better understanding of the current offering and gain prospect on features and improvements that the custom tool can take advantage of.
 
-Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examine or modify loaded assemblies during runtime. Moreover, it is possible to enable documentation extraction during compilation into an \ref{itm:xml} file. Given these facts, it should be possible to extract type signatures from assemblies, and documentation from the \ref{itm:xml} files. The benefit of this method is that reflection handles loading all defined types, their members, and references. Moreover, the \ref{itm:xml} files already have the documentation inside and it has be simply mapped to the relevant types and members.
+\subsection{DocFX} \label{ssec:docfx}
 
-Thus, the proof of concept project will be used to test said assumption. If it is possible to extract all relevant information via reflection and \ref{itm:xml} files, then this method would be applied in the real project.
+\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports \ref{gloss:dotnetlabel} languages C\#, F\#, and Visual Basic, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw \ref{gloss:markdown} files as input.
 
-\section*{Development goals}
-This development stage would focus on whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies
+However, the \textit{DocFX} only outputs static \ref{itm:html} pages. The only available customizability is via templates for said static pages.
+
+The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projects, but it doesn't solve the task of outputting \ref{gloss:markdown} files.
+
+\subsection{Doxygen}
+
+\textit{Doxygen} is the industry-standard documentation generating tool originally made for C++ source code documentation. Nevertheless, it has later added support for many popular programming languages such as C, C\#, Java, Python, and many more.
+
+The tool provides an extensive set of supported output formats:
+\begin{itemize}
+    \item Static \ref{itm:html}
+    \item \LaTeX\footnote{Document preparation system}
+    \item Man pages\footnote{User manual type that is part of Unix operating systems \cite{credocs_limited_latex_2022}}
+    \item \ref{itm:rtf}
+    \item \ref{itm:xml}
+\end{itemize}
+
+\subsection{Source Browser}
+
+\textit{Source Browser} is a tool that generates a website for browsing source code and its documentation. The tool is used by Microsoft, for example, to allow developers to browse the source code of \ref{gloss:dotnetlabel}.
+
+The generated output is not fully static and has to be hosted on an \ref{gloss:aspnetcore} website to support searching.
+
+\subsection{Vsxmd} \label{ssec:vsxmd}
+
+\textit{Vsxmd} generates a single \ref{gloss:markdown} file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a \ref{gloss:nuget} package, that is added to the project designated for documentation generation. Thus, configuring this tool is done via \ref{gloss:dotnetlabel} project settings.
+
+It is not possible to navigate the documentation as no links are generated.
+
+\subsection{Vsdoc-2-md}
+
+\textit{Vsdoc-2-md} is an entirely unusable tool, as it is purely web-based and generates documentation from the provided \ref{itm:xml} documentation source file. The tool is limited to processing only one file at a time.
+
+Just like \textit{\nameref{ssec:vsxmd}}, no links are generated; thus, it is not possible to navigate the documentation.
+
+\newpage
+
+\section{What do users want?} \label{sec:whatdouserswant}
+Surveying of potential users of the tool is necessary to ensure that the developed product is utilized by more than its developer.
+Thus, creating a questionnaire was the first step to success. Its purpose was to figure out the following key points:
+\begin{itemize}
+    \item Whether users already use documentation generation tools, and if so, which ones
+    \item What do users feel is missing from the tools they use
+    \item What do users believe should be carried over to the new tool from the ones they use
+    \item Whether users would integrate such tools into their \ref{itm:cicd} pipelines
+    \item What output formats do users want
+    \item What operating systems do users want the tool to work on
+    \item Would users find a \ref{itm:gui} beneficial for such a tool
+    \item Would users appreciate the tool being extensible via plugins
+    \item Would users be interested in contributing to the project
+\end{itemize}
+
+\subsection{Questionnaire results}
+
+What follows are the responses of the 22 participants of the questionnaire.
+
+\subsubsection*{What output formats do you wish to have for your documentation?}
+
+\begin{figure}[H]
+    \centering
+    \caption{What output formats do you wish to have for your documentation?}
+    \label{fig:qOutputFormats}
+    \begin{tikzpicture}
+        \begin{axis}[
+            symbolic x coords={Static HTML, PDF, Markdown, XML, LaTeX, Other},
+            xtick=data,
+            width=12cm,
+            height=8cm,
+            ymin=0,
+            ymax=18,
+            bar width=20pt,
+            ylabel={Number of votes},
+            enlarge y limits={value=0.2,upper},
+            legend pos=north west,
+            nodes near coords
+        ]
+            \addplot+[ybar] coordinates {
+                (Static HTML,   16)
+                (PDF,            9)
+                (Markdown,       6)
+                (XML,            7)
+                (LaTeX,         1)
+                (Other,          1)
+            };
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\textit{Other responses:}
+\begin{itemize}
+    \item AsciiDoc
+\end{itemize}
+
+\subsubsection*{Would you integrate such a tool in your CI/CD process?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you integrate such a tool in your CI/CD process?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{9/Yes, 2/No, 11/Maybe}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{How crucial is it for the tool to support these platforms?}
+
+\begin{figure}[H]
+    \centering
+    \caption{How crucial is it for the tool to support these platforms?}
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar stacked,
+            bar width=20pt,
+            height=10cm,
+            width=8cm,
+            nodes near coords,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.25)},
+            anchor=north,legend columns=-1},
+            ylabel={Number of participants},
+            symbolic x coords={Windows, Linux, MacOS},
+            xtick=data,
+            x tick label style={rotate=45,anchor=east},
+            ]
+        \addplot+[ybar] plot coordinates {(Windows,17) (Linux,4) (MacOS,1)};
+        \addplot+[ybar] plot coordinates {(Windows,4) (Linux,16) (MacOS,2)};
+        \addplot+[ybar] plot coordinates {(Windows,1) (Linux,2) (MacOS,19)};
+        \legend{\strut First choice, \strut Middle choice, \strut Last choice}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{Would it be beneficial to have a GUI instead of only a console?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would it be beneficial to have a GUI instead of only a console?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{12/Yes, 9/No, 1/Other}
+    \end{tikzpicture}
+\end{figure}
+
+\textit{Other responses:}
+\begin{itemize}
+    \item I don't want separate docs, readable code is better
+\end{itemize}
+
+\subsubsection*{Would you appreciate the tool being extensible via plugins?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you appreciate the tool being extensible via plugins?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{17/Yes, 5/No}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{Are you using tools for documentation generation?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Are you using tools for documentation generation?}
+    \label{fig:qUsingToolsForDocGen}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{8/Yes, 14/No}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{What documentation generating tools do you use?}
+
+\begin{figure}[H]
+    \centering
+    \caption{What documentation generating tools do you use?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{3/DocFX, 2/Doxygen, 1/Slate, 1/Hugo}
+    \end{tikzpicture}
+\end{figure}
+
+\subsubsection*{What features from those tools you'd like to see in the resulting project?}
+
+\textit{Responses:}
+\begin{itemize}
+    \item \ref{itm:gui} for less technical people
+    \item Links to external \ref{gloss:dotnetlabel} type references
+    \item Easy templating
+    \item Extended \ref{gloss:markdown} - custom shortcodes
+    \item Fast build speed for \ref{itm:cicd}
+    \item A capable \ref{itm:cli}
+    \item Class structures
+\end{itemize}
+
+\subsubsection*{What features are missing in your current tool and would make you consider using the resulting project if they were to be provided by it?}
+
+\textit{Responses:}
+\begin{itemize}
+    \item Better support for diagrams (like mermaid.js)
+    \item A tool that could build a static site with a) editorial (\ref{gloss:markdown}) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella
+\end{itemize}
+
+\subsubsection*{Would you be interested in contributing to this project?}
+
+\begin{figure}[H]
+    \centering
+    \caption{Would you be interested in contributing to this project?}
+    \begin{tikzpicture}
+        \pie[sum=auto , after number=]{14/No, 6/Maybe}
+    \end{tikzpicture}
+\end{figure}
+
+\subsection{Questionnaire evaluation} \label{ssec:questionnaireeval}
+
+Of those who find a use for such tools, want to export to static \ref{itm:html} and to have the ability to extend the functionality via plugins.
+Other responses displayed a clear division of needs when it comes to \ref{itm:cicd} integration, the target \ref{itm:os}, and the need for a \ref{itm:gui}.
+The dominant documentation generating tool for \ref{gloss:dotnetlabel} is \nameref{ssec:docfx} (see \ref{ssec:docfx}).
+
+Questionnaire takeaways:
+
+\begin{itemize}
+    \item The majority neglects the importance of documenting code; thus, those who do and use documentation generating tools are part of a minute subset of all developers (see figure \ref{fig:qUsingToolsForDocGen})
+    \item The tool should be cross-platform
+    \item The tool must have good performance
+    \item A console will be used by administrators of \ref{itm:cicd} pipelines and power users, while the \ref{itm:gui} will be useful for the rest
+    \item Support for \ref{itm:cicd} is essential to fully automate documentation generation
+    \item Even though the majority seeks to export to static \ref{itm:html} pages (see figure \ref{fig:qOutputFormats}), the project will focus on \ref{gloss:markdown} to fill in the market gap. The rest of the mentioned output formats will receive support later on (see below)
+    \item \textbf{Extensibility via plugins will be the key selling point of the tool - it will enable anybody to modify the functionality to meet their specific needs}
+    \item Future support for \nameref{ssec:docfx} (see \ref{ssec:docfx}) templates will help users migrate from said platform
+\end{itemize}
