@@ -361,7 +361,28 @@ TODO
 \subsection{Generic types tags}
 
 \subsubsection*{Typeparam}
-TODO
+\begin{itemize}
+    \item Documents a given type of method generic parameter
+    \item Root tag
+    \item Paired tag
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <typeparam name="T">Type of input</param>
+    void Foo<T>(T bar);
+\end{lstlisting}
 
 \subsubsection*{Typeparamref}
-TODO
+\begin{itemize}
+    \item References a type or method generic parameter
+    \item Can reference a generic parameter only in the context of the same type or method
+    \item Useful when the given generic parameter name is changed
+\end{itemize}
+
+\begin{lstlisting}[language=csh]
+    /// <summary>
+    /// Loads data from <paramref name="bar"/> of a given type <typeparamref name="T"/>
+    /// </summary>
+    /// <typeparam name="T">Type of input</param>
+    void Foo<T>(T bar);
+\end{lstlisting}
