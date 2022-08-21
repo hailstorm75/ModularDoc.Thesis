@@ -1,14 +1,14 @@
 \chapter{Proof of concept}
 
-Creation of a proof of concept application is the ideal first step when numerous unknowns are present. Thus, investing time into this stage should reveal the potential complexity of the full project, provide an opportunity for research, and present a big picture of the project, allowing further planning for the most efficient execution of development.
+Creation of a proof of concept application is the ideal first step when numerous unknowns are present. Thus, investing time into this stage should reveal the potential complexity of the full project, and provide an opportunity for research, allowing further planning for the most efficient execution of development.
 
 \textbf{Disclaimer:}
-development of the proof of concept took place in November, 2018. During said time, .NET Framework was still the dominant platform for desktop application development; thus, .NET Core, or .NET 5 and following version available today, were not used in this stage. Specific differences between the .NET versions are out of the scope of this thesis.
+development of the proof of concept took place in November, 2018. During said time, \ref{gloss:dotnetlabel} Framework was still the dominant platform for desktop application development; thus, \ref{gloss:dotnetlabel} Core, or \ref{gloss:dotnetlabel} and following version available today, were not used in this stage (see \ref{chap:overviewNET}).
 
 \section{Documentation extract methodologies}
-When it comes to retrieving documentation for source code, the most obvious method would be to parse said source code and extract all required data straight from there. Such a strategy would, most likely, involve complex regular expressions, or writing a custom character-by-character parser. The problem with this method is the non-deterministic nature of written code, as a programmer might decide to incorrectly format said code. This results in unknowns that would have to be handled by the source code parser.
+When it comes to retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy would, most likely, involve complex regular expressions, or writing a custom parser. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, or a radical update to the code syntax might occur. This results in unknowns that would have to be handled by the source code parser.
 
-Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examine or modify loaded assemblies during runtime. Moreover, it is possible to enable documentation extraction during compilation into an \ref{itm:xml} file. Given these facts, it should be possible to extract type signatures from assemblies, and documentation from the \ref{itm:xml} files. The benefit of this method is that reflection handles loading all defined types, their members, and references. Moreover, the \ref{itm:xml} files already have the documentation inside and it has be simply mapped to the relevant types and members.
+Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examine or modify loaded assemblies during runtime. Moreover, it is possible to enable documentation extraction during compilation into an \ref{itm:xml} file (see \ref{chap:netDocumentation}). Given these facts, it should be possible to extract type signatures from assemblies, and documentation from the \ref{itm:xml} files. The benefit of this method is that reflection handles loading all defined types, their members, and references. Moreover, the \ref{itm:xml} files already have the documentation inside and it has be simply mapped to the relevant types and members.
 
 Thus, the proof of concept project will be used to test said assumption. If it is possible to extract all relevant information via reflection and \ref{itm:xml} files, then this method would be applied in the real project.
 
@@ -24,9 +24,9 @@ When it comes to hosting an open-source project, developers have the following c
 
 Additionally, there are solutions for hosting a project locally on dedicated hardware; however, this is mainly suitable for propriatary, or private projects.
 
-An in-depth evaluation of each cloud platform would reach outside the scope of this thesis; thus, follows a short summary.
+As an in-depth evaluation and description of each cloud platform would reach outside the scope of this thesis, excuse the brief intrduction of said platforms:
 
-\textbf{GitHub}: the most popular platform for open-source projects, providing tools not only for managing project, but for discovering them - pseudo-social platform for developers.
+\textbf{GitHub}: the most popular platform for open-source projects, providing tools not only for managing project, but for discovering them.
 
 \textbf{GitLab}: a newcomer to the \ref{gloss:git} hosting space. Primarily focuses on corporate clients; however, provides powerful features for free to open-source projects.
 
@@ -36,13 +36,24 @@ An in-depth evaluation of each cloud platform would reach outside the scope of t
 
 \textbf{Sourceforge}: classic platform for hosting open-source projects before \ref{gloss:git} became mainstream, declining in popularity and usage
 
-Given previous experience with GitHub and Azure DevOps, the side-goal of this stage would be to asses GitLab as a potential hosting platform by publishing the proof of concept project on it.
+Given previous experience with GitHub and Azure DevOps, the side-goal of this stage would be to asses GitLab as a potential hosting platform by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users would potentially host the generated documentation.
 
 \section{Development goals summary}
 This development stage would focus on:
 \begin{itemize}
-    \item Whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies
+    \item Whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies via reflection
+    \item How to parse the extracted data into a human-readable output; how to generate Markdown
     \item Whether GitLab is a viable platform for an open-source project
 \end{itemize}
 
 \section{Development result}
+
+The result of this development stage was a proof of concept console application, that
+\begin{itemize}
+    \item proves that reflection is sufficient and beneficial for this project,
+    \item provided understanding of GitLab and its Wiki for hosting the tools generated output,
+    \item reminded the importance of Single Responsibility and Interface Segragation principles from SOLID,
+    \item and helped write a Markdown generator
+\end{itemize}
+
+Given these facts, it was an undoughtably a useful investment of time and effort.
