@@ -1,9 +1,10 @@
 \chapter{How .NET documentation works} \label{chap:netDocumentation}
 
-Source files of a language based on the \ref{gloss:dotnetlabel} platform can have structured comments that produce documentation for the types defined in those source files. The respective language compiler\footnote{C\# and VB are compiled by Roslyn, while F\# has its own specific F\# compiler} produces an \ref{itm:xml} file that contains structured data representing said comments and the type signatures.
+Source files of a language based on the \ref{gloss:dotnetlabel} platform can have structured comments that produce documentation for types and members defined in said source files. The respective language compiler\footnote{C\# and VB are compiled by Roslyn, while F\# has its own specific F\# compiler} produces an \ref{itm:xml} file that contains structured data representing comments bound to types and members.
 \cite{wagner_xml_2022}
 
-Documentation comments start with \lstinline[language=csh]{///} followed by \ref{itm:xml} tags. In C\#, for example, documenting a \lstinline[language=csh]{class} and its method would look like this:
+All following examples will be in C\#, as it is the dominant language of the platform. Documentation comments start with \lstinline[language=csh]{///} followed by \ref{itm:xml} tags:
+
 \begin{lstlisting}[language=csh]
     /// <summary>
     /// This is a brief description of the class
