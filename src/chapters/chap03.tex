@@ -11,11 +11,11 @@ The current documentation tool market provides the following solutions:
     \item vsdoc-2-md\footnote{\href{https://github.com/discosultan/vsdoc-2-md}{https://github.com/discosultan/vsdoc-2-md}}
 \end{enumerate}
 
-What follows are evaluations of each tool. This helped get a better understanding of the current offering and gain prospect on features and improvements that the custom tool can take advantage of.
+What follows are evaluations of each tool which provides prospects on features and improvements that the custom tool can take advantage of.
 
 \subsection{DocFX} \label{ssec:docfx}
 
-\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports \ref{gloss:dotnetlabel} languages C\#, F\#, and Visual Basic, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw \ref{gloss:markdown} files as input.
+\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports \ref{gloss:dotnetlabel} languages, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw \ref{gloss:markdown} files as input.
 
 However, the \textit{DocFX} only outputs static \ref{itm:html} pages. The only available customizability is via templates for said static pages.
 
@@ -23,7 +23,7 @@ The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projec
 
 \subsection{Doxygen}
 
-\textit{Doxygen} is the industry-standard documentation generating tool originally made for C++ source code documentation. Nevertheless, it has later added support for many popular programming languages such as C, C\#, Java, Python, and many more.
+\textit{Doxygen} is the industry-standard documentation generating tool originally made for C/C++ source code documentation. It has later added support for many popular programming languages such as C\#, Java, Python, and many more.
 
 The tool provides an extensive set of supported output formats:
 \begin{itemize}
@@ -33,6 +33,8 @@ The tool provides an extensive set of supported output formats:
     \item \ref{itm:rtf}
     \item \ref{itm:xml}
 \end{itemize}
+
+It is possible to extend the tool, as it is open-source and available on GitHub. Unfortunately for \ref{gloss:dotnetlabel}, \textit{Doxygen} is written in C++ and its documentation does not provide any clear guidelines for extending its support for output formats. Naturally, a curious programmer can deduce how to do exactly that from the source code; however, other developers do not have capacity for such a feat.
 
 \subsection{Source Browser}
 
