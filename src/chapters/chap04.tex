@@ -5,7 +5,9 @@ Creation of a proof of concept application is the ideal first step when numerous
 \textbf{Disclaimer:}
 development of the proof of concept took place in November, 2018. During said time, \ref{gloss:dotnetlabel} Framework was still the dominant platform for desktop application development; thus, \ref{gloss:dotnetlabel} Core, or \ref{gloss:dotnetlabel} and following version available today, were not used in this stage (see \ref{chap:overviewNET}).
 
-\section{Documentation extraction methodologies}
+\section{Milestone goals analysis}
+
+\subsection{Documentation extraction methodologies}
 When it comes to retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy would invole writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, or a radical update to the code syntax might occur. This results in unknowns that would have to be handled by the source code parser.
 
 One might say, that there is no need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code. Its capabilities are exposed via \ref{itm:api}s that can be accessed by developers to create their own custom tools. This would be a great solution if not for the dependency on the Roslyn compiler. With said dependency present, it is not possible to create a standalone tool which would work on any system, regardless of whether developer tools are present or not.
@@ -14,8 +16,8 @@ Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examin
 
 Thus, the proof of concept project will be used to test the possibility to extract all relevant information via reflection and \ref{itm:xml} files. If it proves to be possible, then this method would be applied in the real project. Otherwise, using Roslyn is the best alternative.
 
-\section{Open-source project hosting platforms}
-When it comes to hosting an open-source project, developers have the following cloud platforms to choose from:
+\subsection{Open-source project hosting platforms}
+Developers have the following cloud platforms to choose from to host their open-source projects:
 \begin{itemize}
     \item GitHub
     \item GitLab
@@ -40,10 +42,12 @@ As an in-depth evaluation and description of each cloud platform would reach out
 
 Given previous experience with GitHub and Azure DevOps, the side-goal of this stage would be to asses GitLab as a potential hosting platform by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users would potentially host the generated documentation by the custom tool.
 
-\section{Parsing data into markdown}
-// TODO: Describe markdown
+\subsection{Parsing data into markdown}
+Markdown is a simple markup language for writing formatted text. The created markup is then rendered into the desired formatted text. The rendering occurrs, for example, on Git hosting platforms.
 
-\section{Development goals summary}
+Since the custom documentation generating tool is to output the result in Markdown, a Markdown output generator must be written. To do that, the markup language must be studied.
+
+\subsection{Development goals summary}
 This development stage would focus on analysing:
 \begin{itemize}
     \item whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies via reflection,
@@ -51,7 +55,9 @@ This development stage would focus on analysing:
     \item how to parse the extracted data into a human-readable output; how to generate Markdown.
 \end{itemize}
 
-\section{Development result}
+\section{Development results}
+
+\subsection{Results summary}
 
 The result of this development stage was a proof of concept console application, that
 \begin{itemize}
