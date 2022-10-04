@@ -47,6 +47,9 @@ Markdown is a simple markup language for writing formatted text. The created mar
 
 Since the custom documentation generating tool is to output the result in Markdown, a Markdown output generator must be written. To do that, the markup language must be studied.
 
+\subsection{Generating class inheritance diagrams}
+Class inheritance diagrams would prove to be a useful part for source code documentation. Nevertheless, analysis of this topic will be omitted in this milestone, as it is not a core feature.
+
 \subsection{Development goals summary}
 This development stage would focus on analysing:
 \begin{itemize}
@@ -57,13 +60,38 @@ This development stage would focus on analysing:
 
 \section{Development results}
 
-\subsection{Reflection sufficiency}
+\subsection{Reflection for data extraction}
+
+Using reflection is sufficient for extracting type and member data from selected assemblies. Nevertheless, this methodology requires additional effort to work correctly for the following reasons:
+\begin{itemize}
+    \item the compiler generates extra types and members
+    \item signatures extracted via reflection of some \ref{gloss:dotnetlabel} types differ from the signatures in the source code
+    \begin{itemize}
+        \item the \lstinline[language=csh]{dynamic} type is compiled as \lstinline[language=csh]{object}
+        \item named value tuples (e.g. \lstinline[language=csh]{(int age, string name)}) are presented without names as regular tuples (e.g. \lstinline[language=csh]{Tuple<int, string>})
+    \end{itemize}
+    \item generic type parameters are not directly accessible
+    \item named value tuple names are not directly accessible
+    \item determining the line number of a given member in its source code is unclear
+\end{itemize}
 
 \subsection{SOLID principles}
 
 \subsection{Git platforms for hosting open-source projects}
 
 \subsection{Git platforms for hosting Markdown documentation}
+
+During this stage, four platforms were tested for their capabilities in hosting source code documentation in their Wiki pages: GitLab, GitHub, Bitbucket, and Azure DevOps.
+
+Out of the four, GitLab has full support for Markdown and \ref{itm:html} tags. Its Wiki is delivered as a separate repository, enabling users to clone it and edit pages in bulk. Moreover, the Wiki can be structured into folders.
+
+Azure DevOps is very similar to GitLab in 
+
+GitHub, on the other hand, does not offer a way to structure the Wiki using folders, neither does it allow users to edit pages in bulk. So, if the custom documentation generating tool would generate a Markdown file for each type, then the user would have to manually upload each file using GitHubs UI.
+
+Bitbucket has the worst support for Wikis.
+// TODO
+Nevertheless, this is not a problem for clients using Bitbucket, as Atlassian, the company behind Bitbucket, offers Confluence - an online knowledgebase. So, support Confluence has a higher priority than Bitbucket.
 
 \subsection{Markdown generator}
 
