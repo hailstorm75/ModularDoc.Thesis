@@ -8,11 +8,11 @@ development of the proof of concept took place in November, 2018. During said ti
 \section{Milestone goals analysis}
 
 \subsection{Documentation extraction methodologies}
-When it comes to retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy would invole writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, or a radical update to the code syntax might occur. This results in unknowns that would have to be handled by the source code parser.
+When it comes to retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy would invole writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, the source files might not even be compilable, or a radical update to the code syntax might occur that the tool must cover. This results in unknowns that would have to be handled by the source code parser.
 
-One might say, that there is no need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code. Its capabilities are exposed via \ref{itm:api}s that can be accessed by developers to create their own custom tools. This would be a great solution if not for the dependency on the Roslyn compiler. With said dependency present, it is not possible to create a standalone tool which would work on any system, regardless of whether developer tools are present or not.
+One might say, that there is no need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code. Its capabilities are exposed via \ref{itm:api}s that can be accessed by developers to create their own custom tools. This would be a great solution if not for the dependency on the Roslyn compiler. With said dependency present, it is not possible to create a standalone tool which would work on any system, regardless of whether \ref{gloss:dotnetlabel} developer tools are present or not.
 
-Fortunately, \ref{gloss:dotnetlabel} provides reflection - the ability to examine or modify loaded assemblies during runtime. This feature allows developers to either reflect the running program and its references, or load other non-obfuscated assemblies. This method would require correclty parsing the loaded data from the assemblies; however, unlike the previous alternative, there is no dependency on the Roslyn compiler. Given these facts, it should be possible to extract type signatures from assemblies, and documentation from the \ref{itm:xml} files (see \ref{chap:netDocumentation}). Documentation extracted from the \ref{itm:xml} files would have to be mapped to the types and members extracted from the assemblies.
+Fortunately, reflection is also an option - the ability to examine or modify loaded assemblies during runtime. This feature allows developers to either reflect the running program and its references, or load other non-obfuscated assemblies for reflection. This method would require correclty parsing the loaded data from the assemblies; however, unlike the previous alternatives, there is no dependency on the Roslyn compiler, nor is there uncertainty in the quality of the source of data. Given these facts, it should be possible to extract relevant data from assemblies, and documentation from the \ref{itm:xml} files (see \ref{chap:netDocumentation}). Both data sources will have to be mapped to each other, e.g. documentation for a given class is mapped to the parsed class signature.
 
 Thus, the proof of concept project will be used to test the possibility to extract all relevant information via reflection and \ref{itm:xml} files. If it proves to be possible, then this method would be applied in the real project. Otherwise, using Roslyn is the best alternative.
 
@@ -28,7 +28,7 @@ Developers have the following cloud platforms to choose from to host their open-
 
 There are solutions for hosting a project locally on dedicated hardware; however, this is mainly suitable for propriatary, or private projects.
 
-As an in-depth evaluation and description of each cloud platform would reach outside the scope of this thesis, excuse the brief intrduction of said platforms:
+As an in-depth evaluation and description of each cloud platform would reach outside the scope of this thesis, excuse the brief introduction of said platforms:
 
 \textbf{GitHub}: the most popular platform for open-source projects, providing tools not only for managing project, but for discovering them.
 
@@ -40,7 +40,7 @@ As an in-depth evaluation and description of each cloud platform would reach out
 
 \textbf{Sourceforge}: classic platform for hosting open-source projects before \ref{gloss:git} became mainstream, declining in popularity and usage
 
-Given previous experience with GitHub and Azure DevOps, the side-goal of this stage would be to asses GitLab as a potential hosting platform by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users would potentially host the generated documentation by the custom tool.
+Given previous experience with GitHub and Azure DevOps, the side-goal of this stage would be to asses GitLab as a potentially alternative hosting platform to GitHub by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users would potentially host the generated documentation by the custom tool.
 
 \subsection{Parsing data into markdown}
 Markdown is a simple markup language for writing formatted text. The created markup is then rendered into the desired formatted text. The rendering occurrs, for example, on Git hosting platforms.
@@ -78,15 +78,13 @@ Using reflection is sufficient for extracting type and member data from selected
 \subsection{Design pattern importance}
 
 One of the defined goals for this thesis is to produce an extensible application. To achieve said goal, design patterns such as SOLID, DI and pluginable architecture will be applied.
-The proof of concept application was rapidly developed without applying DI, or respecting SOLID principles. This both helped to quickly develop a simple application, and showed that incorrect use or absence of design patterns will produce an unmaintainable application.
+The proof of concept application was rapidly developed without intentionally applying any design patterns. This both helped to quickly develop a simple application, and showed that incorrect use or absence of design patterns will produce an unmaintainable application.
 
 \subsection{Git platforms for hosting open-source projects}
 
-The proof of concept project source code was hosted on GitLab to tests said platforms capabilities. Other platforms were not tested in the scope of this thesis; nevertheless, said platforms were tested via other personal projects.
+The proof of concept project source code was hosted on GitLab to test said platforms capabilities. Other platforms were not tested in the scope of this thesis; nevertheless, said platforms were tested via other personal projects.
 
 GitLab is a freemium platform, that offers all of its features for public open-source projects. It has a very capable CI/CD platform, along with a complete set of tools for Agile development. GitLab includes features for discovering other projects, but it clearly shows, that it is not the primary focus of the platform.
-
-Azure DevOps is a platform designed for organizations with large teams. It provides complex tools to managing said teams, and managing their projects using agile. The platform is powerful, and complex; thus, it is unsuitable for one-man projects. Additionally, since the platform is designed for organizations, it lacks tools for projects discoverability.
 
 On the other hand, GitHub has the upper hand in project discoverability. In a sense, GitHub is a social platform for developers. Moreover, GitHub hosts a sizeable amount of projects, and has been on the market long enough, to be considered a mature platform. Some might view the simplicity of its tools for projects management as a downside. Nevertheless, if a project requires complex management tools, GitHub allows users to connect it to Azure DevOps, which has the complete set of tools for agile development.
 
@@ -94,14 +92,17 @@ On the other hand, GitHub has the upper hand in project discoverability. In a se
 
 During this stage, four platforms were tested for their capabilities in hosting source code documentation in their Wiki pages: GitLab, GitHub, Bitbucket, and Azure DevOps.
 
-Out of the four, GitLab has full support for Markdown and \ref{itm:html} tags. Its Wiki is delivered as a separate repository, enabling users to clone it and edit pages in bulk. Moreover, the Wiki can be structured into folders.
+Out of the four, GitLab has the best implementation of their Wiki. It offers full support for Markdown and \ref{itm:html} tags.
+Its Wiki is delivered as a separate repository, enabling users to clone it and edit pages in bulk. Moreover, its content can be structured into folders for better documentation organization.
 
 Azure DevOps is very similar to GitLab in the sense that the pages are hosted in a repository; and thus, can be cloned and edited in bulk. Again, the pages can be separated into folders. However, the page \ref{itm:url}s contain an additional numeric parameter unique to each page, the purpose of which is unknown. Because of this unknown parameter and rules for its creation, it is not possible to support linking between generated documentation pages.
 
-GitHub, on the other hand, does not offer a way to structure the Wiki using folders, neither does it allow users to edit pages in bulk, since there is no ability to access the wiki pages as a repository. So, if the custom documentation generating tool would generate a Markdown file for each type, then the user would have to manually upload each file using GitHubs UI.
+GitHub, on the other hand, does not offer a way to structure the Wiki using folders, neither does it allow users to edit pages in bulk, since there is no ability to access the wiki pages as a repository. So, if the custom documentation generating tool would generate a Markdown file for each type, then the user would have to manually upload each file using GitHubs UI, or to upload the documentation with the source code.
 
-Bitbucket has the worst support for Wikis. Just like GitHub, there is no ability to edit pages in bulk. Moreover, support for Markdown is limited, as \ref{itm:html} tags are not rendered, headers do not have anchor links, and more.
-Nevertheless, this is not a problem for clients using Bitbucket, as Atlassian, the company behind Bitbucket, offers Confluence - an online knowledgebase. So, support Confluence has a higher priority than Bitbucket.
+Bitbucket has the worst support for Wikis.
+Just like GitHub, there is no ability to edit pages in bulk.
+Moreover, support for Markdown is limited, as \ref{itm:html} tags are not rendered, headers do not have anchor links, and more.
+Nevertheless, this is not a problem for clients using Bitbucket, as Atlassian, the company behind Bitbucket, offers Confluence - an online knowledgebase.
 
 \subsection{Markdown generator}
 
@@ -112,9 +113,9 @@ The process of creating a Markdown generator provided a deeper insight into the 
 The result of this development stage was a proof of concept console application, that
 \begin{itemize}
     \item proves that reflection is sufficient,
-    \item reminded the importance of Single Responsibility and Interface Segragation principles from SOLID,
+    \item reminded the importance of proper design pattern use
     \item helped write a Markdown generator,
-    \item and provided understanding of GitLab and its Wiki for hosting the tools generated output,
+    \item and provided understanding of GitLab and its Wiki for hosting the tools generated output.
 \end{itemize}
 
 Given these facts, it was undoughtably a useful investment of time and effort.
