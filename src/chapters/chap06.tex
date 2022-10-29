@@ -1,3 +1,49 @@
 \chapter{Basic structure}
 
-For more see \ref{secBasicStructure}.
+The primary principle, Single-responsibility, separated operations within the application into the following key parts:
+\begin{itemize}
+    \item Member provider
+    \item Documentation provider
+    \item Composer
+    \item Element provider
+    \item Diagram generator
+    \item Linker
+    \item Printer
+\end{itemize}
+
+\section{Key parts} \label{sec:keyParts}
+
+\subsection{Member provider}
+
+The member provider will be responsible for loading type and member data from a given collection of sources into a collection of a defined data structure.
+This collection will then be provided to the consumer of this key part via the relevant interface.
+A concrete implementation of the interface would define the source type and the method for processing said source.
+
+\subsection{Documentation provider}
+
+The documentation provider will be responsible for loading documentation for specific types and members from a given collection of sources and mapping said documentation to the relevant types and members.
+The map will then be available for querying to consumers of this key part via the relevant interface.
+A concrete implementation of the interface would define the source type and the method for processing said source.
+
+\subsection{Element provider}
+
+The element provider will be responsible for providing structural elements for the visual representation of the generated documentation. Such elements would include:
+\begin{itemize}
+    \item Text - regular text without any formatting
+    \item Formatted text - text with formatting, e.g. bold, italic, code
+    \item Lists - numbered, bullet, term lists
+    \item Tables - headered tables
+    \item Sections - content separators with headings containing all of the above
+    \item Pages - content separators containing sections
+\end{itemize}
+
+Consumers of this provider would create required elements via the relevant interface.
+A concrete implementation of the interface would define how said elements are to be represented, e.g. Markdown, \ref{itm:html}, \LaTeX.
+
+\subsection{Diagram generator}
+
+\subsection{Linker}
+
+\subsection{Composer}
+
+\subsection{Printer}

@@ -1,13 +1,13 @@
 \chapter{Evaluation and project planning} \label{chap:evalProjPlan}
 
 This milestone will focus on planning development steps and guidelines based on the evaluation of the previous milestone (see \ref{chap:proofConcept}).
-A concrete plan will help develop a maintainable, quality application with a clear vision of the target goal.
+A concrete plan will help develop a maintainable, quality application with a clear vision of a path towards the target goal.
 
 \section{Evaluation}
 
 \subsection{Project hosting platform}
 
-The resulting project shall be open source and will be hosted on GitHub.
+The final project shall be open source and will be hosted on GitHub.
 These decisions were made to allow external contributions, reach a niche target demographic, and to have access to freemium tools, which are offered for free to open source projects.
 
 GitHub was chosen over GitLab, the second best contendor, because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
@@ -23,104 +23,94 @@ F\# shall be used sparsly to fullfill a personal goal of exploring said language
 
 \subsection{Project architecture}
 
+Applying \ref{itm:solid} principles helped design an architecture of a maintainable and extendable application.
+The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:keyParts}), where
+each part plays its individual key role in the application.
 
+The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fullfills the Open-closed principle from \ref{itm:solid}.
 
-\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+Implementing such an architecture would require defining said decoupled interfaces first.
+The next step would be to create specific implementations of said interfaces. E.g., \textit{Diagram Generator} would be the interface, while \textit{PlatUML Diagram generator}, or \textit{MermaidJS Diagram generator} would be the specific implementations deriving from said interface.
 
-\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-%uncomment if require: \path (0,428); %set diagram left start at 0, and has height of 428
+Specific implementations of an interface will be referred to as \textbf{components}. Given that there might be various implementations of one interface, a group of specific implementations would be referred to as a \textbf{plugin}. A user would install only those plugins that they need for their task. And a developer would create a custom plugin by grouping specific components that either already exist, or they would have written themselves.
 
-%Shape: Folded Corner [id:dp38453805550218356] 
-\draw   (128,110) -- (14,110) -- (14,150) -- (140,150) -- (140,122) -- cycle -- (128,110) ; \draw   (140,122) -- (130.4,119.6) -- (128,110) ;
-
-%Shape: Cube [id:dp9514351083967096] 
-\draw   (461,30.21) -- (471.21,20) -- (590,20) -- (590,247.79) -- (579.79,258) -- (461,258) -- cycle ; \draw   (590,20) -- (579.79,30.21) -- (461,30.21) ; \draw   (579.79,30.21) -- (579.79,258) ;
-%Shape: Rectangle [id:dp28951515389797833] 
-\draw   (470,68) -- (571,68) -- (571,127) -- (470,127) -- cycle ;
-
-%Shape: Rectangle [id:dp811482931901953] 
-\draw   (470,208) -- (571,208) -- (571,241) -- (470,241) -- cycle ;
-
-%Shape: Rectangle [id:dp5590157968822316] 
-\draw   (470,139) -- (571,139) -- (571,198) -- (470,198) -- cycle ;
-
-
-%Shape: Rectangle [id:dp0837615901192712] 
-\draw   (200,10) -- (360,10) -- (360,50) -- (200,50) -- cycle ;
-
-%Shape: Rectangle [id:dp21181013544630467] 
-\draw   (190,220) -- (390,220) -- (390,260) -- (190,260) -- cycle ;
-
-%Curve Lines [id:da5699658849973097] 
-\draw    (70,110) .. controls (70,31.86) and (161.2,28.74) .. (198.34,29.94) ;
-\draw [shift={(200,30)}, rotate = 182.12] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da0934002278421866] 
-\draw    (70,150) .. controls (70,240.75) and (140.57,238.72) .. (188.55,239.96) ;
-\draw [shift={(190,240)}, rotate = 181.59] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da9139301607505403] 
-\draw    (280,50) .. controls (281.98,104.12) and (393.73,113.48) .. (458.07,110.11) ;
-\draw [shift={(460,110)}, rotate = 176.72] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Curve Lines [id:da360087403261089] 
-\draw    (290,220) .. controls (290,198.67) and (294,151.67) .. (460,160) ;
-\draw [shift={(460,160)}, rotate = 182.87] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Rectangle [id:dp5335135464926624] 
-\draw   (240,310) -- (330,310) -- (330,350) -- (240,350) -- cycle ;
-
-%Curve Lines [id:da34448081447371903] 
-\draw    (520,260) .. controls (520,338.61) and (403.18,329.1) .. (331.08,329.99) ;
-\draw [shift={(330,330)}, rotate = 359.2] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-%Shape: Folded Corner [id:dp9495985347442353] 
-\draw   (128,310) -- (14,310) -- (14,350) -- (140,350) -- (140,322) -- cycle -- (128,310) ; \draw   (140,322) -- (130.4,319.6) -- (128,310) ;
-%Straight Lines [id:da8650986253114432] 
-\draw    (240,330) -- (142,330) ;
-\draw [shift={(140,330)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
-
-% Text Node
-\draw (37.11,122) node [anchor=north west][inner sep=0.75pt]   [align=left] {Input folder};
-% Text Node
-\draw (485,79) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{48.65pt}\setlength\topsep{0pt}
-\begin{center}
-Element\\Provider
-\end{center}
-
-\end{minipage}};
-% Text Node
-\draw (499,205) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{30.51pt}\setlength\topsep{0pt}
-\begin{center}
-Linker
-\end{center}
-
-\end{minipage}};
-% Text Node
-\draw (485,150) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{48.65pt}\setlength\topsep{0pt}
-\begin{center}
-Diagram\\Generator
-\end{center}
-
-\end{minipage}};
-% Text Node
-\draw (488,40) node [anchor=north west][inner sep=0.75pt]   [align=left] {Composer};
-% Text Node
-\draw (211,22) node [anchor=north west][inner sep=0.75pt]   [align=left] {Assembly processor};
-% Text Node
-\draw (201,231) node [anchor=north west][inner sep=0.75pt]   [align=left] {Documentation processor};
-% Text Node
-\draw (101,62) node [anchor=north west][inner sep=0.75pt]   [align=left] {*.dll, *.exe};
-% Text Node
-\draw (111,201) node [anchor=north west][inner sep=0.75pt]   [align=left] {*.xml};
-% Text Node
-\draw (351,81) node [anchor=north west][inner sep=0.75pt]   [align=left] {Types};
-% Text Node
-\draw (336,181) node [anchor=north west][inner sep=0.75pt]   [align=left] {Documentation};
-% Text Node
-\draw (261,321) node [anchor=north west][inner sep=0.75pt]   [align=left] {Printer};
-% Text Node
-\draw (394,301) node [anchor=north west][inner sep=0.75pt]   [align=left] {Elements};
-% Text Node
-\draw (31,322) node [anchor=north west][inner sep=0.75pt]   [align=left] {Output folder};
-% Text Node
-\draw (164,301) node [anchor=north west][inner sep=0.75pt]   [align=left] {Result};
-
-
-\end{tikzpicture}
-
+\begin{figure}[H]
+    \centering
+    \caption{Application architecture}
+    \label{fig:applicationArchitecture}
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
+        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,322); %set diagram left start at 0, and has height of 322
+        
+        %Shape: Cube [id:dp6966791057530186] 
+        \draw   (136.8,15.75) -- (147.15,5.4) -- (240.8,5.4) -- (240.8,141.2) -- (230.45,151.55) -- (136.8,151.55) -- cycle ; \draw   (240.8,5.4) -- (230.45,15.75) -- (136.8,15.75) ; \draw   (230.45,15.75) -- (230.45,151.55) ;
+        %Shape: Rectangle [id:dp5584628563018248] 
+        \draw   (148,45.4) -- (218,45.4) -- (218,69.55) -- (148,69.55) -- cycle ;
+        %Shape: Rectangle [id:dp4204128193938954] 
+        \draw   (148.4,80.6) -- (218.4,80.6) -- (218.4,104.75) -- (148.4,104.75) -- cycle ;
+        %Shape: Rectangle [id:dp08451759114862534] 
+        \draw   (148,115.4) -- (218,115.4) -- (218,139.55) -- (148,139.55) -- cycle ;
+        
+        %Shape: Cube [id:dp4027980103737905] 
+        \draw   (134.67,169.75) -- (145.02,159.4) -- (238.67,159.4) -- (238.67,295.2) -- (228.32,305.55) -- (134.67,305.55) -- cycle ; \draw   (238.67,159.4) -- (228.32,169.75) -- (134.67,169.75) ; \draw   (228.32,169.75) -- (228.32,305.55) ;
+        %Shape: Rectangle [id:dp9964695428644907] 
+        \draw   (145.87,199.4) -- (215.87,199.4) -- (215.87,223.55) -- (145.87,223.55) -- cycle ;
+        %Shape: Rectangle [id:dp7687242463256714] 
+        \draw   (146.27,234.6) -- (216.27,234.6) -- (216.27,258.75) -- (146.27,258.75) -- cycle ;
+        %Shape: Rectangle [id:dp8340195335075327] 
+        \draw   (145.87,269.4) -- (215.87,269.4) -- (215.87,293.55) -- (145.87,293.55) -- cycle ;
+        
+        %Shape: Rectangle [id:dp04284178514770831] 
+        \draw   (9.2,194.2) -- (79.2,194.2) -- (79.2,234.2) -- (9.2,234.2) -- cycle ;
+        
+        %Shape: Rectangle [id:dp547256482285905] 
+        \draw   (9.2,142.6) -- (79.2,142.6) -- (79.2,182.6) -- (9.2,182.6) -- cycle ;
+        
+        %Shape: Rectangle [id:dp058814608034839067] 
+        \draw   (9.2,91) -- (79.2,91) -- (79.2,131) -- (9.2,131) -- cycle ;
+        
+        %Straight Lines [id:da06998801958778844] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (80.4,110.6) -- (147.17,57.67) ;
+        %Straight Lines [id:da6710004482385108] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (80.4,110.6) -- (145.17,213.67) ;
+        %Straight Lines [id:da174380515876845] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (79.6,164.6) -- (148.83,93) ;
+        %Straight Lines [id:da6199004493954201] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (79.6,164.6) -- (146.17,248) ;
+        %Straight Lines [id:da7585298700928582] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (79.2,216.2) -- (147.83,128) ;
+        %Straight Lines [id:da40931164919739227] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (79.2,216.2) -- (145.17,283.67) ;
+        %Shape: Cube [id:dp29755236766759063] 
+        \draw   (291.33,110.33) -- (300,101.67) -- (420.67,101.67) -- (420.67,199) -- (412,207.67) -- (291.33,207.67) -- cycle ; \draw   (420.67,101.67) -- (412,110.33) -- (291.33,110.33) ; \draw   (412,110.33) -- (412,207.67) ;
+        %Straight Lines [id:da8639799165876028] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (241.5,90.33) -- (290.67,159.67) ;
+        %Straight Lines [id:da254713623135423] 
+        \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (238.83,245.33) -- (290.67,159.67) ;
+        
+        % Text Node
+        \draw (151.87,272.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+        % Text Node
+        \draw (152.27,237.4) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+        % Text Node
+        \draw (151.87,202.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+        % Text Node
+        \draw (158.27,176.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {Plugin};
+        % Text Node
+        \draw (13.6,205.6) node [anchor=north west][inner sep=0.75pt]   [align=left] {Interface};
+        % Text Node
+        \draw (13.6,154) node [anchor=north west][inner sep=0.75pt]   [align=left] {Interface};
+        % Text Node
+        \draw (13.6,102.4) node [anchor=north west][inner sep=0.75pt]   [align=left] {Interface};
+        % Text Node
+        \draw (315.73,116.13) node [anchor=north west][inner sep=0.75pt]   [align=left] {Application};
+        % Text Node
+        \draw (160.4,22.8) node [anchor=north west][inner sep=0.75pt]   [align=left] {Plugin};
+        % Text Node
+        \draw (154,48.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+        % Text Node
+        \draw (154.4,83.4) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+        % Text Node
+        \draw (154,118.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
+    \end{tikzpicture}
+\end{figure}
