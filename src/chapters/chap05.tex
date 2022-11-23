@@ -214,20 +214,20 @@ Specific implementations of this interface would define the result of the compos
 The printer interface will be responsible for exporting the composed elements (see \Nameref{sec:composer}) into the desired format.
 Specific implementations will define how and where the result is exported.
 
-\subsection{Development stages}
+\subsection{Development stages} \label{sec:developmentStages}
 
 Since the project is divided into interfaces, components, plugins, and the \ref{itm:ui} application, it makes sense to define development steps based on said architecture.
 
 \begin{enumerate}
-    \item Define the shared interfaces
-    \item Create the reflection-based member resolver component
-    \item Create the \ref{itm:xml} documentation resolver component
-    \item Create the Git link resolver component
-    \item Create the \ref{gloss:markdown} elements component
-    \item Create the composer component
-    \item Create the printer component
-    \item Create the \ref{gloss:markdown} plugin
-    \item Create the \ref{itm:ui} application
+    \item \label{num:stage1} Define the shared interfaces
+    \item \label{num:stage2} Create the reflection-based member resolver component
+    \item \label{num:stage3} Create the \ref{itm:xml} documentation resolver component
+    \item \label{num:stage4} Create the Git link resolver component
+    \item \label{num:stage5} Create the \ref{gloss:markdown} elements component
+    \item \label{num:stage6} Create the composer component
+    \item \label{num:stage7} Create the printer component
+    \item \label{num:stage8} Create the \ref{gloss:markdown} plugin
+    \item \label{num:stage9} Create the \ref{itm:ui} application
 \end{enumerate}
 
 Completing all of these steps will be the solution to the goal of this thesis.
