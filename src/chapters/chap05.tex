@@ -8,13 +8,13 @@ A concrete plan will help develop a maintainable, quality application with a cle
 \subsection{Project hosting platform}
 
 The final project shall be open source and will be hosted on GitHub.
-These decisions were made to allow external contributions, reach a niche target demographic, and to have access to freemium tools, which are offered for free to open source projects.
+These decisions were made to allow external contributions, reach a niche target demographic, and to have access to freemium GitHub features, which are offered for free to open source projects.
 
 GitHub was chosen over GitLab, the second best contendor, because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
 
 \subsection{Technology stack}
 
-The proof of concept application (see \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework} and is hosted on GitLab\footnote{https://gitlab.com/hailstorm75/markdoc}. The resulting project shall be developed using \nameref{sec:netCore}, as it is the new development platform from Microsoft (see \ref{chap:overviewNET}). There are no reasons to stick with the old development platform, only drawbacks.
+The proof of concept application (see \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework} and is hosted on GitLab\footnote{https://gitlab.com/hailstorm75/markdoc}. The resulting project shall be developed using \nameref{sec:netCore}, as it is the new development platform from Microsoft (see \ref{chap:overviewNET}). There are no reasons to stick with the old development platform.
 
 C\# will be the primary programming language, as it is the dominant language for the \ref{gloss:dotnetlabel} platform.
 F\# shall be used sparsly to fullfill a personal goal of exploring said languages capabilities.
@@ -23,9 +23,8 @@ F\# shall be used sparsly to fullfill a personal goal of exploring said language
 
 \subsection{Project architecture}
 
-Applying \ref{itm:solid} principles helped design an architecture of a maintainable and extendable application.
-The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:keyParts}), where
-each part plays its individual key role in the application.
+Applying \ref{itm:solid} principles helped invision an architecture of a maintainable and extendable application.
+The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:projectStructure}), where each part plays its individual key role in the application.
 
 The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fullfills the Open-closed principle from \ref{itm:solid}.
 
@@ -114,3 +113,82 @@ Specific implementations of an interface will be referred to as \textbf{componen
         \draw (154,118.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
     \end{tikzpicture}
 \end{figure}
+
+\subsection{Project structure} \label{sec:projectStructure}
+
+The primary principle, Single-responsibility, separated operations within the application into the following key parts:
+\begin{itemize}
+    \item Member provider
+    \item Documentation provider
+    \item Composer
+    \item Element provider
+    \item Diagram generator
+    \item Linker
+    \item Printer
+\end{itemize}
+
+\subsubsection{Member provider}
+
+The member provider will be responsible for loading type and member data from a given collection of sources into a collection of a defined data structure.
+This collection will then be provided to the consumer of this key part via the relevant interface.
+A concrete implementation of the interface would define the source type and the method for processing said source.
+
+\subsubsection{Documentation provider}
+
+The documentation provider will be responsible for loading documentation for specific types and members from a given collection of sources and mapping said documentation to the relevant types and members.
+The map will then be available for querying to consumers of this key part via the relevant interface.
+A concrete implementation of the interface would define the source type and the method for processing said source.
+
+\subsubsection{Element provider} \label{sec:elementProvider}
+
+The element provider will be responsible for providing structural elements for the visual representation of the generated documentation. Such elements would include:
+\begin{description}
+    \item[Text] regular text without any formatting
+    \item[Formatted text] text with formatting, e.g. bold, italic, code
+    \item[Lists] numbered, bullet, term lists
+    \item[Tables] headered tables
+    \item[Sections] content separators with headings containing all of the above
+    \item[Pages] content separators containing sections
+\end{description}
+
+Consumers of this provider would create required elements via the relevant interface.
+A concrete implementation of the interface would define how said elements are to be represented, e.g. \ref{gloss:markdown}, \ref{itm:html}, \LaTeX.
+
+\subsubsection{Diagram generator}
+
+The diagram generator will be primarily responsible for creating inheritance diagrams for provided types. Additional diagraming features such as a class structure, EF Core relational model, etc. won't be part of this thesis.
+A concrete implementation of this interface would define how said diagrams will be delivered, e.g. as text, or as a link to a file.
+In case of text, they could be delivered as \ref{gloss:asciiart}, a PlantUML or MermaidJS diagrams.
+
+\subsubsection{Linker}
+
+The linker interface will be responsible for creating links between resolved types, and anchor links to sections of documentation pages.
+A concrete implementation of this interface would define how said links are to be generated to fit the target platform, e.g. GitHub and GitLab have different link formats.
+
+\subsubsection{Composer} \label{sec:composer}
+
+The composer interface will be repsonsible for iterating through the resolved data, combining and filtering it, then composing it into section and page elements from the respective provider (see \Nameref{sec:elementProvider}).
+Specific implementations of this interface would define the result of the composition.
+
+\subsubsection{Printer}
+
+The printer interface will be responsible for exporting the composed elements (see \Nameref{sec:composer}) into the desired format.
+Specific implementations will define how and where the result is exported.
+
+\subsection{Development stages}
+
+Since the project is divided into interfaces, components, plugins, and the \ref{itm:ui} application, it makes sense to define development steps based on said architecture.
+
+\begin{enumerate}
+    \item Define the shared interfaces
+    \item Create the reflection-based member resolver component
+    \item Create the \ref{itm:xml} documentation resolver component
+    \item Create the Git link resolver component
+    \item Create the \ref{gloss:markdown} elements component
+    \item Create the composer component
+    \item Create the printer component
+    \item Create the \ref{gloss:markdown} plugin
+    \item Create the \ref{itm:ui} application
+\end{enumerate}
+
+Completing all of these steps will be the solution to the goal of this thesis.
