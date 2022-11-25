@@ -55,6 +55,13 @@ It can be beneficial to quickly access a line of code defining a given documente
 
 It can be beneficial to see from which assembly the given types was extracted from. It is trivial to implement; although, this feature had a low priority and was left out for this development cycle.
 
+\subsubsection{Multicast delegates}
+
+Regular C\# delegates are defined within a class; whereas, multicast delegates are defined on the same level as a class.
+The existence of multicast delegates was, unfortunately, overlooked when developing the tool.
+Such delegates are compiled as classes that are deriving from the \lstinline[language=csh]{MulticastDelegate} base class.
+This means that they are captured, but are incorrectly represented as classes.
+
 \section{XML documentation provider}
 
 \section{Linker}
