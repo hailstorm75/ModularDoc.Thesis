@@ -1,3 +1,47 @@
 \chapter{GUI application}
 
-For more see \ref{secGuiApp}.
+This milestone covers the development effort for implementing stage \ref{num:stage9} described in \Nameref{sec:developmentStages}.
+
+\section{AvaloniaUI}
+
+As decided in the project planning milestone (see chapter \ref{chap:evalProjPlan}), AvaloniaUI will be used as the \ref{itm:gui} framework.
+Because AvaloniaUI uses \ref{itm:xaml} for defining the \ref{itm:ui} and utilizes \ref{itm:mvvm} as its architectural pattern, it was not too difficult to us it thanks to previous experience with \ref{itm:wpf} (Microsofts official \ref{itm:gui} framework).
+
+The only drawback of the framework is that it still does not have a stable release. This entails unreliability of the framework and possibility of breaking changes. For example, AvaloniaUI version 0.10.15 broke \ref{itm:ui} components for displaying images. Nevertheless, the it is backed-up by a passionate community of developers, that ensure any issues are resolved quickly.
+
+The open source community added great value to the framework by developing additonal libraries such as \textbf{AvaloniaBehaviors}, or \textbf{FluentAvaloniaUI}, both of which are used by the project. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the FluentUI theme for AvaloniaUI. FluentUI is Microsoft's modern design system, that can be seen utilized across all of its applications. By default, the framework also uses FluentUI; however, it is outdated, or doesn't style all components. So, the \textbf{FluentAvaloniaUI} library is essential to have a modern design.
+
+\section{Application structure}
+
+The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side:
+\begin{itemize}
+    \item Home page
+    \item Settings
+    \item About
+    \item Configuration stepper
+    \item Finalizer
+\end{itemize}
+
+\subsection{Home page}
+
+The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel. Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
+
+\subsubsection{UI mocks}
+
+TODO
+
+\subsection{Settings}
+
+The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
+
+\subsection{About}
+
+The about page would present the user with necessary information about the application, references to used libraries, and possibly usage instructions. However, the content of this page was neither designed, nor prepared, as it had a low priority and was left out of this development phase.
+
+\subsection{Configuration stepper}
+
+The configuration stepper is responsible for displaying ....TODO
+
+\subsection{Finalizer}
+
+TODO
