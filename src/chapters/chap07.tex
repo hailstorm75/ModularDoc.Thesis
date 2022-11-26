@@ -90,7 +90,7 @@ The markdown elements provider component was researched in the proof of concept 
 
 \section{MermaidJS diagram generator}
 
-TODO
+The diagram component can either generate images and provide links to them, or generate text-based diagrams. MermaidJS is a diagramming tool written in JavaScript. The tool receives \ref{gloss:markdown}-inspired text definitions and converts them into diagrams. An alternative to this diagramming tool is PlantUML. However, GitHub supports only MermaidJS, making it the obvious choice for the diagramming component.
 
 \section{Composer}
 
@@ -111,11 +111,16 @@ The inheritance diagram content is provided by a diagram generating component. T
 
 \subsubsection{Table of contents}
 
-The table of contents serves as a brief overview of the types method and property members.
+The table of contents serves as a brief overview of the types method and property members. The overview contains the member name, and their summary. Each documented entry in the table of contents is linked to its full documentation (see below).
 
 \subsubsection{Full documentation}
 
-TODO
+The rest of the generated documentation for a given type covers all extracted data in great detail. It is sectioned as follows:
+\begin{itemize}
+    \item Written documentation for the type - documentation extracted from the \ref{itm:xml}
+    \item Type inheritance - a flat list of all types inherited by the documented type
+    \item Member documentation - each member documented based on extracted data from \ref{itm:xml}
+\end{itemize}
 
 \section{Printer}
 
