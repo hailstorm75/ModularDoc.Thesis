@@ -25,10 +25,55 @@ The \ref{itm:gui} application serves only as a configuration creator for the ava
 \subsection{Home page}
 
 The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel. Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
+In case the application has a larger amount of plugins to offer, the user can search for the desired one via the search filter.
+
+\subsubsection{Mock}
+
+\begin{figure}[H]
+    \caption{Documentation generator home page}
+    \includegraphics[width=\linewidth]{img/markDocHomePage.png}
+    \label{fig:homePage}
+\end{figure}
+
+\begin{enumerate}
+    \item Open button for loading previously defined configuratons
+    \item Settings button for navigating to the settings page
+    \item About button for dispalying information about the application
+    \item Search entry for filtering the available plugins
+    \item One of the available plugins with its icon, title, and short description
+\end{enumerate}
+
+\begin{figure}[H]
+    \caption{Documentation generator home page with a plugin selected}
+    \includegraphics[width=\linewidth]{img/markDocPluginSelected.png}
+    \label{fig:homePagePluginSelected}
+\end{figure}
+
+\begin{enumerate}
+    \item Selected plugin title
+    \item Selected plugin icon
+    \item Author information
+    \item Steps within said plugin
+    \item Button for creating a configuration using the selected plugin
+    \item Button for closing the selected plugin planel
+\end{enumerate}
 
 \subsection{Settings}
 
 The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
+
+\subsubsection{Mock}
+
+\begin{figure}[H]
+    \caption{Documentation generator settings page}
+    \includegraphics[width=\linewidth]{img/markDocSettings.png}
+    \label{fig:settingsPage}
+\end{figure}
+
+\begin{enumerate}
+    \item Back button for navigating back to the home page
+    \item Toggle switch for changing the theme from light mode to dark mode
+\end{enumerate}
 
 \subsection{About}
 
@@ -38,6 +83,37 @@ The about page would present the user with necessary information about the appli
 
 The configuration stepper is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
 
+\subsubsection{Mock}
+
+\begin{figure}[H]
+    \caption{Documentation generator configurator}
+    \includegraphics[width=\linewidth]{img/markDocConfigurator.png}
+    \label{fig:configuratorPage}
+\end{figure}
+
+\begin{enumerate}
+    \item Title of the plugin
+    \item List of steps provided by the plugin, with the current step highlighted
+    \item The current step configuration title and view
+    \item Information for the user to help them configure the step correctly
+    \item Next button for navigating to the next step. Available only once the current step is correctly configured
+\end{enumerate}
+
 \subsection{Finalizer}
 
 The finalizer is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays progress of each plugin step, and logs what each process is doing.
+
+\subsubsection{Mock}
+
+\begin{figure}[H]
+    \caption{Documentation generator finalizer}
+    \includegraphics[width=\linewidth]{img/markDocFinalizer.png}
+    \label{fig:finalizerPage}
+\end{figure}
+
+\begin{enumerate}
+    \item List of executed processes, their states
+    \item Grouped logs on process sources and log types
+    \item Button for saving the created configuration
+    \item Button for closing the configurator
+\end{enumerate}
