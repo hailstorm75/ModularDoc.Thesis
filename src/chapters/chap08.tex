@@ -26,10 +26,6 @@ The \ref{itm:gui} application serves only as a configuration creator for the ava
 
 The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel. Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
 
-\subsubsection{UI mocks}
-
-TODO
-
 \subsection{Settings}
 
 The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
@@ -40,8 +36,8 @@ The about page would present the user with necessary information about the appli
 
 \subsection{Configuration stepper}
 
-The configuration stepper is responsible for displaying ....TODO
+The configuration stepper is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
 
 \subsection{Finalizer}
 
-TODO
+The finalizer is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays progress of each plugin step, and logs what each process is doing.

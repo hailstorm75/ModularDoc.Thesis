@@ -60,10 +60,10 @@ Hence, the selected \ref{itm:gui} framework for the project is Avalonia UI.
 
 \section{Development planning}
 
-\subsection{Project architecture}
+\subsection{Project architecture} \label{sec:projectArchitecture}
 
 Applying \ref{itm:solid} principles helped invision an architecture of a maintainable and extendable application.
-The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:projectStructure}), where each part plays its individual key role in the application.
+The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its individual key role in the application.
 
 The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fullfills the Open-closed principle from \ref{itm:solid}.
 
@@ -79,7 +79,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
         \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
         %uncomment if require: \path (0,322); %set diagram left start at 0, and has height of 322
-        
+
         %Shape: Cube [id:dp6966791057530186] 
         \draw   (136.8,15.75) -- (147.15,5.4) -- (240.8,5.4) -- (240.8,141.2) -- (230.45,151.55) -- (136.8,151.55) -- cycle ; \draw   (240.8,5.4) -- (230.45,15.75) -- (136.8,15.75) ; \draw   (230.45,15.75) -- (230.45,151.55) ;
         %Shape: Rectangle [id:dp5584628563018248] 
@@ -88,7 +88,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
         \draw   (148.4,80.6) -- (218.4,80.6) -- (218.4,104.75) -- (148.4,104.75) -- cycle ;
         %Shape: Rectangle [id:dp08451759114862534] 
         \draw   (148,115.4) -- (218,115.4) -- (218,139.55) -- (148,139.55) -- cycle ;
-        
+
         %Shape: Cube [id:dp4027980103737905] 
         \draw   (134.67,169.75) -- (145.02,159.4) -- (238.67,159.4) -- (238.67,295.2) -- (228.32,305.55) -- (134.67,305.55) -- cycle ; \draw   (238.67,159.4) -- (228.32,169.75) -- (134.67,169.75) ; \draw   (228.32,169.75) -- (228.32,305.55) ;
         %Shape: Rectangle [id:dp9964695428644907] 
@@ -97,16 +97,16 @@ Specific implementations of an interface will be referred to as \textbf{componen
         \draw   (146.27,234.6) -- (216.27,234.6) -- (216.27,258.75) -- (146.27,258.75) -- cycle ;
         %Shape: Rectangle [id:dp8340195335075327] 
         \draw   (145.87,269.4) -- (215.87,269.4) -- (215.87,293.55) -- (145.87,293.55) -- cycle ;
-        
+
         %Shape: Rectangle [id:dp04284178514770831] 
         \draw   (9.2,194.2) -- (79.2,194.2) -- (79.2,234.2) -- (9.2,234.2) -- cycle ;
-        
+
         %Shape: Rectangle [id:dp547256482285905] 
         \draw   (9.2,142.6) -- (79.2,142.6) -- (79.2,182.6) -- (9.2,182.6) -- cycle ;
-        
+
         %Shape: Rectangle [id:dp058814608034839067] 
         \draw   (9.2,91) -- (79.2,91) -- (79.2,131) -- (9.2,131) -- cycle ;
-        
+
         %Straight Lines [id:da06998801958778844] 
         \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (80.4,110.6) -- (147.17,57.67) ;
         %Straight Lines [id:da6710004482385108] 
@@ -125,7 +125,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
         \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (241.5,90.33) -- (290.67,159.67) ;
         %Straight Lines [id:da254713623135423] 
         \draw  [dash pattern={on 3.75pt off 3pt on 7.5pt off 1.5pt}]  (238.83,245.33) -- (290.67,159.67) ;
-        
+
         % Text Node
         \draw (151.87,272.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {{\scriptsize Component}};
         % Text Node
@@ -153,7 +153,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
     \end{tikzpicture}
 \end{figure}
 
-\subsection{Project structure} \label{sec:projectStructure}
+\subsection{Interfaces} \label{sec:projectComponents}
 
 The primary principle, Single-responsibility, separated operations within the application into the following key parts:
 \begin{itemize}
@@ -214,6 +214,23 @@ Specific implementations of this interface would define the result of the compos
 The printer interface will be responsible for exporting the composed elements (see \Nameref{sec:composer}) into the desired format.
 Specific implementations will define how and where the result is exported.
 
+\subsection{\ref{itm:gui} application}
+
+Based on the developer needs analysis (see \ref{sec:whatdouserswant}), users of such a tool expect a \ref{itm:cli} application. However, configuring such an extensible tool via the command line can be overwhelming.
+This can be solved by providing a \ref{itm:gui} application for creating configurations, testing them, and later creating a \ref{itm:cli} for executing the generated configurations in, for example, a \ref{itm:cicd} pipeline.
+To summarize, the purpose of this application would be to provide
+
+\subsection{Plugin structure}
+
+As described in \Nameref{sec:projectArchitecture}, plugins will wrap a combination of specific components that define the plugin's functionality.
+Since components are supposed to be independant from one another, they must be individually configured.
+Thus, the plugin must provide configuration steps for the application to consume, and display to the user.
+The internal architecture of the plugin is up-to its developer, the only mandatory conditions are:
+\begin{itemize}
+    \item Provide configuration steps for the components
+    \item Provide an endpoint for executing the configured components
+\end{itemize}
+
 \subsection{Development stages} \label{sec:developmentStages}
 
 Since the project is divided into interfaces, components, plugins, and the \ref{itm:ui} application, it makes sense to define development steps based on said architecture.
@@ -227,7 +244,7 @@ Since the project is divided into interfaces, components, plugins, and the \ref{
     \item \label{num:stage6} Create the MermaidJS diagram generator component
     \item \label{num:stage7} Create the composer component
     \item \label{num:stage8} Create the printer component
-    \item \label{num:stage9} Create the \ref{itm:ui} application
+    \item \label{num:stage9} Create the \ref{itm:gui} application
     \item \label{num:stage10} Create the \ref{gloss:markdown} plugin
 \end{enumerate}
 
