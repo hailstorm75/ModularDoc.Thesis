@@ -1,8 +1,22 @@
 \chapter*{Summary}
 \addcontentsline{toc}{chapter}{Summary}
 
-Závěr je povinnou částí bakalářské/diplomové práce. Obsahuje shrnutí práce a vyjadřuje se k míře splnění cíle, který byl v práci stanoven, případně shrnuje odpovědi na otázky, které byly položeny v úvodu práce. 
+\section*{Goals and their fulfillment}
 
-Závěr k diplomové práci musí být propracovanější -- podrobněji to je uvedeno v Náležitostech diplomové práce v rámci Intranetu pro studenty FIS.
+The goal of this thesis was to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects appropriate design patterns, and to satisfy user needs for extensibility, easy of use, modern design, support for many output formats, and comparable performance to existing tools.
 
-Závěr je vnímán jako kapitola (chapter), která začíná na samostatné stránce a která má název Závěr.  Název Závěr se nečísluje. Samotný text závěru je členěn do odstavců.
+The resulting project is:
+\begin{itemize}
+    \item A set of abstract interfaces defining key parts of the whole application
+    \item A set of concrete components that are independent from each other
+    \item A plugin composed of the developed components for generating \ref{gloss:markdown} documentation
+    \item A \ref{itm:gui} application for hosting plugins and allowing users to configure and execute them
+\end{itemize}
+
+The decoupled architecture provides maximum extensibility - if a user is missing a feature, they can always add it. The \ref{itm:ui}/\ref{itm:ux} of the tool is simple, with hints and labels, making it easy to use. Thanks to the extensibility, the tools supports endless formats; however, the resulting project has support for \ref{gloss:markdown} only.
+
+\section*{Plans for the future}
+
+Completing the initial goal of this project was only the beginning. To gain user trust the project needs a suite of tests validating the behavior of the code, and to gain collaborator interest the project needs a well written wiki on how to extend the tool.
+
+By themselves said tasks are no less complex as creating the tool itself, as great care and attention is required by both to guarantee positive results. Even if the project does not get the desired attention by the open source collaborator community, completing said tasks will only benefit me personally by providing a clear perspective on the state of the code, documentation to use when working on forgotten parts of the project, and, of course the valuable experience.

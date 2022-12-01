@@ -1,5 +1,13 @@
-\chapter{Plans for the future}
+\chapter{Performance}
 
-Completing the initial goal of this project was only the beginning. To gain user trust the project needs a suite of tests validating the behavior of the code, and to gain collaborator interest the project needs a well written wiki on how to extend the tool.
+One of the goals of this thesis was to ensure that the resulting application performance is comparable, if not better, to existing tools. Thus, it is necessary to evaluate whether this requirement is satisfied.
 
-By themselves said tasks are no less complex as creating the tool itself, as great care and attention is required by both to guarantee positive results. Even if the project does not get the desired attention by the open source collaborator community, completing said tasks will only benefit me personally by providing a clear perspective on the state of the code, documentation to use when working on forgotten parts of the project, and, of course the valuable experience.
+The thesis project source code would be used for benchmarking performance.
+The tests will run on a Windows Operating System, and shall compare performance of the project to DocFX, Doxygen, and SourceBrowser. Other solutions were excluded, as they do not produce proper documentation.
+
+Testing will track human-percieved elapsed time, meaning that a user would run a given tool and manually track elapsed time. If the resulting tool is consistantly perceived to be considerably slower than existing tools, then the performance requirement can be deemed as unsatisfied.
+
+\section{Configurations}
+
+\subsection{Doxygen}
+

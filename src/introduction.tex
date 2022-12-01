@@ -11,11 +11,11 @@ For Microsoft \ref{gloss:dotnetlabel} projects there is a selection of documenta
 
 With that in mind, there is visible room for improvement. A desirable documentation generating tool would be easy to use, modern, extensible, rich in output format support, and performant. Satisfying the desires of an extensible modern application requires thorough use of programming design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}.
 
-Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using common design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats. All of this has to be achieved without introducing worse performance than existing tools.
+Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using appropriate design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats. All of this has to be achieved without introducing worse performance than existing tools.
 
 \section*{Motivation}
 
-The motivation for creating a custom tool is primarily a personal need to provide easy access to code documentation. Since most open source projects are hosted either on GitHub.com\footnote{A Microsoft-owned Git hosting platform} or GitLab.com\footnote{An independent Git hosting platform}, it makes sense to utilize said platforms built-in wiki pages for hosting source code documentation for consistency. A minority of developers use Bitbucket\footnote{TODO} to host their public open source projects as this platform is predominantly used in the enterprise market. Additionally, corporate clients who purchase Bitbucket usually purchase Confluence alongside it, which serves as a documentation hosting platform. With this in mind, directly supporting Bitbuckets wiki is not a priority; however, adding future support for confluence is possible, given the extensibility of the tool.
+The motivation for creating a custom tool is primarily a personal need to provide easy access to code documentation. Since most open source projects are hosted either on GitHub.com\footnote{A Microsoft-owned Git hosting platform} or GitLab.com\footnote{An independent Git hosting platform}, it makes sense to utilize said platforms built-in wiki pages for hosting source code documentation for consistency. A minority of developers use Bitbucket to host their public open source projects as this platform is predominantly used in the enterprise market. Additionally, corporate clients who purchase Bitbucket usually purchase Confluence alongside it, which serves as a documentation hosting platform. With this in mind, directly supporting Bitbuckets wiki is not a priority; however, adding future support for confluence is possible, given the extensibility of the tool.
 
 When attempting to find existing solutions for generating documentation, none had the desired extensibility and were mainly limited to only creating static \ref{itm:html} pages
 \footnote{A static web page is a page that is built using \ref{itm:html} code and features the same presentation and content, regardless of user identity or other factors \cite{techopedia_what_2017}}.
@@ -70,17 +70,17 @@ Meanwhile, the planning phase shouldn't take unreasonable effort, as the ratio o
 
 The goal of this milestone is to gain a clear picture of what techniques, design patterns, and technologies should be used or avoided to satisfy all prject requirements with minimum compromise.
 
-\subsection*{Basic structure} \label{subSecBasicStructure}
+% \subsection*{Basic structure} \label{subSecBasicStructure}
 
-Setting up the project structure and introducing interfaces will pave its foundation. The resulting project structure should cohere with the plan from the previous milestone.
+% Setting up the project structure and introducing interfaces will pave its foundation. The resulting project structure should cohere with the plan from the previous milestone.
 
-Ensuring minimum coupling of interfaces will be the priority of this milestone, as it will maximize the modularity of the parts composing the project.
-Other goals include:
-\begin{itemize}
-    \item Setting up a \ref{itm:cicd} build environment
-    \item Documenting the interfaces
-    \item Preparing an empty test console application for the next milestone
-\end{itemize}
+% Ensuring minimum coupling of interfaces will be the priority of this milestone, as it will maximize the modularity of the parts composing the project.
+% Other goals include:
+% \begin{itemize}
+%     \item Setting up a \ref{itm:cicd} build environment
+%     \item Documenting the interfaces
+%     \item Preparing an empty test console application for the next milestone
+% \end{itemize}
 
 \subsection*{Processing libraries} \label{subSecProcessingLibs}
 
