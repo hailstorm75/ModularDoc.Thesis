@@ -5,17 +5,17 @@
 
 Source code documentation is an essential part of any quality project. Writing, and keeping such documentation up to date is often overlooked, or too cumbersome to do, due to a variety of reasons, such as strict deadlines. This might lead to the degradation of project quality, as developers who leave said projects usually take their know-how with them without properly passing them down to their replacements.
 
-In cases where source code documentation has a higher priority than usual, it is also considered good practice to extract said documentation from the source code into a searchable, public format such as \ref{itm:html}. This is accomplished with documentation generating tools. The primary benefit of this practice is the resulting comprehrensive overview of the source code, which can be easily shared with interested parties.
+In cases where source code documentation has a higher priority than usual, it is also considered good practice to extract said documentation from the source code into a searchable, public format such as \ref{itm:html}. This is accomplished with documentation generating tools. The primary benefit of this practice is the resulting comprehensive overview of the source code, which can be easily shared with interested parties.
 
-For Microsoft \ref{gloss:dotnetlabel} projects there is a selection of documentation generating tools available, which includes: DocFX, Doxygen, SourceBrowser, and others. These solutions primarily generate output in \ref{itm:html}, which is sufficient for the majority of projects. However, most of them lack in support for other output formats like \ref{itm:pdf}, \ref{gloss:markdown}, or custom formats. Moreover, customization of these tools is very limited, which prevents projects from being able to fit such tools to their exact needs. More often than not, said tools lack in \ref{itm:ui}/\ref{itm:ux} areas, introducing an unnecessary learning curve and lowering usability.
+For Microsoft \ref{gloss:dotnetlabel} projects there is a selection of documentation generating tools available, which includes: DocFX, Doxygen, SourceBrowser, and others. These solutions primarily generate output in \ref{itm:html}, which is sufficient for most projects. However, most of them lack support for other output formats like \ref{itm:pdf}, \ref{gloss:markdown}, or custom formats. Moreover, customization of these tools is very limited, which prevents projects from being able to fit such tools to their exact needs. More often than not, said tools lack in \ref{itm:ui}/\ref{itm:ux} areas, introducing an unnecessary learning curve and lowering usability.
 
 With that in mind, there is visible room for improvement. A desirable documentation generating tool would be easy to use, modern, extensible, rich in output format support, and performant. Satisfying the desires of an extensible modern application requires thorough use of programming design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}.
 
-Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using appropriate design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats. All of this has to be achieved without introducing worse performance than existing tools.
+Thus, the goal of this thesis is to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using appropriate design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm}, and to satisfy user needs for extensibility, ease of use, modern design, and support for many output formats. All of this must be achieved without introducing worse performance than existing tools.
 
 \section*{Motivation}
 
-The motivation for creating a custom tool is primarily a personal need to provide easy access to code documentation. Since most open source projects are hosted either on GitHub.com\footnote{A Microsoft-owned Git hosting platform} or GitLab.com\footnote{An independent Git hosting platform}, it makes sense to utilize said platforms built-in wiki pages for hosting source code documentation for consistency. A minority of developers use Bitbucket to host their public open source projects as this platform is predominantly used in the enterprise market. Additionally, corporate clients who purchase Bitbucket usually purchase Confluence alongside it, which serves as a documentation hosting platform. With this in mind, directly supporting Bitbuckets wiki is not a priority; however, adding future support for confluence is possible, given the extensibility of the tool.
+The motivation for creating a custom tool is primarily a personal need to provide easy access to code documentation. Since most open source projects are hosted either on GitHub.com\footnote{A Microsoft-owned Git hosting platform} or GitLab.com\footnote{An independent Git hosting platform}, it makes sense to utilize said platforms built-in wiki pages for hosting source code documentation for consistency. A minority of developers use Bitbucket to host their public open source projects as this platform is predominantly used in the enterprise market. Additionally, corporate clients who purchase Bitbucket usually purchase Confluence alongside it, which serves as a documentation hosting platform. Directly supporting Bitbuckets wiki is not a priority; however, adding future support for confluence is possible, given the extensibility of the tool.
 
 When attempting to find existing solutions for generating documentation, none had the desired extensibility and were mainly limited to only creating static \ref{itm:html} pages
 \footnote{A static web page is a page that is built using \ref{itm:html} code and features the same presentation and content, regardless of user identity or other factors \cite{techopedia_what_2017}}.
@@ -23,9 +23,9 @@ Since major \ref{gloss:git} hosting platforms wiki pages predominantly utilize \
 
 And so, the idea to develop a custom tool that would create \ref{gloss:markdown} documentation from \ref{gloss:dotnetlabel} libraries for \ref{gloss:git} platforms came to fruition. Nevertheless, focusing only on one output format would be a waste of time and effort, as few to none would need such a tool. Thus, the result of the development should be a generic tool that allows anyone to modify it to output to any desirable format.
 
-To backup this motivation, a questionnair had been conducted to identify developer needs for documentation generating tools in the \ref{gloss:dotnetlabel} world. The result of the questionnair (see \ref{sec:whatdouserswant}) confirmed general low interest in writing documentation; however, it highlighted the desires of those few developers who do care about maintaining source code documentation.
+To backup this motivation, a questionnaire had been conducted to identify developer needs for documentation generating tools in the \ref{gloss:dotnetlabel} world. The result of the questionnaire (see \ref{sec:whatdouserswant}) confirmed general low interest in writing documentation; however, it highlighted the desires of those few developers who do care about maintaining source code documentation.
 
-With that in mind, it is clear that the target group for such a tool is minor. Given that, focusing on the extensibility feature of the tool is crucial to cover thir needs.
+With that in mind, the target group for such a tool is minor. Given that, focusing on the extensibility feature of the tool is crucial to cover their needs.
 
 \section*{Strategy}
 
@@ -39,7 +39,7 @@ The basis for said milestones is on the analysis of current documentation tools 
 Creating a proof of concept program will help understand whether the project is realistic, what challenges will occur and how to overcome them.
 The main drawback of this is that it will take additional time; however, the gained perspectives are quintessential for the correct planning of the project.
 
-The main focus of this milestone is to find out how to extract the necessary data for documentation generation and attempt to generate said documentation.
+The focus of this milestone is to find out how to extract the necessary data for documentation generation and attempt to generate said documentation.
 This is needed because no other reliable reference project was found that could provide required guidelines in a reasonable amount of time.
 All other requirements based on the takeaways from the survey (see \ref{ssec:questionnaireeval}) can be omitted from this stage, as reference projects and personal experience is available.
 
@@ -63,12 +63,12 @@ Meanwhile, the planning phase shouldn't take unreasonable effort, as the ratio o
 
         \draw [dash dot] (1,0)--(1, 2.64);
 
-        \draw (1, 2.64) node [above right]{Overplanning};
+        \draw (1, 2.64) node [above right]{Over planning};
         \draw (1, 2.64) node {$\bullet$};
     \end{tikzpicture}
 \end{figure}
 
-The goal of this milestone is to gain a clear picture of what techniques, design patterns, and technologies should be used or avoided to satisfy all prject requirements with minimum compromise.
+The goal of this milestone is to gain a clear picture of what techniques, design patterns, and technologies should be used or avoided to satisfy all project requirements with minimum compromise.
 
 % \subsection*{Basic structure} \label{subSecBasicStructure}
 
@@ -97,4 +97,4 @@ Thus, the goal of this milestone is to create such a \ref{itm:gui} façade that 
 Creating the first plugin for the tool will be the final milestone for the time being, as after its creation the goal of this thesis is reached.
 The plugin will be composed of the processing libraries created in the fourth milestone.
 
-The goal is to create such a plugin, that can be distributed separately from the main application. This would allow users to choose what plugins they wish to use, and omit installing ones they don't.
+The goal is to create such a plugin, that can be distributed separately from the main application. This would allow users to choose what plugins they wish to use and omit installing ones they do not.

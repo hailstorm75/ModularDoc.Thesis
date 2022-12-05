@@ -10,7 +10,7 @@ A concrete plan will help develop a maintainable, quality application with a cle
 The final project shall be open source and will be hosted on GitHub.
 These decisions were made to allow external contributions, reach a niche target demographic, and to have access to freemium GitHub features, which are offered for free to open source projects.
 
-GitHub was chosen over GitLab, the second best contendor, because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
+GitHub was chosen over GitLab, the second best contender, because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
 
 \subsection{Technology stack}
 
@@ -21,11 +21,11 @@ The proof of concept application (see \ref{chap:proofConcept}) was developed in 
 \subsubsection{Languages}
 
 C\# will be the primary programming language, as it is the dominant language for the \ref{gloss:dotnetlabel} platform.
-F\# shall be used sparsly to fullfill a personal goal of exploring said languages capabilities.
+F\# shall be used sparsely to fulfill a personal goal of exploring said languages capabilities.
 
 \subsubsection{DI Framework}
 
-For \ref{itm:di} the project shall use Autofac, which is a popular library with suitable features for this project. Chosing any other library would require investing additional time into learning how to use it; thus, no further analysis of available \ref{itm:di} frameworks was conducted.
+For \ref{itm:di} the project shall use Autofac, which is a popular library with suitable features for this project. Choosing any other library would require investing additional time into learning how to use it; thus, no further analysis of available \ref{itm:di} frameworks was conducted.
 
 \subsubsection{\ref{itm:gui} framework} \label{sec:guiFramework}
 
@@ -54,7 +54,7 @@ Linux is the most crucial platform, as developers might want to run the tool on 
 At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. And even when the company released their new framework, .NET MAUI, it did not include support for Linux.
 
 This leaves community built solutions.
-Out of the three, Avalonia UI was the easiest to get up and running, and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The UNO Platform is very powerful on paper, and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was not possible to even start the demo application. Eto is also a cross-platform framework, but it has a small community with few to no additional libraries to use.
+Out of the three, Avalonia UI was the easiest to get up and running, and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The UNO Platform is very powerful on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was not possible to even start the demo application. Eto is also a cross-platform framework, but it has a small community with few to no additional libraries to use.
 
 Hence, the selected \ref{itm:gui} framework for the project is Avalonia UI.
 
@@ -62,10 +62,10 @@ Hence, the selected \ref{itm:gui} framework for the project is Avalonia UI.
 
 \subsection{Project architecture} \label{sec:projectArchitecture}
 
-Applying \ref{itm:solid} principles helped invision an architecture of a maintainable and extendable application.
-The primary principle, Single-responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its individual key role in the application.
+Applying \ref{itm:solid} principles helped envision an architecture of a maintainable and extendable application.
+The primary principle, Single responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its individual key role in the application.
 
-The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fullfills the Open-closed principle from \ref{itm:solid}.
+The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fulfills the Open-closed principle from \ref{itm:solid}.
 
 Implementing such an architecture would require defining said decoupled interfaces first.
 The next step would be to create specific implementations of said interfaces. E.g., \textit{Diagram Generator} would be the interface, while \textit{PlatUML Diagram generator}, or \textit{MermaidJS Diagram generator} would be the specific implementations deriving from said interface.
@@ -155,7 +155,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
 
 \subsection{Interfaces} \label{sec:projectComponents}
 
-The primary principle, Single-responsibility, separated operations within the application into the following key parts:
+The primary principle, Single responsibility, separated operations within the application into the following key parts:
 \begin{itemize}
     \item Member provider
     \item Documentation provider
@@ -183,7 +183,7 @@ A concrete implementation of the interface would define the source type and the 
 The element provider will be responsible for providing structural elements for the visual representation of the generated documentation. Such elements would include:
 \begin{description}
     \item[Text] regular text without any formatting
-    \item[Formatted text] text with formatting, e.g. bold, italic, code
+    \item[Formatted text] text with formatting, e.g., bold, italic, code
     \item[Lists] numbered, bullet, term lists
     \item[Tables] headered tables
     \item[Sections] content separators with headings containing all of the above
@@ -195,18 +195,18 @@ A concrete implementation of the interface would define how said elements are to
 
 \subsubsection{Diagram generator}
 
-The diagram generator will be primarily responsible for creating inheritance diagrams for provided types. Additional diagraming features such as a class structure, EF Core relational model, etc. won't be part of this thesis.
-A concrete implementation of this interface would define how said diagrams will be delivered, e.g. as text, or as a link to a file.
-In case of text, they could be delivered as \ref{gloss:asciiart}, a PlantUML or MermaidJS diagrams.
+The diagram generator will be primarily responsible for creating inheritance diagrams for the provided types. Additional diagram features such as a class structure, EF Core relational model, etc. won't be part of this thesis.
+A concrete implementation of this interface would define how said diagrams will be delivered, e.g., as text, or as a link to a file.
+In the case of text, they could be delivered as \ref{gloss:asciiart}, a PlantUML or MermaidJS diagrams.
 
 \subsubsection{Linker}
 
 The linker interface will be responsible for creating links between resolved types, and anchor links to sections of documentation pages.
-A concrete implementation of this interface would define how said links are to be generated to fit the target platform, e.g. GitHub and GitLab have different link formats.
+A concrete implementation of this interface would define how said links are to be generated to fit the target platform, e.g., GitHub and GitLab have different link formats.
 
 \subsubsection{Composer} \label{sec:composer}
 
-The composer interface will be repsonsible for iterating through the resolved data, combining and filtering it, then composing it into section and page elements from the respective provider (see \Nameref{sec:elementProvider}).
+The composer interface will be responsible for iterating through the resolved data, combining and filtering it, then composing it into section and page elements from the respective provider (see \Nameref{sec:elementProvider}).
 Specific implementations of this interface would define the result of the composition.
 
 \subsubsection{Printer}
@@ -223,7 +223,7 @@ To summarize, the purpose of this application would be to provide
 \subsection{Plugin structure}
 
 As described in \Nameref{sec:projectArchitecture}, plugins will wrap a combination of specific components that define the plugin's functionality.
-Since components are supposed to be independant from one another, they must be individually configured.
+Since components are supposed to be independent from one another, they must be individually configured.
 Thus, the plugin must provide configuration steps for the application to consume, and display to the user.
 The internal architecture of the plugin is up-to its developer, the only mandatory conditions are:
 \begin{itemize}
@@ -248,4 +248,4 @@ Since the project is divided into interfaces, components, plugins, and the \ref{
     \item \label{num:stage10} Create the \ref{gloss:markdown} plugin
 \end{enumerate}
 
-Completing all of these steps will be the solution to the goal of this thesis.
+Completing all these steps will be the solution to the goal of this thesis.

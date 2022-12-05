@@ -5,11 +5,11 @@ This milestone covers the development effort for implementing stage \ref{num:sta
 \section{AvaloniaUI}
 
 As decided in the project planning milestone (see chapter \ref{chap:evalProjPlan}), AvaloniaUI will be used as the \ref{itm:gui} framework.
-Because AvaloniaUI uses \ref{itm:xaml} for defining the \ref{itm:ui} and utilizes \ref{itm:mvvm} as its architectural pattern, it was not too difficult to us it thanks to previous experience with \ref{itm:wpf} (Microsofts official \ref{itm:gui} framework).
+Because AvaloniaUI uses \ref{itm:xaml} for defining the \ref{itm:ui} and utilizes \ref{itm:mvvm} as its architectural pattern, it was not too difficult to us it thanks to previous experience with \ref{itm:wpf} (Microsoft's official \ref{itm:gui} framework).
 
 The only drawback of the framework is that it still does not have a stable release. This entails unreliability of the framework and possibility of breaking changes. For example, AvaloniaUI version 0.10.15 broke \ref{itm:ui} components for displaying images. Nevertheless, the it is backed-up by a passionate community of developers, that ensure any issues are resolved quickly.
 
-The open source community added great value to the framework by developing additonal libraries such as \textbf{AvaloniaBehaviors}, or \textbf{FluentAvaloniaUI}, both of which are used by the project. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the FluentUI theme for AvaloniaUI. FluentUI is Microsoft's modern design system, that can be seen utilized across all of its applications. By default, the framework also uses FluentUI; however, it is outdated, or doesn't style all components. So, the \textbf{FluentAvaloniaUI} library is essential to have a modern design.
+The open source community added great value to the framework by developing additional libraries such as \textbf{AvaloniaBehaviors}, or \textbf{FluentAvaloniaUI}, both of which are used by the project. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the FluentUI theme for AvaloniaUI. FluentUI is Microsoft's modern design system, that can be seen utilized across all of its applications. By default, the framework also uses FluentUI; however, it is outdated, or doesn't style all components. So, the \textbf{FluentAvaloniaUI} library is essential to have a modern design.
 
 \section{Application structure}
 
@@ -55,7 +55,7 @@ In case the application has a larger amount of plugins to offer, the user can se
     \item Author information
     \item Steps within said plugin
     \item Button for creating a configuration using the selected plugin
-    \item Button for closing the selected plugin planel
+    \item Button for closing the selected plugin panel
 \end{enumerate}
 
 \subsection{Settings}
@@ -101,7 +101,7 @@ The configuration stepper is responsible for displaying configuration steps prov
 
 \subsection{Finalizer}
 
-The finalizer is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays progress of each plugin step, and logs what each process is doing.
+The finalizer is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays the progress of each plugin step, and logs what each process is doing.
 
 \subsubsection{Mock}
 

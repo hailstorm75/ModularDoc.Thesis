@@ -6,7 +6,7 @@ The thesis project source code would be used for benchmarking performance.
 Specifically, projects containing the shared interfaces shall be used as the source of processing\footnote{Located in the solution folder, \textit{Libraries/Core/}. Everything except the \textit{Constants} project.}.
 The tests will run on a Windows Operating System, and shall compare performance of the project to DocFX, and Doxygen. Source browser was excluded due to unclear instructions and inability to make it work using existing examples. Other solutions were also excluded as they do not produce proper documentation.
 
-Testing will measure elapsed time for generating the documentation. This will be done by running each tool via Windows PowerShell using the \textit{Measure-Command}. If the resulting tool is consistantly perceived to be considerably slower than existing tools, then the performance requirement can be deemed as unsatisfied.
+Testing will measure elapsed time for generating the documentation. This will be done by running each tool via Windows PowerShell using the \textit{Measure-Command}. If the resulting tool is consistently perceived to be considerably slower than existing tools, then the performance requirement can be deemed as unsatisfied.
 
 \section{Configurations}
 
@@ -19,7 +19,7 @@ The console application is missing crucial features such as argument validation,
 
 \subsection{Doxygen}
 
-Configuring Doxygen was a simple and intuitive process, making it a worthy contendor. The tool was configured to:
+Configuring Doxygen was a simple and intuitive process, making it a worthy contender. The tool was configured to:
 \begin{itemize}
     \item Document all entities, and not exclude those without documentation
     \item Optimize results for Java or C\# output
@@ -52,4 +52,4 @@ Version \textit{2.59.4} was used for testing.
     \end{tabular}
 \end{table}
 
-As clearly shown, the custom tool is at least ten times faster than Doxygen, and a hundred times faster than DocFX. This is most likely because the custom tool is specifically designed for \ref{gloss:dotnetlabel} projects, wheras the other two are polyglots that support different languages and project types. Additionally, the custom tool was designed with performance in mind, and utilizes caching techniques, lazy loading, and, most importantly, generates documentation via reflection.
+As clearly shown, the custom tool is at least ten times faster than Doxygen, and a hundred times faster than DocFX. This is most likely because the custom tool is specifically designed for \ref{gloss:dotnetlabel} projects, whereas the other two are polyglots that support different languages and project types. Additionally, the custom tool was designed with performance in mind, and utilizes caching techniques, lazy loading, and, most importantly, generates documentation via reflection.
