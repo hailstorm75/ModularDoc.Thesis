@@ -12,9 +12,15 @@
 %%% References
 \usepackage{hyperref}
 \usepackage{nameref}
+\usepackage[
+  atend,
+  numbered
+]{bookmark}
 
 %% Description reference labels
 \makeatletter
+\newcommand{\numbersections}{\renewcommand{\Hy@numberline}[1]{##1. }}
+\newcommand{\nonumbersections}{\renewcommand{\Hy@numberline}[1]{}}
 \def\namedlabel#1#2{\begingroup
     #2%
     \def\@currentlabel{#2}%
