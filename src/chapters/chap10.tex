@@ -38,7 +38,6 @@ Version \textit{2.59.4} was used for testing.
 \section{Results}
 
 \begin{table}[H]
-    \caption{Documentation generating tools performance comparison}
     \centering
     \label{tab:toolPerformance}
     \begin{tabular}{lrrr}
@@ -50,6 +49,7 @@ Version \textit{2.59.4} was used for testing.
     \multicolumn{1}{|l|}{4} & \multicolumn{1}{r|}{846 ms}            & \multicolumn{1}{r|}{1660 ms}            & \multicolumn{1}{r|}{28681 ms}            \\ \hline
     \textbf{Average}        & \multicolumn{1}{l}{\textit{886.75 ms}} & \multicolumn{1}{l}{\textit{2179.25 ms}} & \multicolumn{1}{l}{\textit{30022.25 ms}} \\ \hline
     \end{tabular}
+    \caption{Documentation generating tools performance comparison}
 \end{table}
 
 As clearly shown, the custom tool is at least ten times faster than Doxygen, and a hundred times faster than DocFX. This is most likely because the custom tool is specifically designed for \ref{gloss:dotnetlabel} projects, whereas the other two are polyglots that support different languages and project types. Additionally, the custom tool was designed with performance in mind, and utilizes caching techniques, lazy loading, and, most importantly, generates documentation via reflection.
