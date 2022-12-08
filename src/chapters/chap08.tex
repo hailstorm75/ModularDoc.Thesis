@@ -11,6 +11,15 @@ The only drawback of the framework is that it still does not have a stable relea
 
 The open source community added great value to the framework by developing additional libraries such as \textbf{AvaloniaBehaviors}, or \textbf{FluentAvaloniaUI}, both of which are used by the project. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the FluentUI theme for AvaloniaUI. FluentUI is Microsoft's modern design system, that can be seen utilized across all of its applications. By default, the framework also uses FluentUI; however, it is outdated, or doesn't style all components. So, the \textbf{FluentAvaloniaUI} library is essential to have a modern design.
 
+\section{Decoupling via MVVM}
+
+Avalonia UI is a wonderful \ref{itm:gui} framework; however, it is not a first-party Microsoft product - this poses a higher risk of project abandonment. Moreover, users of the documentation generating tool might not like Avalonia UI, and could even wish to have the tool hosted online in an \ref{gloss:aspnetcore} web application. Doubling down on agenda of a highly configurable tool results in an application which has its business logic completely independent from the \ref{itm:ui} framework.
+This can be achieved using \ref{itm:mvvm} in combination with a \ref{itm:di} framework like Autofac.
+
+\ref{itm:mvvm} (Model, View, View Model) allows natural decoupling of the \ref{itm:ui} (View), from the business logic (View Model) and data (Model). However, \ref{itm:mvvm} alone still introduces some coupling of the \ref{itm:ui} to the host application, as it must still reference the specific views for, e.g., navigation. Such references can be decoupled by abstracting each view with its interface representation. The specific views would then be provided via Autofac. This allows painless swapping of views either based on Avalonia UI, or some other framework.
+
+To take it a step further, the view models can also be abstracted in the same exact way and provided via Autofac. In this case the benefit is higher application testability, as abstracted view models can be mocked.
+
 \section{Application structure}
 
 The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side:
@@ -36,9 +45,9 @@ In case the application has a larger amount of plugins to offer, the user can se
 \end{figure}
 
 \begin{enumerate}
-    \item Open button for loading previously defined configuratons
+    \item Open button for loading previously defined configurations
     \item Settings button for navigating to the settings page
-    \item About button for dispalying information about the application
+    \item About button for displaying information about the application
     \item Search entry for filtering the available plugins
     \item One of the available plugins with its icon, title, and short description
 \end{enumerate}
