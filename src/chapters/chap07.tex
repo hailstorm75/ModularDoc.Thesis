@@ -22,18 +22,19 @@ To take it a step further, the view models can also be abstracted in the same ex
 
 \section{Application structure}
 
-The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side:
+The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side and will consist of the following pages:
 \begin{itemize}
-    \item Home page
-    \item Settings
-    \item About
-    \item Configuration stepper
-    \item Finalizer
+    \item Home page.
+    \item Settings.
+    \item About.
+    \item Configuration stepper.
+    \item Finalizer.
 \end{itemize}
 
 \subsection{Home page}
 
-The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel. Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
+The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel.
+Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
 In case the application has a larger amount of plugins to offer, the user can search for the desired one via the search filter.
 
 \subsubsection{Mock}

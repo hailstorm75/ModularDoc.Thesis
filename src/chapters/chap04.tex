@@ -4,7 +4,7 @@ Creation of a proof of concept application is the ideal first step when numerous
 
 \section{Milestone goals analysis}
 
-\subsection{Documentation extraction methodologies}
+\subsection{Documentation extraction methods}
 When it comes to retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy would involve writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, the source files might not even be compilable, or a radical update to the code syntax might occur that the tool must cover. This results in unknowns that would have to be handled by the source code parser.
 
 One might say, that there is no need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code. Its capabilities are exposed via \ref{itm:api}s that can be accessed by developers to create their own custom tools. This would be a great solution if not for the dependency on the Roslyn compiler. With said dependency present, it is not possible to create a standalone tool which would work on any system, regardless of whether \ref{gloss:dotnetlabel} developer tools are present or not.
@@ -16,11 +16,11 @@ Thus, the proof of concept project will be used to test the possibility to extra
 \subsection{Open-source project hosting platforms}
 Developers have the following cloud platforms to choose from to host their open-source projects:
 \begin{itemize}
-    \item GitHub
-    \item GitLab
-    \item Bitbucket
-    \item Azure DevOps
-    \item Sourceforge
+    \item GitHub.
+    \item GitLab.
+    \item Bitbucket.
+    \item Azure DevOps.
+    \item Sourceforge.
 \end{itemize}
 
 There are solutions for hosting a project locally on dedicated hardware; however, this is mainly suitable for proprietary, or private projects.
@@ -50,26 +50,26 @@ Class inheritance diagrams would prove to be a useful part for source code docum
 \subsection{Development goals summary}
 This development stage would focus on analyzing:
 \begin{itemize}
-    \item whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies via reflection,
-    \item whether GitLab is a viable platform for an open-source project,
-    \item how to parse the extracted data into a human-readable output; how to generate Markdown.
+    \item Whether it is possible to extract all relevant data from \ref{gloss:dotnetlabel} assemblies via reflection.
+    \item Whether GitLab is a viable platform for an open-source project.
+    \item How to parse the extracted data into a human-readable output; how to generate Markdown.
 \end{itemize}
 
 \section{Development results}
 
 \subsection{Reflection for data extraction}
 
-Using reflection is sufficient for extracting type and member data from selected assemblies. Nevertheless, this methodology requires additional effort to work correctly for the following reasons:
+Using reflection is sufficient for extracting type and member data from selected assemblies. Nevertheless, this method requires additional effort to work correctly for the following reasons:
 \begin{itemize}
-    \item the compiler generates extra types and members
-    \item signatures extracted via reflection of some \ref{gloss:dotnetlabel} types differ from the signatures in the source code
+    \item The compiler generates extra types and members.
+    \item Signatures extracted via reflection of some \ref{gloss:dotnetlabel} types differ from the signatures in the source code:
     \begin{itemize}
-        \item the \lstinline[language=csh]{dynamic} type is compiled as \lstinline[language=csh]{object}
-        \item named value tuples (e.g., \lstinline[language=csh]{(int age, string name)}) are presented without names as regular tuples (e.g. \lstinline[language=csh]{Tuple<int, string>})
+        \item The \lstinline[language=csh]{dynamic} type is compiled as \lstinline[language=csh]{object}.
+        \item Named value tuples (e.g., \lstinline[language=csh]{(int age, string name)}) are presented without names as regular tuples (e.g. \lstinline[language=csh]{Tuple<int, string>}).
     \end{itemize}
-    \item generic type parameters are not directly accessible
-    \item named value tuple names are not directly accessible
-    \item determining the line number of a given member in its source code is unclear
+    \item Generic type parameters are not directly accessible.
+    \item Named value tuple names are not directly accessible.
+    \item Determining the line number of a given member in its source code is unclear.
 \end{itemize}
 
 \subsection{Design pattern importance}
@@ -107,12 +107,12 @@ The process of creating a Markdown generator provided a deeper insight into the 
 
 \subsection{Results summary}
 
-The result of this development stage was a proof of concept console application, that
+The result of this development stage was a proof of concept console application, that:
 \begin{itemize}
-    \item proves that reflection is sufficient,
-    \item reminded the importance of proper design pattern use
-    \item helped write a Markdown generator,
-    \item and provided understanding of GitLab and its Wiki for hosting the tools generated output.
+    \item Proved reflection as a suitable method of data extraction.
+    \item Reminded the importance of proper design pattern use.
+    \item Helped write a Markdown generator.
+    \item Provided understanding of GitLab and its Wiki for hosting the tools generated output.
 \end{itemize}
 
 Given these facts, it was undoubtedly a useful investment of time and effort.

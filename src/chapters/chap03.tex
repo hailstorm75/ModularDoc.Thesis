@@ -33,11 +33,11 @@ The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projec
 
 The tool provides an extensive set of supported output formats:
 \begin{itemize}
-    \item Static \ref{itm:html}
-    \item \LaTeX\footnote{Document preparation system}
-    \item Man pages\footnote{User manual type that is part of Unix operating systems \cite{credocs_limited_latex_2022}}
-    \item \ref{itm:rtf}
-    \item \ref{itm:xml}
+    \item Static \ref{itm:html}.
+    \item \LaTeX\footnote{Document preparation system}.
+    \item Man pages\footnote{User manual type that is part of Unix operating systems \cite{credocs_limited_latex_2022}}.
+    \item \ref{itm:rtf}.
+    \item \ref{itm:xml}.
 \end{itemize}
 
 It is possible to extend the tool, as it is open-source and available on GitHub. Unfortunately for \ref{gloss:dotnetlabel}, \textit{Doxygen} is written in C++ and its documentation does not provide any clear guidelines for extending its support for output formats. Naturally, a curious programmer can deduce how to do exactly that from the source code; however, other developers do not have capacity for such a feat.
@@ -66,15 +66,15 @@ Just like \textit{\nameref{ssec:vsxmd}}, no links are generated; thus, it is not
 Surveying potential users of the tool is necessary to ensure that the developed product is utilized by more than its developer.
 Thus, creating a questionnaire was the first step to success. Its purpose was to figure out the following key points:
 \begin{itemize}
-    \item Whether users already use documentation generation tools, and if so, which ones
-    \item What do users feel is missing from the tools they use
-    \item What do users believe should be carried over to the new tool from the ones they use
-    \item Whether users would integrate such tools into their \ref{itm:cicd} pipelines
-    \item What output formats do users want
-    \item What operating systems do users want the tool to work on
-    \item Would users find a \ref{itm:gui} beneficial for such a tool
-    \item Would users appreciate the tool being extensible via plugins
-    \item Would users be interested in contributing to the project
+    \item Whether users already use documentation generation tools, and if so, which ones.
+    \item What do users feel is missing from the tools they use.
+    \item What do users believe should be carried over to the new tool from the ones they use.
+    \item Whether users would integrate such tools into their \ref{itm:cicd} pipelines.
+    \item What output formats do users want.
+    \item What operating systems do users want the tool to work on.
+    \item Would users find a \ref{itm:gui} beneficial for such a tool.
+    \item Would users appreciate the tool being extensible via plugins.
+    \item Would users be interested in contributing to the project.
 \end{itemize}
 
 \subsection{Questionnaire results}
@@ -85,7 +85,6 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \begin{figure}[H]
     \centering
-    \label{fig:qOutputFormats}
     \begin{tikzpicture}
         \begin{axis}[
             symbolic x coords={Static HTML, PDF, Markdown, XML, LaTeX, Other},
@@ -111,11 +110,12 @@ What follows are the responses of the 22 participants of the questionnaire.
         \end{axis}
     \end{tikzpicture}
     \caption{What output formats do you wish to have for your documentation?}
+    \label{fig:qOutputFormats}
 \end{figure}
 
 \textit{Other responses:}
 \begin{itemize}
-    \item AsciiDoc
+    \item AsciiDoc.
 \end{itemize}
 
 \subsubsection*{Would you integrate such a tool in your CI/CD process?}
@@ -168,7 +168,7 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \textit{Other responses:}
 \begin{itemize}
-    \item I don't want separate docs, readable code is better
+    \item I don't want separate docs, readable code is better.
 \end{itemize}
 
 \subsubsection*{Would you appreciate the tool being extensible via plugins?}
@@ -185,11 +185,11 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \begin{figure}[H]
     \centering
-    \label{fig:qUsingToolsForDocGen}
     \begin{tikzpicture}
         \pie[sum=auto , after number=]{8/Yes, 14/No}
     \end{tikzpicture}
     \caption{Are you using tools for documentation generation?}
+    \label{fig:qUsingToolsForDocGen}
 \end{figure}
 
 \subsubsection*{What documentation generating tools do you use?}
@@ -206,21 +206,21 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \textit{Responses:}
 \begin{itemize}
-    \item \ref{itm:gui} for less technical people
-    \item Links to external \ref{gloss:dotnetlabel} type references
-    \item Easy templating
-    \item Extended \ref{gloss:markdown} - custom short codes
-    \item Fast build speed for \ref{itm:cicd}
-    \item A capable \ref{itm:cli}
-    \item Class structures
+    \item \ref{itm:gui} for less technical people.
+    \item Links to external \ref{gloss:dotnetlabel} type references.
+    \item Easy templating.
+    \item Extended \ref{gloss:markdown} - custom short codes.
+    \item Fast build speed for \ref{itm:cicd}.
+    \item A capable \ref{itm:cli}.
+    \item Class structures.
 \end{itemize}
 
 \subsubsection*{What features are missing in your current tool and would make you consider using the resulting project if they were to be provided by it?}
 
 \textit{Responses:}
 \begin{itemize}
-    \item Better support for diagrams (like mermaid.js)
-    \item A tool that could build a static site with a) editorial (\ref{gloss:markdown}) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella
+    \item Better support for diagrams (like mermaid.js).
+    \item A tool that could build a static site with a) editorial (\ref{gloss:markdown}) content b) \ref{gloss:dotnetlabel} \ref{itm:api} reference c) RESTful API documentation from \ref{gloss:aspnetcore} projects and/or OpenAPI definitions all under one umbrella.
 \end{itemize}
 
 \subsubsection*{Would you be interested in contributing to this project?}
@@ -242,12 +242,12 @@ The dominant documentation generating tool for \ref{gloss:dotnetlabel} is \namer
 Questionnaire takeaways:
 
 \begin{itemize}
-    \item The majority neglects the importance of documenting code; thus, those who do and use documentation generating tools are part of a minute subset of all developers (see figure \ref{fig:qUsingToolsForDocGen})
-    \item The tool should be cross-platform
-    \item The tool must have good performance
-    \item A console will be used by administrators of \ref{itm:cicd} pipelines and power users, while the \ref{itm:gui} will be useful for the rest
-    \item Support for \ref{itm:cicd} is essential to fully automate documentation generation
-    \item Even though the majority seeks to export to static \ref{itm:html} pages (see figure \ref{fig:qOutputFormats}), the project will focus on \ref{gloss:markdown} to fill in the market gap. The rest of the mentioned output formats will receive support later on (see below)
-    \item \textbf{Extensibility via plugins will be the key selling point of the tool - it will enable anybody to modify the functionality to meet their specific needs}
-    \item Future support for \nameref{ssec:docfx} (see \ref{ssec:docfx}) templates will help users migrate from said platform
+    \item The majority neglects the importance of documenting code; thus, those who do and use documentation generating tools are part of a minute subset of all developers (see figure \ref{fig:qUsingToolsForDocGen}).
+    \item The tool should be cross-platform.
+    \item The tool must have good performance.
+    \item A console will be used by administrators of \ref{itm:cicd} pipelines and power users, while the \ref{itm:gui} will be useful for the rest.
+    \item Support for \ref{itm:cicd} is essential to fully automate documentation generation.
+    \item Even though the majority seeks to export to static \ref{itm:html} pages (see figure \ref{fig:qOutputFormats}), the project will focus on \ref{gloss:markdown} to fill in the market gap. The rest of the mentioned output formats will receive support later on (see below).
+    \item \textbf{Extensibility via plugins will be the key selling point of the tool - it will enable anybody to modify the functionality to meet their specific needs}.
+    \item Future support for \nameref{ssec:docfx} (see \ref{ssec:docfx}) templates will help users migrate from said platform.
 \end{itemize}
