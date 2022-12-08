@@ -1,128 +1,207 @@
-\chapter{GUI application}
+\chapter{Markdown for Git plugin}
 
-This milestone covers the development effort for implementing stage \ref{num:stage9} described in \Nameref{sec:developmentStages}.
+This milestone covers the development of the \ref{gloss:markdown} for \ref{gloss:git} plugin described in stage \ref{num:stage10} of the \Nameref{sec:developmentStages}.
 
-\section{AvaloniaUI}
+\section{Plugin structure}
 
-As decided in the project planning milestone (see chapter \ref{chap:evalProjPlan}), AvaloniaUI will be used as the \ref{itm:gui} framework.
-Because AvaloniaUI uses \ref{itm:xaml} for defining the \ref{itm:ui} and utilizes \ref{itm:mvvm} as its architectural pattern, it was not too difficult to us it thanks to previous experience with \ref{itm:wpf} (Microsoft's official \ref{itm:gui} framework).
+The \ref{gloss:markdown} for \ref{gloss:git} plugin will be composed of components developed in \Nameref{chap:processingLibraries}.
 
-The only drawback of the framework is that it still does not have a stable release. This entails unreliability of the framework and possibility of breaking changes. For example, AvaloniaUI version 0.10.15 broke \ref{itm:ui} components for displaying images. Nevertheless, the it is backed-up by a passionate community of developers, that ensure any issues are resolved quickly.
+\begin{figure}[H]
+    \centering
+    \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 
-The open source community added great value to the framework by developing additional libraries such as \textbf{AvaloniaBehaviors}, or \textbf{FluentAvaloniaUI}, both of which are used by the project. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the FluentUI theme for AvaloniaUI. FluentUI is Microsoft's modern design system, that can be seen utilized across all of its applications. By default, the framework also uses FluentUI; however, it is outdated, or doesn't style all components. So, the \textbf{FluentAvaloniaUI} library is essential to have a modern design.
+        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %uncomment if require: \path (0,428); %set diagram left start at 0, and has height of 428
 
-\section{Decoupling via MVVM}
+        %Shape: Folded Corner [id:dp38453805550218356]
+        \draw   (128,110) -- (14,110) -- (14,150) -- (140,150) -- (140,122) -- cycle -- (128,110) ; \draw   (140,122) -- (130.4,119.6) -- (128,110) ;
 
-Avalonia UI is a wonderful \ref{itm:gui} framework; however, it is not a first-party Microsoft product - this poses a higher risk of project abandonment. Moreover, users of the documentation generating tool might not like Avalonia UI, and could even wish to have the tool hosted online in an \ref{gloss:aspnetcore} web application. Doubling down on agenda of a highly configurable tool results in an application which has its business logic completely independent from the \ref{itm:ui} framework.
-This can be achieved using \ref{itm:mvvm} in combination with a \ref{itm:di} framework like Autofac.
+        %Shape: Cube [id:dp9514351083967096]
+        \draw   (461,30.21) -- (471.21,20) -- (590,20) -- (590,247.79) -- (579.79,258) -- (461,258) -- cycle ; \draw   (590,20) -- (579.79,30.21) -- (461,30.21) ; \draw   (579.79,30.21) -- (579.79,258) ;
+        %Shape: Rectangle [id:dp28951515389797833]
+        \draw   (470,68) -- (571,68) -- (571,127) -- (470,127) -- cycle ;
 
-\ref{itm:mvvm} (Model, View, View Model) allows natural decoupling of the \ref{itm:ui} (View), from the business logic (View Model) and data (Model). However, \ref{itm:mvvm} alone still introduces some coupling of the \ref{itm:ui} to the host application, as it must still reference the specific views for, e.g., navigation. Such references can be decoupled by abstracting each view with its interface representation. The specific views would then be provided via Autofac. This allows painless swapping of views either based on Avalonia UI, or some other framework.
+        %Shape: Rectangle [id:dp811482931901953]
+        \draw   (470,208) -- (571,208) -- (571,241) -- (470,241) -- cycle ;
 
-To take it a step further, the view models can also be abstracted in the same exact way and provided via Autofac. In this case the benefit is higher application testability, as abstracted view models can be mocked.
+        %Shape: Rectangle [id:dp5590157968822316]
+        \draw   (470,139) -- (571,139) -- (571,198) -- (470,198) -- cycle ;
 
-\section{Application structure}
 
-The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side:
+        %Shape: Rectangle [id:dp0837615901192712]
+        \draw   (200,10) -- (360,10) -- (360,50) -- (200,50) -- cycle ;
+
+        %Shape: Rectangle [id:dp21181013544630467]
+        \draw   (190,220) -- (390,220) -- (390,260) -- (190,260) -- cycle ;
+
+        %Curve Lines [id:da5699658849973097]
+        \draw    (70,110) .. controls (70,31.86) and (161.2,28.74) .. (198.34,29.94) ;
+        \draw [shift={(200,30)}, rotate = 182.12] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Curve Lines [id:da0934002278421866]
+        \draw    (70,150) .. controls (70,240.75) and (140.57,238.72) .. (188.55,239.96) ;
+        \draw [shift={(190,240)}, rotate = 181.59] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Curve Lines [id:da9139301607505403]
+        \draw    (280,50) .. controls (281.98,104.12) and (393.73,113.48) .. (458.07,110.11) ;
+        \draw [shift={(460,110)}, rotate = 176.72] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Curve Lines [id:da360087403261089]
+        \draw    (290,220) .. controls (290,198.67) and (294,151.67) .. (460,160) ;
+        \draw [shift={(460,160)}, rotate = 182.87] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Shape: Rectangle [id:dp5335135464926624]
+        \draw   (240,310) -- (330,310) -- (330,350) -- (240,350) -- cycle ;
+
+        %Curve Lines [id:da34448081447371903]
+        \draw    (520,260) .. controls (520,338.61) and (403.18,329.1) .. (331.08,329.99) ;
+        \draw [shift={(330,330)}, rotate = 359.2] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Shape: Folded Corner [id:dp9495985347442353]
+        \draw   (128,310) -- (14,310) -- (14,350) -- (140,350) -- (140,322) -- cycle -- (128,310) ; \draw   (140,322) -- (130.4,319.6) -- (128,310) ;
+        %Straight Lines [id:da8650986253114432]
+        \draw    (240,330) -- (142,330) ;
+        \draw [shift={(140,330)}, rotate = 360] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+        % Text Node
+        \draw (37.11,122) node [anchor=north west][inner sep=0.75pt]   [align=left] {Input folder};
+        % Text Node
+        \draw (485,79) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{48.65pt}\setlength\topsep{0pt}
+        \begin{center}
+        Element\\Provider
+        \end{center}
+
+        \end{minipage}};
+        % Text Node
+        \draw (499,205) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{30.51pt}\setlength\topsep{0pt}
+        \begin{center}
+        Linker
+        \end{center}
+
+        \end{minipage}};
+        % Text Node
+        \draw (485,150) node [anchor=north west][inner sep=0.75pt]   [align=left] {\begin{minipage}[lt]{48.65pt}\setlength\topsep{0pt}
+        \begin{center}
+        Diagram\\Generator
+        \end{center}
+
+        \end{minipage}};
+        % Text Node
+        \draw (488,40) node [anchor=north west][inner sep=0.75pt]   [align=left] {Composer};
+        % Text Node
+        \draw (211,22) node [anchor=north west][inner sep=0.75pt]   [align=left] {Member provider};
+        % Text Node
+        \draw (201,231) node [anchor=north west][inner sep=0.75pt]   [align=left] {Documentation provider};
+        % Text Node
+        \draw (101,62) node [anchor=north west][inner sep=0.75pt]   [align=left] {*.dll, *.exe};
+        % Text Node
+        \draw (111,201) node [anchor=north west][inner sep=0.75pt]   [align=left] {*.xml};
+        % Text Node
+        \draw (351,81) node [anchor=north west][inner sep=0.75pt]   [align=left] {Types};
+        % Text Node
+        \draw (336,181) node [anchor=north west][inner sep=0.75pt]   [align=left] {Documentation};
+        % Text Node
+        \draw (261,321) node [anchor=north west][inner sep=0.75pt]   [align=left] {Printer};
+        % Text Node
+        \draw (394,301) node [anchor=north west][inner sep=0.75pt]   [align=left] {Elements};
+        % Text Node
+        \draw (31,322) node [anchor=north west][inner sep=0.75pt]   [align=left] {Output folder};
+        % Text Node
+        \draw (164,301) node [anchor=north west][inner sep=0.75pt]   [align=left] {Result};
+    \end{tikzpicture}
+    \caption{Plugin components structure}
+    \label{fig:pluginStructure}
+\end{figure}
+
+Figure \ref{fig:pluginStructure} depicts relations between each component, the input folder, and the output folder. The member and documentation providers operate in parallel, and supply necessary data to the composer component by processing files from the input folder.
+The composer component depends on the element provider, linker, and diagram generator for composing the extracted data into a structured documentation.
+Finally, the structured documentation is fed into the printer component, which simply generated the physical files into the designated output folder.
+
+\section{Plugin configuration steps}
+
+The plugin must provide configuration steps for the user to set how each component should operate. It is not necessary for the plugin to provide configuration steps for every component, as some might not be configurable. Additionally, the plugin might provide configurations that affect more than one component.
+
+In the case of the \ref{gloss:markdown} for \ref{gloss:git} plugin, the following configuration steps are necessary in this order specifically:
 \begin{itemize}
-    \item Home page
-    \item Settings
-    \item About
-    \item Configuration stepper
-    \item Finalizer
+    \item Member provider
+    \item Documentation provider
+    \item Linker
+    \item Global configuration
 \end{itemize}
 
-\subsection{Home page}
+\subsection{Member provider}
 
-The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel. Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
-In case the application has a larger amount of plugins to offer, the user can search for the desired one via the search filter.
+The member provider configuration would be labeled to the user as the \textbf{Assembly} processing component, because the they would select the desired assemblies and executable \ref{gloss:dotnetlabel} files for processing.
 
-\subsubsection{Mock}
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{img/markDocHomePage.png}
-    \label{fig:homePage}
-    \caption{Documentation generator home page}
-\end{figure}
-
-\begin{enumerate}
-    \item Open button for loading previously defined configurations
-    \item Settings button for navigating to the settings page
-    \item About button for displaying information about the application
-    \item Search entry for filtering the available plugins
-    \item One of the available plugins with its icon, title, and short description
-\end{enumerate}
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{img/markDocPluginSelected.png}
-    \label{fig:homePagePluginSelected}
-    \caption{Documentation generator home page with a plugin selected}
-\end{figure}
-
-\begin{enumerate}
-    \item Selected plugin title
-    \item Selected plugin icon
-    \item Author information
-    \item Steps within said plugin
-    \item Button for creating a configuration using the selected plugin
-    \item Button for closing the selected plugin panel
-\end{enumerate}
-
-\subsection{Settings}
-
-The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
+The user can move to the next step once at least one file is provided.
 
 \subsubsection{Mock}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{img/markDocSettings.png}
-    \label{fig:settingsPage}
-    \caption{Documentation generator settings page}
+    \includegraphics[width=\linewidth]{img/pluginMember.png}
+    \label{fig:pluginMember}
+    \caption{Assembly configuration step}
 \end{figure}
 
 \begin{enumerate}
-    \item Back button for navigating back to the home page
-    \item Toggle switch for changing the theme from light mode to dark mode
+    \item Text field for manually entering the assembly or executable for processing
+    \item Button for browsing the system for the desired assemblies of executables for processing
+    \item Button for adding the manually entered path
+    \item Button for revalidating the provided file paths for their existence and system permissions (not implemented, disabled)
+    \item Button for removing the added file path
+    \item The added file path with the file highlighted in bold
 \end{enumerate}
 
-\subsection{About}
+\subsection{Documentation provider}
 
-The about page would present the user with necessary information about the application, references to used libraries, and possibly usage instructions. However, the content of this page was neither designed, nor prepared, as it had a low priority and was left out of this development phase.
-
-\subsection{Configuration stepper}
-
-The configuration stepper is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
+The documentation provider step displays the automatically discovered documentation files, alongside those that are missing. Unfortunately, this configuration step does not allow ignoring, or manually specifying documentation file paths, because of limited development time.
 
 \subsubsection{Mock}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{img/markDocConfigurator.png}
-    \label{fig:configuratorPage}
-    \caption{Documentation generator configurator}
+    \includegraphics[width=\linewidth]{img/pluginDocumentation.png}
+    \label{fig:pluginDocumentation}
+    \caption{Documentation configuration step}
 \end{figure}
 
 \begin{enumerate}
-    \item Title of the plugin
-    \item List of steps provided by the plugin, with the current step highlighted
-    \item The current step configuration title and view
-    \item Information for the user to help them configure the step correctly
-    \item Next button for navigating to the next step. Available only once the current step is correctly configured
+    \item Table with a list of missing documentation files
+    \item Table with a list of located documentation files
 \end{enumerate}
 
-\subsection{Finalizer}
+\subsection{Linker}
 
-The finalizer is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays the progress of each plugin step, and logs what each process is doing.
+The linker step displays configuration options that target specific \ref{gloss:git} platforms. The user can generate documentation either for GitHub or GitLab. The choice affects the generated link format, which is platform-specific.
+
+Next, they can decide whether the documentation will be hosted in the repository alongside the source code, or the Wiki pages. This option is necessary for GitHub, since its Wiki limits its users to a flat file structure, whereas GitLab allows structuring documentation into folder in their Wiki. Moreover, GitHub does not allow uploading multiple pages to the Wiki in bulk. Thus, if there is a lot of documentation, a user would most likely need to use the option for hosting documentation alongside the source code.
+
+Finally, it is possible to explicitly choose whether the documentation is generated flat, or structured into individual folders. This option is relevant for GitLab, as it allows both.
 
 \subsubsection{Mock}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{img/markDocFinalizer.png}
-    \label{fig:finalizerPage}
-    \caption{Documentation generator finalizer}
+    \includegraphics[width=\linewidth]{img/pluginLinker.png}
+    \label{fig:pluginLinker}
+    \caption{Linker configuration step}
 \end{figure}
 
 \begin{enumerate}
-    \item List of executed processes, their states
-    \item Grouped logs on process sources and log types
-    \item Button for saving the created configuration
-    \item Button for closing the configurator
+    \item Selection of the target \ref{gloss:git} system
+    \item Toggle for linking generated documentation to source files (not implemented, disabled)
+    \item Toggle for determining whether the generated output will be stored with the source code, or the Wiki
+    \item Toggle for determining whether the generated output will be structured into multiple subfolders, or flat
+\end{enumerate}
+
+\subsection{Global configuration}
+
+The global configuration affects all components, as it provides a filter for excluding specific namespaces and types from being processed. Additionally, it allows users to specify the output folder for the generated documentation.
+
+\subsubsection{Mock}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/pluginGlobal.png}
+    \label{fig:pluginGlobal}
+    \caption{Global configuration step}
+\end{figure}
+
+\begin{enumerate}
+    \item Output path for the generated documentation
+    \item Button for browsing the output path
+    \item Buttons for toggling the expansion and collapsing of the namespace and type tree
+    \item The namespace and type tree for toggling what entries are to be removed from the processing
 \end{enumerate}
