@@ -8,7 +8,6 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin will be composed of componen
 
 \begin{figure}[H]
     \centering
-    \label{fig:pluginStructure}
     \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt
 
         \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
@@ -106,6 +105,7 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin will be composed of componen
         \draw (164,301) node [anchor=north west][inner sep=0.75pt]   [align=left] {Result};
     \end{tikzpicture}
     \caption{Plugin components structure}
+    \label{fig:pluginStructure}
 \end{figure}
 
 Figure \ref{fig:pluginStructure} depicts relations between each component, the input folder, and the output folder. The member and documentation providers operate in parallel, and supply necessary data to the composer component by processing files from the input folder.
