@@ -35,7 +35,7 @@ ModularDoc is delivered as a portable application without an installer. Thus, me
     \begin{itemize}
         \item Windows 7+
         \item macOS High Sierra 10.13+\footnote{ModularDoc was not tested on a macOS device, due to lack of Apple hardware}
-        \item  Debian 9 (Stretch)+, Fedora 30+, or Ubuntu 16.04+ (Linux distribution with \textit{glibc} 2.17 installed, or a newer version\footnote{ModularDoc was tested on PopOS 22.04 LTS, a Linux distribution from system76})
+        \item  Debian 9 (Stretch)+, Fedora 30+, or Ubuntu 16.04+ (Linux distribution with \textit{glibc} 2.17 installed, or a newer version)\footnote{ModularDoc was tested on PopOS 22.04 LTS, a Linux distribution from system76}
     \end{itemize}
     \item The \ref{itm:os} must be 64bit
     \item \ref{gloss:dotnetlabel} Runtime 6.0.11+ is installed
@@ -152,11 +152,14 @@ The applications settings allow the user to toggle its theme between dark mode a
     \item Toggle switch for changing the theme from light mode to dark mode
 \end{enumerate}
 
+\pagebreak
 \subsection{Markdown for Git plugin}
 
 The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed specifically for processing \ref{gloss:dotnetlabel} libraries written in C\# and outputting developer documentation in \ref{gloss:markdown} form suitable for \ref{gloss:git} platforms such as GitHub or GitLab.
 
 \subsubsection{Assemblies step}
+
+The assemblies step is designated for selecting file paths to \ref{gloss:dotnetlabel} assemblies or executables for processing. It is possible to proceed to the next step only after providing at least one file path.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocAssemblies.png}
@@ -165,14 +168,17 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed specifically for
 \end{figure}
 
 \begin{enumerate}
-    \item Input field for supplying a path to an assembly or executable
-    \item Button for opening the file browser and selecting assemblies or executables
+    \item Input field for supplying a file path
+    \item Button for opening the file browser and selecting file paths
     \item Button for adding the supplied path via the input field, or opening the file browser (see 2) whenever the input field is empty
-    \item Button for removing the entered path to an assembly or executable
+    \item Button for removing the entered file path
     \item The path with the filename highlighted
 \end{enumerate}
 
+\pagebreak
 \subsubsection{Documentation step}
+
+The documentation step is designated for checking whether all provided assemblies and executables have their documentation files present. It is not possible to proceed to the next step if a documentation file is missing. Unfortunately, the version of ModularDoc provided with this thesis does not permit ignoring or finding missing documentation.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocDocumentation.png}
@@ -185,7 +191,10 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed specifically for
     \item List of automatically discovered documentation files
 \end{enumerate}
 
+\pagebreak
 \subsubsection{Linker step}
+
+The linker step is designated for configuring linking settings such that they are valid for the target \ref{gloss:git} hosting platform.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocLinker.png}
@@ -199,7 +208,10 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed specifically for
     \item Toggle for the output structure - flat or structured
 \end{enumerate}
 
+\pagebreak
 \subsubsection{Global step}
+
+The global step is designated for configuring both the generated documentation target output paths, and ignored namespaces and types.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocGlobalSettings.png}
