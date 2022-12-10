@@ -57,6 +57,8 @@ Style tags are used to change the way the documentation text is displayed.
 
 \subsection{General tags}
 
+General tags can document both types and their members.
+
 \subsubsection*{Summary}
 \begin{itemize}
     \item Contains a brief description of the documented type or member
@@ -85,7 +87,9 @@ Style tags are used to change the way the documentation text is displayed.
     /// </remarks>
 \end{lstlisting}
 
-\subsection{Document members}
+\subsection{Members tags}
+
+Member tags can document type members only.
 
 \subsubsection*{Returns}
 \begin{itemize}
@@ -156,6 +160,8 @@ Style tags are used to change the way the documentation text is displayed.
 \end{lstlisting}
 
 \subsection{Formatting tags}
+
+Formatting tags are used style and format the documentation text for improved readability.
 
 \subsubsection*{Para}
 \begin{itemize}
@@ -287,7 +293,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
 
 \subsubsection*{Example}
 \begin{itemize}
-    \item Specifies an example usage of given member
+    \item Specifies an example usage of given type or member
     \item Paired tag
 \end{itemize}
 
@@ -304,6 +310,8 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
 \end{lstlisting}
 
 \subsection{Documentation reuse tags}
+
+Reuse tags allow copying documentation from a specific source.
 
 \subsubsection*{Inheritdoc} \label{sec:inheritdocTag}
 \begin{itemize}
@@ -347,6 +355,8 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
 
 \subsection{Reference tags}
 
+Reference tags allow creating references to other documented types and members, or create hyperlinks.
+
 \subsubsection*{See}
 \begin{itemize}
     \item Creates a link to a member or website
@@ -383,6 +393,8 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
 \end{lstlisting}
 
 \subsection{Generic types tags}
+
+Generic type tags allow documenting and referencing generic type parameters.
 
 \subsubsection*{Typeparam}
 \begin{itemize}
