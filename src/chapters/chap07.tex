@@ -22,7 +22,8 @@ To take it a step further, the view models can also be abstracted in the same ex
 
 \section{Application structure}
 
-The \ref{itm:gui} application serves only as a configuration creator for the available plugins. Thus, the application requires minimum work on the \ref{itm:ui} side and will consist of the following pages:
+The \ref{itm:gui} application serves only as a configuration creator and executor for the available plugins.
+Thus, the application requires minimum work on the \ref{itm:ui} side and will consist of the following pages:
 \begin{itemize}
     \item Home page.
     \item Settings.
@@ -30,6 +31,8 @@ The \ref{itm:gui} application serves only as a configuration creator for the ava
     \item Configuration wizard.
     \item Finalizer.
 \end{itemize}
+
+Each page was mocked to understand the applications \ref{itm:ui} layout before its implementation.
 
 \subsection{Home page}
 
@@ -49,6 +52,7 @@ In case the application has a larger amount of plugins to offer, the user can se
     \caption{Mock of the home page with a plugin selected}
 \end{figure}
 
+\pagebreak
 \subsection{Settings}
 
 The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes. Any settings added in the future would be present on this page.
@@ -63,6 +67,7 @@ The settings page allows the user to configure the application. Since adding mul
 
 The about page would present the user with necessary information about the application, references to used libraries, and possibly usage instructions. However, the content of this page was neither designed, nor prepared, as it had a low priority and was left out of this development phase.
 
+\pagebreak
 \subsection{Configuration wizard}
 
 The configuration wizard is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
@@ -75,6 +80,7 @@ The user is able to proceed to the next step only if the current one is configur
     \caption{Mock of configuration wizard}
 \end{figure}
 
+\pagebreak
 \subsection{Summary}
 
 The summary is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays the progress of each plugin step, and logs what each process is doing.
