@@ -37,53 +37,27 @@ The home page presents the user with the available plugins. The \ref{itm:ux} is 
 Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
 In case the application has a larger amount of plugins to offer, the user can search for the desired one via the search filter.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockHome.png}
     \label{fig:homePage}
-    \caption{Documentation generator home page}
+    \caption{Mock of the home page}
 \end{figure}
-
-\begin{enumerate}
-    \item Open button for loading previously defined configurations
-    \item Settings button for navigating to the settings page
-    \item About button for displaying information about the application
-    \item Search entry for filtering the available plugins
-    \item One of the available plugins with its icon, title, and short description
-\end{enumerate}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockHome-PluginSelected.png}
     \label{fig:homePagePluginSelected}
-    \caption{Documentation generator home page with a plugin selected}
+    \caption{Mock of the home page with a plugin selected}
 \end{figure}
-
-\begin{enumerate}
-    \item Selected plugin title
-    \item Selected plugin icon
-    \item Author information
-    \item Steps within said plugin
-    \item Button for creating a configuration using the selected plugin
-    \item Button for closing the selected plugin panel
-\end{enumerate}
 
 \subsection{Settings}
 
 The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockSettings.png}
     \label{fig:settingsPage}
-    \caption{Documentation generator settings page}
+    \caption{Mock of settings page}
 \end{figure}
-
-\begin{enumerate}
-    \item Back button for navigating back to the home page
-    \item Toggle switch for changing the theme from light mode to dark mode
-\end{enumerate}
 
 \subsection{About}
 
@@ -93,37 +67,18 @@ The about page would present the user with necessary information about the appli
 
 The configuration stepper is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockConfigurator.png}
     \label{fig:configuratorPage}
-    \caption{Documentation generator configurator}
+    \caption{Mock of configurator}
 \end{figure}
-
-\begin{enumerate}
-    \item Title of the plugin
-    \item List of steps provided by the plugin, with the current step highlighted
-    \item The current step configuration title and view
-    \item Information for the user to help them configure the step correctly
-    \item Next button for navigating to the next step. Available only once the current step is correctly configured
-\end{enumerate}
 
 \subsection{Summary}
 
 The summary is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays the progress of each plugin step, and logs what each process is doing.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockSummary.png}
     \label{fig:summaryPage}
-    \caption{Documentation generator summary}
+    \caption{Mock of summary page}
 \end{figure}
-
-\begin{enumerate}
-    \item List of executed processes, their states
-    \item Grouped logs on process sources and log types
-    \item Button for saving the created configuration
-    \item Button for closing the configurator
-\end{enumerate}

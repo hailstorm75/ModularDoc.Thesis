@@ -27,8 +27,102 @@ ModularDoc is delivered as a portable application without an installer. Thus, me
 
 \subsection{ModularDoc application}
 
-The ModularDoc application can be started by running the \textit{ModularDoc.App.exe} file. Within the application, the user can selected one of the available plugins and start configuring it via the configuration stepper, then running and saving the configuration in the summary.
-Additionally, the user can load the created configuration, edit it or just run it. The applications settings allow the user to toggle its theme between dark mode and light mode.
+The ModularDoc application can be started by running the \textit{ModularDoc.App.exe} file.
+
+\subsubsection{General usage}
+
+Within the application, the user can selected one of the available plugins and start configuring it via the configuration stepper, then running and saving the configuration in the summary.
+Additionally, the user can load the created configuration, edit it or just run it. 
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocHomePage.png}
+    \label{fig:modularDocHome}
+    \caption{ModularDoc home page}
+\end{figure}
+
+\begin{enumerate}
+    \item Open button for loading previously defined configurations
+    \item Settings button for navigating to the settings page
+    \item About button for displaying information about the application
+    \item Search entry for filtering the available plugins
+    \item One of the available plugins with its icon, title, and short description
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocPluginSelected.png}
+    \label{fig:modularDocPluginSelected}
+    \caption{ModularDoc home page with a plugin selected}
+\end{figure}
+
+\begin{enumerate}
+    \item Plugin title
+    \item Plugin icon
+    \item Plugin description
+    \item Author information
+    \item Steps within said plugin
+    \item Button for creating a configuration using the selected plugin
+    \item Button for closing the selected plugin panel
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocConfigurator.png}
+    \label{fig:modularDocconfiguratorPage}
+    \caption{ModularDoc configurator}
+\end{figure}
+
+\begin{enumerate}
+    \item Back button for navigating back to the home page
+    \item Title of the plugin
+    \item List of steps provided by the plugin, with the current step highlighted
+    \item The current step configuration title and view
+    \item Information for the user to help them configure the step correctly
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocSummary.png}
+    \label{fig:modularDocSummaryPage}
+    \caption{ModularDoc summary}
+\end{figure}
+
+\begin{enumerate}
+    \item Back button for navigating back to the configurator
+    \item List of executed processes, their states
+    \item Type of logged message
+    \item Log message grouping options
+    \item Time of logged message
+    \item Log message text
+    \item Log messages
+    \item Button for saving the created configuration
+    \item Button for closing the configurator
+\end{enumerate}
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocSummaryLogGroupping.png}
+    \label{fig:modularDocSummaryGroupingPage}
+    \caption{ModularDoc summary log grouping}
+\end{figure}
+
+\begin{enumerate}
+    \item Toggle for grouping by message source
+    \item Toggle for grouping by message type
+    \item Groups by message type
+    \item Groups by message source
+\end{enumerate}
+
+The applications settings allow the user to toggle its theme between dark mode and light mode.
+
+\begin{figure}[H]
+    \includegraphics[width=\linewidth]{img/modularDocSettings.png}
+    \label{fig:modularDocSettingsPage}
+    \caption{ModularDoc settings page}
+\end{figure}
+
+\begin{enumerate}
+    \item Back button for navigating back to the home page
+    \item Toggle switch for changing the theme from light mode to dark mode
+\end{enumerate}
+
+\subsubsection{Plugin installation and management}
 
 Plugins are installed by placing them in the \textit{Plugins} folder. ModularDoc will automatically load plugins upon startup.
 

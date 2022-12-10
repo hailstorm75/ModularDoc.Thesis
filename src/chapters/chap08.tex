@@ -130,39 +130,21 @@ The member provider configuration would be labeled to the user as the \textbf{As
 
 The user can move to the next step once at least one file is provided.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockMember provider.png}
     \label{fig:pluginMember}
-    \caption{Assembly configuration step}
+    \caption{Mock of the assembly configuration step}
 \end{figure}
-
-\begin{enumerate}
-    \item Text field for manually entering the assembly or executable for processing
-    \item Button for browsing the system for the desired assemblies of executables for processing
-    \item Button for adding the manually entered path
-    \item Button for revalidating the provided file paths for their existence and system permissions (not implemented, disabled)
-    \item Button for removing the added file path
-    \item The added file path with the file highlighted in bold
-\end{enumerate}
 
 \subsection{Documentation provider}
 
 The documentation provider step displays the automatically discovered documentation files, alongside those that are missing. Unfortunately, this configuration step does not allow ignoring, or manually specifying documentation file paths, because of limited development time.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockDocumentation provider.png}
     \label{fig:pluginDocumentation}
-    \caption{Documentation configuration step}
+    \caption{Mock of the documentation configuration step}
 \end{figure}
-
-\begin{enumerate}
-    \item Table with a list of missing documentation files
-    \item Table with a list of located documentation files
-\end{enumerate}
 
 \subsection{Linker}
 
@@ -172,36 +154,18 @@ Next, they can decide whether the documentation will be hosted in the repository
 
 Finally, it is possible to explicitly choose whether the documentation is generated flat, or structured into individual folders. This option is relevant for GitLab, as it allows both.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockLink provider.png}
     \label{fig:pluginLinker}
-    \caption{Linker configuration step}
+    \caption{Mock of the linker configuration step}
 \end{figure}
-
-\begin{enumerate}
-    \item Selection of the target \ref{gloss:git} system
-    \item Toggle for linking generated documentation to source files (not implemented, disabled)
-    \item Toggle for determining whether the generated output will be stored with the source code, or the Wiki
-    \item Toggle for determining whether the generated output will be structured into multiple subfolders, or flat
-\end{enumerate}
 
 \subsection{Global configuration}
 
 The global configuration affects all components, as it provides a filter for excluding specific namespaces and types from being processed. Additionally, it allows users to specify the output folder for the generated documentation.
 
-\subsubsection{Mock}
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockGlobal settings.png}
     \label{fig:pluginGlobal}
-    \caption{Global configuration step}
+    \caption{Mock of the global configuration step}
 \end{figure}
-
-\begin{enumerate}
-    \item Output path for the generated documentation
-    \item Button for browsing the output path
-    \item Buttons for toggling the expansion and collapsing of the namespace and type tree
-    \item The namespace and type tree for toggling what entries are to be removed from the processing
-\end{enumerate}
