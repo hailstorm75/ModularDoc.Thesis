@@ -16,8 +16,8 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
     .2 Plugins/.
     .3 GitMarkdown/.
     .4 ModularDoc.Plugins.GitMarkdown.dll.
-    .4 ...
-    .2 ...
+    .4 ....
+    .2 ....
     }
     \caption{ModularDoc simplified file and folder structure}
     \label{fig:applicationFileStructure}
@@ -26,7 +26,6 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
 \section{User guide}
 
 ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones either provided with this thesis, or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
-
 
 \subsection{Prerequisites}
 
@@ -228,10 +227,80 @@ The global step is designated for configuring both the generated documentation t
     \item Nested type entry
 \end{enumerate}
 
-\section{Plugin installation and management}
+\subsection{Plugin installation and management}
 
 Plugins are installed by placing them in the \textit{Plugins} folder (see figure \ref{fig:applicationFileStructure}). ModularDoc will automatically load plugins upon startup and display them on the home page. ModularDoc can operate without plugins; however, it loses its purpose.
 
+\section{Developer guide}
 
+\subsection{Prerequisites}
 
+\begin{itemize}
+    \item Visual Studio 2019+, JetBrains Rider 2021.3+, or a text editor such as Visual Studio Code is installed
+    \item \ref{gloss:dotnetlabel} SDK 6.0.403+ is installed
+\end{itemize}
 
+\subsection{Accessing the source code}
+
+This thesis is provided with source for for ModularDoc.
+To access the latest source code, clone it from the projects repository on GitHub:
+
+\begin{lstlisting}[caption=Script for cloning the ModularDoc project GitHub repository]
+    git clone https://github.com/hailstorm75/ModularDoc.git
+\end{lstlisting}
+
+\begin{figure}[H]
+    \dirtree{%
+    .1 ~ModularDocRepositoryRoot/.
+    .2 sourceWiki/.
+    .2 src/.
+    .3 Components/.
+    .4 Diagrams/.
+    .4 Documentation/.
+    .4 Elements/.
+    .4 ....
+    .3 Libraries/.
+    .4 Core/.
+    .4 Helpers/.
+    .4 ViewModels/.
+    .4 Views/.
+    .3 Plugins/.
+    .3 ModularDoc.App/.
+    .3 ModularDoc.sln.
+    .3 ....
+    .2 tests/.
+    .2 README.md.
+    .2 ....
+    }
+    \caption{ModularDoc simplified source code structure}
+    \label{fig:sourceCodeFileStructure}
+\end{figure}
+
+Open the \textit{ModularDoc.sln} assembly to start development on the project.
+Compiling the solution will generated the \textit{bin/} folder in the root folder.
+
+\subsection{Developing a new component}
+
+Follow these steps to develop a new component:
+\begin{enumerate}
+    \item Decide which for which key area to develop a new component, e.g. element provider
+    \item Create a new project in the respective folder (in this case, \textit{Components/Elements})\linebreak with the following naming scheme - \textbf{ModularDoc.Elements.MY\_COMPONENT}
+    \item Configure the project in the same way as one of the other existing provider components
+    \item Inherit the respective interface from \textit{Libraries/Core} in the new component (in this case,\linebreak \textit{ModularDoc.Elements})
+    \item Based on the interface definitions, implement the new component
+\end{enumerate}
+
+\subsection{Developing a new plugin}
+
+Follow these steps to develop a new plugin:
+\begin{enumerate}
+    \item Create a new project in \textit{Plugins} folder with the following naming scheme - \textbf{ModularDoc.Plugins.MY\_PLUGIN}
+    \item Configure the new project in the same way as one of the other existing plugins
+    \item Reference the 
+    \item Create a type representing the plugin instance and implement the plugin interface from the referenced core library
+    \item Create a new project in the \textit{Libraries/ViewModels} folder with the following naming scheme - \textbf{ModularDoc.ViewModels.MY\_PLUGIN}
+    \item Configure the new project in the same way as one of the other existing view model projects
+    \item Create a new project in the \textit{Libraries/Views} folder with the following naming scheme - \textbf{ModularDoc.Views.MY\_PLUGIN}
+    \item Configure the new project in the same way as one of the other existing view projects
+
+\end{enumerate}
