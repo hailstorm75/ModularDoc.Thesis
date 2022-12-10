@@ -8,9 +8,9 @@ This chapter describes the concept of \ref{gloss:dotnetlabel} documentation in g
 Source files of a language based on the \ref{gloss:dotnetlabel} platform can have structured comments that produce documentation for types and members defined in said source files. The respective language compiler\footnote{C\# and VB are compiled by Roslyn, while F\# has its own specific F\# compiler} produces an \ref{itm:xml} file that contains structured data representing comments bound to types and members.
 \cite{wagner_xml_2022}
 
-All following examples will be in C\#, as it is the dominant language of the platform. Documentation comments start with \lstinline[language=csh]{///} followed by \ref{itm:xml} tags:
+Documentation comments start with \lstinline{///} (or with \lstinline{'''} for Visual Basic) followed by \ref{itm:xml} tags.
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[language=csh, caption=C\# documentation example]
     /// <summary>
     /// This is a brief description of the class
     /// </summary>
@@ -26,6 +26,27 @@ All following examples will be in C\#, as it is the dominant language of the pla
     }
 \end{lstlisting}
 
+\begin{lstlisting}[caption=Visual Basic documentation example]
+    ''' <summary>
+    ''' This is a brief description of a procedure
+    ''' </summary>
+    Public Sub Foo()
+        Call Bar()
+    End Sub
+\end{lstlisting}
+
+\begin{lstlisting}[caption=F\# documentation example]
+    /// <summary>
+    /// This is a brief description of the class
+    /// </summary>
+    type MyClass =
+        /// <summary>
+        /// This function executes some stuff
+        /// </summary>
+        member _.Foo() = Bar
+\end{lstlisting}
+
+All following examples will be in C\#, as it is the dominant language of the platform.
 \section{Documentation tags}
 
 The following is a list of supported \ref{itm:xml} tags for documenting source code.
@@ -43,7 +64,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Summary tag]
     /// <summary>
     /// This is a brief description of the class
     /// <c>An example of a code formatting tag within the summary tag</c>
@@ -57,7 +78,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Remark tag]
     /// <remarks>
     /// This is a remark
     /// <c>An example of a code formatting tag within the remark tag</c>
@@ -73,7 +94,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Returns tag]
     /// <returns>
     /// The number of items
     /// </returns>
@@ -87,7 +108,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Param tag]
     /// <param name="bar">Instance of bar to process</param>
     void Foo(Bar bar);
 \end{lstlisting}
@@ -99,7 +120,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Useful when the given parameter name is changed
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Paramref tag]
     /// <summary>
     /// Loads data from <paramref name="bar"/>
     /// </summary>
@@ -114,7 +135,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag, can be unpaired
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Exception tag]
     /// <exception cref="FileNotFoundException"/>
     /// <exception cref="ArgumentNullException">Throw when <paramref="bar"/> is found to be <c>null</c></exception>
     void Foo(Bar bar);
@@ -127,7 +148,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Value tag]
     /// <value>
     /// Numeric representation of users age
     /// </value>
@@ -143,7 +164,7 @@ Style tags are used to change the way the documentation text is displayed.
     \item Paired tag, can be unpaired
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Para tag]
     /// <summary>
     /// Some text<para/>this text shall be on a new line
     /// </summary>
@@ -164,7 +185,7 @@ Style tags are used to change the way the documentation text is displayed.
 
 Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to describe the list or table.
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=List tag]
     /// <summary>
     /// This method can do one of the following:
     /// <list type="bullet">
@@ -238,7 +259,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=C tag]
     /// <summary>
     /// This is code <c>var i = 5;</c>
     /// </summary>
@@ -253,7 +274,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Code tag]
     /// <remarks>
     /// This method should be called before initialization:
     /// <code>
@@ -270,7 +291,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Example tag]
 
     /// <example>
     /// This is some example
@@ -291,7 +312,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Unpaired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Inheritdoc tag]
     public interface IFirst
     {
         /// <summary>
@@ -333,7 +354,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag, can be unpaired
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=See tag]
     /// <summary>
     /// This is some method, what follows are references:
     /// <para/>
@@ -352,7 +373,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag, can be unpaired
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Seealso tag]
     /// <summary>
     /// This is some method
     /// </summary>
@@ -370,7 +391,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Paired tag
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Typeparam tag]
     /// <typeparam name="T">Type of input</param>
     void Foo<T>(T bar);
 \end{lstlisting}
@@ -382,7 +403,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
     \item Useful when the given generic parameter name is changed
 \end{itemize}
 
-\begin{lstlisting}[language=csh]
+\begin{lstlisting}[caption=Typeparamref tag]
     /// <summary>
     /// Loads data from <paramref name="bar"/> of a given type <typeparamref name="T"/>
     /// </summary>
