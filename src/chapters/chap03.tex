@@ -1,6 +1,6 @@
 \chapter{Documentation tools}
 
-Existing tools and user needs must be analyzed before any real planning and developed can begin. This chapter attempts to answer these two questions:
+Analysis of existing tools and user needs must precede project planning and development. This chapter attempts to answer these two questions:
 \begin{enumerate}
     \item What is available?
     \item What do users want?
@@ -10,26 +10,28 @@ Existing tools and user needs must be analyzed before any real planning and deve
 The current documentation tool market provides the following solutions:
 
 \begin{enumerate}
-    \item DocFX\footnote{\href{https://github.com/dotnet/docfx}{https://github.com/dotnet/docfx}}
-    \item Doxygen\footnote{\href{https://www.doxygen.nl/}{https://www.doxygen.nl/}}
-    \item Source Browser\footnote{\href{https://github.com/KirillOsenkov/SourceBrowser}{https://github.com/KirillOsenkov/SourceBrowser}}
-    \item Vsxmd\footnote{\href{https://github.com/lijunle/Vsxmd}{https://github.com/lijunle/Vsxmd}}
-    \item vsdoc-2-md\footnote{\href{https://github.com/discosultan/vsdoc-2-md}{https://github.com/discosultan/vsdoc-2-md}}
+    \item DocFX\footnote{\nolinkurl{https://github.com/dotnet/docfx}{https://github.com/dotnet/docfx}}
+    \item Doxygen\footnote{\nolinkurl{https://www.doxygen.nl/}{https://www.doxygen.nl/}}
+    \item Source Browser\footnote{\nolinkurl{https://github.com/KirillOsenkov/SourceBrowser}{https://github.com/KirillOsenkov/SourceBrowser}}
+    \item Vsxmd\footnote{\nolinkurl{https://github.com/lijunle/Vsxmd}{https://github.com/lijunle/Vsxmd}}
+    \item vsdoc-2-md\footnote{\nolinkurl{https://github.com/discosultan/vsdoc-2-md}{https://github.com/discosultan/vsdoc-2-md}}
 \end{enumerate}
 
-What follows are evaluations of each tool which provides prospects on features and improvements that the custom tool can take advantage of.
+What follows are evaluations of each tool that provides prospects on features and improvements the custom tool utilize.
 
 \subsection{DocFX} \label{ssec:docfx}
 
-\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that not only supports \ref{gloss:dotnetlabel} languages, but also Java, JavaScript, TypeScript, Python, and REST. Additionally, it can use raw \ref{gloss:markdown} files as input.
+\textit{DocFX} is an open-source documentation generation tool developed by Microsoft that supports \ref{gloss:dotnetlabel} languages, Java, JavaScript, TypeScript, Python, and others. Additionally, it can use raw \ref{gloss:markdown} files as input.
 
-However, the \textit{DocFX} only outputs static \ref{itm:html} pages. The only available customizability is via templates for said static pages.
+However, \textit{DocFX} only outputs static \ref{itm:html} pages. Therefore, the only available customizability is via templates for said static pages.
 
-The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projects, but it doesn't solve the task of outputting \ref{gloss:markdown} files.
+The tool is capable and is the go-to solution for \ref{gloss:dotnetlabel} projects, but it does not solve the task of outputting \ref{gloss:markdown} files.
+
+Configuring and running \textit{DocFX} is unintuitive, as it provide no \ref{itm:gui}. Instead, it uses a configuration file. Moreover, the documentation for the tool leaves much to be desired, as it does not describe all possible settings.
 
 \subsection{Doxygen} \label{sec:doxygen}
 
-\textit{Doxygen} is the industry-standard documentation generating tool originally made for C/C++ source code documentation. It has later added support for many popular programming languages such as C\#, Java, Python, and many more.
+\textit{Doxygen} is the industry-standard documentation-generating tool originally made for C/C++ source code documentation. Support for popular programming languages, such as C\#, Java, Python, and many more, was added later.
 
 The tool provides an extensive set of supported output formats:
 \begin{itemize}
@@ -40,41 +42,43 @@ The tool provides an extensive set of supported output formats:
     \item \ref{itm:xml}.
 \end{itemize}
 
-It is possible to extend the tool, as it is open-source and available on GitHub. Unfortunately for \ref{gloss:dotnetlabel}, \textit{Doxygen} is written in C++ and its documentation does not provide any clear guidelines for extending its support for output formats. Naturally, a curious programmer can deduce how to do exactly that from the source code; however, other developers do not have capacity for such a feat.
+It is possible to extend the tool, as it is open-source and available on GitHub. Unfortunately for \ref{gloss:dotnetlabel} developers, \textit{Doxygen} is written in C++, and its documentation does not provide clear guidelines for extending its support for output formats. Naturally, a curious programmer can deduce how to do that from the source code; however, this involves investing considerable time and effort.
+
+Thankfully, configuring and executing \textit{Doxygen} is made simple with its \ref{itm:gui}.
 
 \subsection{Source Browser}
 
 \textit{Source Browser} is a tool that generates a website for browsing source code and its documentation. The tool is used by Microsoft, for example, to allow developers to browse the source code of \ref{gloss:dotnetlabel}.
 
-The generated output is not fully static and has to be hosted on an \ref{gloss:aspnetcore} website to support searching.
+The generated output is not entirely static and has to be hosted on an \ref{gloss:aspnetcore} website to support searching.
 
 \subsection{Vsxmd} \label{ssec:vsxmd}
 
-\textit{Vsxmd} generates a single \ref{gloss:markdown} file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a \ref{gloss:nuget} package, that is added to the project designated for documentation generation. Thus, configuring this tool is done via \ref{gloss:dotnetlabel} project settings.
+\textit{Vsxmd} generates a single \ref{gloss:markdown} file for all types in a given assembly. Moreover, the tool has no \ref{itm:ui} and works as a \ref{gloss:nuget} package that the project designated for documentation generation references. Thus, configuring this tool is done via \ref{gloss:dotnetlabel} project settings.
 
-It is not possible to navigate the documentation as no links are generated.
+It is impossible to navigate the documentation as the tool does not generate links.
 
 \subsection{Vsdoc-2-md}
 
 \textit{Vsdoc-2-md} is an entirely unusable tool, as it is purely web-based and generates documentation from the provided \ref{itm:xml} documentation source file. The tool is limited to processing only one file at a time.
 
-Just like \textit{\nameref{ssec:vsxmd}}, no links are generated; thus, it is not possible to navigate the documentation.
+Just like \textit{\nameref{ssec:vsxmd}}, this tool does not generate links; thus, navigating the documentation is impossible.
 
 \newpage
 
 \section{What do users want?} \label{sec:whatdouserswant}
-Surveying potential users of the tool is necessary to ensure that the developed product is utilized by more than its developer.
+Surveying potential tool users is necessary to ensure that the developed product is utilized by more than its developer.
 Thus, creating a questionnaire was the first step to success. Its purpose was to figure out the following key points:
 \begin{itemize}
-    \item Whether users already use documentation generation tools, and if so, which ones.
-    \item What do users feel is missing from the tools they use.
-    \item What do users believe should be carried over to the new tool from the ones they use.
-    \item Whether users would integrate such tools into their \ref{itm:cicd} pipelines.
-    \item What output formats do users want.
-    \item What operating systems do users want the tool to work on.
-    \item Would users find a \ref{itm:gui} beneficial for such a tool.
-    \item Would users appreciate the tool being extensible via plugins.
-    \item Would users be interested in contributing to the project.
+    \item Whether users already use documentation generation tools, and if so, which ones?
+    \item What do users feel is missing from the tools they use?
+    \item What do users believe should be carried over to the new tool from the ones they use?
+    \item Whether users would integrate such tools into their \ref{itm:cicd} pipelines?
+    \item What output formats do users want?
+    \item What operating systems do users want the tool to work on?
+    \item Would users find a \ref{itm:gui} beneficial for such a tool?
+    \item Would users appreciate the tool being extensible via plugins?
+    \item Would users be interested in contributing to the project?
 \end{itemize}
 
 \subsection{Questionnaire results}
@@ -235,19 +239,19 @@ What follows are the responses of the 22 participants of the questionnaire.
 
 \subsection{Questionnaire evaluation} \label{ssec:questionnaireeval}
 
-Those who find a use for such tools, want to export to static \ref{itm:html} and to have the ability to extend the functionality via plugins.
-Other responses displayed a clear division of needs when it comes to \ref{itm:cicd} integration, the target \ref{itm:os}, and the need for a \ref{itm:gui}.
-The dominant documentation generating tool for \ref{gloss:dotnetlabel} is \nameref{ssec:docfx} (see \ref{ssec:docfx}).
+Those who find a use for such tools want to export static \ref{itm:html} and to have the ability to extend the functionality via plugins.
+Other responses displayed a clear division of needs regarding \ref{itm:cicd} integration, the target \ref{itm:os}, and the need for a \ref{itm:gui}.
+The dominant documentation-generating tool for \ref{gloss:dotnetlabel} is \nameref{ssec:docfx} (see \ref{ssec:docfx}).
 
 Questionnaire takeaways:
 
 \begin{itemize}
-    \item The majority neglects the importance of documenting code; thus, those who do and use documentation generating tools are part of a minute subset of all developers (see figure \ref{fig:qUsingToolsForDocGen}).
+    \item The majority neglects the importance of documenting code; thus, those who do and use documentation-generating tools are part of a minute subset of all developers (see figure \ref{fig:qUsingToolsForDocGen}).
     \item The tool should be cross-platform.
     \item The tool must have good performance.
-    \item A console will be used by administrators of \ref{itm:cicd} pipelines and power users, while the \ref{itm:gui} will be useful for the rest.
-    \item Support for \ref{itm:cicd} is essential to fully automate documentation generation.
-    \item Even though the majority seeks to export to static \ref{itm:html} pages (see figure \ref{fig:qOutputFormats}), the project will focus on \ref{gloss:markdown} to fill in the market gap. The rest of the mentioned output formats will receive support later on (see below).
+    \item A console will be used by administrators of \ref{itm:cicd} pipelines and power users, while the \ref{itm:gui} will be for the rest.
+    \item Support for \ref{itm:cicd} is to automate documentation generation fully.
+    \item Even though the majority seeks to export to static \ref{itm:html} pages (see figure \ref{fig:qOutputFormats}), the project will focus on \ref{gloss:markdown} to fill  the market gap. The rest of the mentioned output formats will receive support later (see below).
     \item \textbf{Extensibility via plugins will be the key selling point of the tool - it will enable anybody to modify the functionality to meet their specific needs}.
     \item Future support for \nameref{ssec:docfx} (see \ref{ssec:docfx}) templates will help users migrate from said platform.
 \end{itemize}

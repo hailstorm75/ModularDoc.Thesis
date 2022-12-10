@@ -1,29 +1,29 @@
 \chapter*{Summary}
 \addcontentsline{toc}{chapter}{Summary}
 
-The defined goal of this thesis was reached successfully, by producing a working custom documentation-generating tool for \ref{gloss:dotnetlabel} libraries.
+The defined goal of this thesis was reached successfully by producing a working custom documentation-generating tool for \ref{gloss:dotnetlabel} libraries.
 
 \section*{Goal fulfillment}
 \addcontentsline{toc}{section}{Goals and their fulfillment}
 
-The goal of this thesis was to create a custom documentation generating tool for \ref{gloss:dotnetlabel} projects using appropriate design patterns, and to satisfy user needs for extensibility, easy of use, modern design, support for many output formats, and comparable performance to existing tools.
+This thesis aimed to create a custom documentation-generating tool for \ref{gloss:dotnetlabel} projects using appropriate design patterns and to satisfy user needs for extensibility, ease of use, modern design, support for many output formats, and comparable performance to existing tools.
 
 The resulting project is:
 \begin{itemize}
     \item A set of abstract interfaces defining key parts of the whole application.
-    \item A set of concrete components that are independent from each other.
+    \item A set of concrete components that are independent of each other.
     \item A plugin composed of the developed components for generating \ref{gloss:markdown} documentation.
     \item A \ref{itm:gui} application for hosting plugins and allowing users to configure and execute them.
 \end{itemize}
 
-The decoupled architecture provides maximum extensibility - if a user is missing a feature, they can always add it. The \ref{itm:ui}/\ref{itm:ux} of the tool is simple, with hints and labels, making it easy to use. Thanks to the extensibility, the tools supports endless output formats; however, the resulting project so far supports \ref{gloss:markdown} only. Moreover, the tool is very performant, and can compete with industry standards such as Doxygen.
+The decoupled architecture provides maximum extensibility - if a user is missing a feature, they can always add it. The \ref{itm:ui}/\ref{itm:ux} of the tool is simple, with hints and labels, making it easy to use. Thanks to the extensibility, the tools supports endless output formats; however, the resulting project so far supports \ref{gloss:markdown} only. Moreover, the tool is very performant and can compete with industry standards such as Doxygen.
 
 Given these facts, the goal of this thesis is fulfilled.
 
-\section*{Open source} \label{sec:openSource}
-\addcontentsline{toc}{section}{Open source}
+\section*{Open-source} \label{sec:openSource}
+\addcontentsline{toc}{section}{Open-source}
 
-Source code for ModularDoc can be found on GitHub, as well as the source for this thesis, as it was written using \LaTeX:
+The source code for ModularDoc can be found on GitHub, as well as the source for this thesis, as it was written using \LaTeX:
 \begin{description}
     \item[Project:] \textit{\nolinkurl{https://github.com/hailstorm75/ModularDoc}}
     \item[Thesis:] \textit{\nolinkurl{https://github.com/hailstorm75/ModularDoc.Thesis}}
@@ -32,15 +32,15 @@ Source code for ModularDoc can be found on GitHub, as well as the source for thi
 \section*{Personal achievements}
 \addcontentsline{toc}{section}{Personal achievements}
 
-Reaching this state of the project is an achievement to be proud of. A lot of effort was put into retaining proper modularity and decoupling business logic from specific frameworks and platforms. A broader understanding of documentation and the C\# language was gained, alongside experience with solving complex problems without the assistance of documentation, or help from fellow developers.
+Reaching this state of the project is an achievement to be proud of. Considerable effort was put into retaining proper modularity and decoupling business logic from specific frameworks and platforms. In addition, a broader understanding of documentation and the C\# language was gained, alongside experience with solving complex problems without the assistance of documentation or help from fellow developers.
 
-One of the documented personal goals was to write some of the libraries in F\#. The choice to deviate from C\# had its minor benefits; however, the produced code is very difficult to maintain, specifically in the composer component. The reasons for such a negative result are caused by lack of proper functional programming experience, and limited capabilities of core F\# features.
+One documented personal goal was to write some of the libraries in F\#. The choice to deviate from C\# had minor benefits. The produced code is complicated to maintain, specifically in the composer component. The reasons for such a damaging outcome are caused by lack of proper functional programming experience and limited capabilities of core F\# features.
 
-ModularDoc source code has its flaws, as any software; however, in its current state, this tool can provide true value to its users. And that is an indicator of success.
+ModularDoc source code has flaws, as any software; however, this tool can provide actual value to its users in its current state. And that is an indicator of success.
 
 \section*{Future plans}
 \addcontentsline{toc}{section}{Future plans}
 
-Completing the initial goal was only the beginning. To gain user trust the project needs a suite of tests validating the behavior of the code, and to gain collaborator interest the project needs a well written wiki on how to extend ModularDoc.
+Completing the initial goal was only the beginning. The project needs a suite of tests validating the code's behavior to gain user trust. Furthermore, to gain collaborator interest, the project needs a well-written wiki on how to extend ModularDoc.
 
-By themselves, said tasks are no less complex as creating the tool itself, as great care and attention is required by both to guarantee positive results. Even if the project does not get the desired attention by the open source collaborator community, completing said tasks will only benefit me personally by providing a clear perspective on the state of the code, documentation to use when working on forgotten parts of the project, and the valuable experience in general.
+By themselves, said tasks are no less complex than creating the tool itself, as both require great care and attention to guarantee positive results. Even if the project does not get the desired awareness from the open-source collaborator community, completing said tasks will still provide valuable experience.

@@ -2,10 +2,11 @@
 
 Consult this chapter to learn how to use and extend of ModularDoc.
 
-In the context of this thesis ModularDoc was developed with only one plugin - \ref{gloss:markdown} for \ref{gloss:git}.
+In the context of this thesis, ModularDoc was developed with only one plugin - \ref{gloss:markdown} for \ref{gloss:git}.
 Thus, the user guide covers the tool with this plugin in mind.
 
-The extension guide is designated for those, who wish to extend ModularDoc with new components, or plugin. ModularDoc also allows other areas of the application to be modified; however, due to the complexity and low necessity of these modifications, their description will be omitted from this guide.
+The developer guide is designated for those who wish to extend ModularDoc with new components or plugins.
+ModularDoc also allows other areas of the application to be modified; however, due to the complexity and low necessity of these modifications, their description will be omitted from this guide.
 
 \begin{figure}[H]
     \dirtree{%
@@ -25,12 +26,12 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
 
 \section{User guide}
 
-ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones either provided with this thesis, or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
+ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones provided with this thesis or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
 
 \subsection{Prerequisites}
 
 \begin{itemize}
-    \item A desktop device running either of the following \ref{itm:os}'s:
+    \item A desktop device running either of the following \ref{itm:os}:
     \begin{itemize}
         \item Windows 7+
         \item macOS High Sierra 10.13+\footnote{ModularDoc was not tested on a macOS device, due to lack of Apple hardware}
@@ -47,8 +48,8 @@ The ModularDoc application can be started by running the \textit{ModularDoc.App.
 
 \subsubsection{Home page}
 
-Within the application, the user can selected one of the available plugins and start configuring it via the configuration stepper, then running and saving the configuration in the summary.
-Additionally, the user can load the created configuration, edit it or just run it.
+The user can select one of the available plugins within the application and start configuring it via the configuration stepper, then run and save the configuration on the summary page.
+Additionally, the user can load the created configuration, edit it or run it.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocHomePage.png}
@@ -59,7 +60,7 @@ Additionally, the user can load the created configuration, edit it or just run i
 \begin{enumerate}
     \item Open button for loading previously defined configurations
     \item Settings button for navigating to the settings page
-    \item About button for displaying information about the application
+    \item About button for displaying information about the application (not implemented)
     \item Search entry for filtering the available plugins
     \item One of the available plugins with its icon, title, and short description
 \end{enumerate}
@@ -83,7 +84,7 @@ Additionally, the user can load the created configuration, edit it or just run i
 \pagebreak
 \subsubsection{Configuration wizard}
 
-The configuration wizard presents the selected plugin's steps. Each step's settings are displayed for configuration. The user can view additional help for each active step. Navigating to the next step is possible only is the active one is configured correctly.
+The configuration wizard presents the selected plugin's steps. Each step's settings are displayed for configuration. The user can view additional help for each active step. Navigating to the next step is possible only if the active one is configured correctly.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocConfigurator.png}
@@ -102,7 +103,7 @@ The configuration wizard presents the selected plugin's steps. Each step's setti
 \pagebreak
 \subsubsection{Summary page}
 
-Completing the last plugin step navigates to the summary page, which executes the plugin using the created configuration. The execution processes are displayed, alongside their progress. Each process logs messages, that can be grouped by the process source and log type. At this stage, it is possible to save the configuration, go back to the configuration wizard, or return to the home page.
+Completing the last plugin step navigates to the summary page, which executes the plugin using the created configuration. The execution processes are displayed alongside their progress. Each process logs messages, that can be grouped by the process source and log type. At this stage, it is possible to save the configuration, return to the configuration wizard, or return to the home page.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocSummary.png}
@@ -138,7 +139,7 @@ Completing the last plugin step navigates to the summary page, which executes th
 \pagebreak
 \subsubsection{Settings page}
 
-The applications settings allow the user to toggle its theme between dark mode and light mode.
+The application settings allow the user to toggle its theme between dark and light modes.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocSettings.png}
@@ -154,7 +155,7 @@ The applications settings allow the user to toggle its theme between dark mode a
 \pagebreak
 \subsection{Markdown for Git plugin}
 
-The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed specifically for processing \ref{gloss:dotnetlabel} libraries written in C\# and outputting developer documentation in \ref{gloss:markdown} form suitable for \ref{gloss:git} platforms such as GitHub or GitLab.
+The \ref{gloss:markdown} for \ref{gloss:git} plugin is designed to process \ref{gloss:dotnetlabel} libraries written in C\# and output developer documentation in \ref{gloss:markdown} form suitable for \ref{gloss:git} platforms such as GitHub or GitLab.
 
 \subsubsection{Assemblies step}
 
@@ -177,7 +178,7 @@ The assemblies step is designated for selecting file paths to \ref{gloss:dotnetl
 \pagebreak
 \subsubsection{Documentation step}
 
-The documentation step is designated for checking whether all provided assemblies and executables have their documentation files present. It is not possible to proceed to the next step if a documentation file is missing. Unfortunately, the version of ModularDoc provided with this thesis does not permit ignoring or finding missing documentation.
+The documentation step checks whether all provided assemblies and executables have their documentation files present. If a documentation file is missing, it is impossible to proceed to the next step. Unfortunately, the version of ModularDoc provided with this thesis does not permit ignoring or finding missing documentation.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocDocumentation.png}
@@ -193,7 +194,7 @@ The documentation step is designated for checking whether all provided assemblie
 \pagebreak
 \subsubsection{Linker step}
 
-The linker step is designated for configuring linking settings such that they are valid for the target \ref{gloss:git} hosting platform.
+The linker step is designated for configuring linking settings to be valid for the target \ref{gloss:git} hosting platform.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocLinker.png}
@@ -210,7 +211,7 @@ The linker step is designated for configuring linking settings such that they ar
 \pagebreak
 \subsubsection{Global step}
 
-The global step is designated for configuring both the generated documentation target output paths, and ignored namespaces and types.
+The global step is designated for configuring both the generated documentation target output paths and ignored namespaces and types.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocGlobalSettings.png}
@@ -242,8 +243,8 @@ Plugins are installed by placing them in the \textit{Plugins} folder (see figure
 
 \subsection{Accessing the source code}
 
-This thesis is provided with source for for ModularDoc.
-To access the latest source code, clone it from the projects repository on GitHub:
+This thesis is provided with source code for ModularDoc.
+To access the latest source code, clone it from the project's repository on GitHub:
 
 \begin{lstlisting}[caption=Script for cloning the ModularDoc project GitHub repository]
     git clone https://github.com/hailstorm75/ModularDoc.git
@@ -286,19 +287,20 @@ To access the latest source code, clone it from the projects repository on GitHu
 \end{figure}
 
 Open the \textit{ModularDoc.sln} assembly to start development on the project.
-Compiling the solution will generated the \textit{bin/} folder in the root folder.
+Compiling the solution will generate the compiled libraries to the \textit{bin/} folder found in the root of the folder structure (see figure \ref{fig:sourceCodeFileStructure}).
 
 \subsection{Developing a new component}
 
 Follow these steps to develop a new component:
 \begin{enumerate}
-    \item Decide which for which key area to develop a new component, e.g. element provider
+    \item Decide for which key area to develop a new component, e.g., element provider
     \item Create a new project in the respective folder (in this case, \textit{Components/Elements})\linebreak with the following naming scheme - \textbf{ModularDoc.Elements.MY\_COMPONENT}
     \item Configure the project in the same way as one of the other existing provider components
     \item Inherit the respective interface from \textit{Libraries/Core} in the new component (in this case,\linebreak \textit{ModularDoc.Elements})
     \item Based on the interface definitions, implement the new component
 \end{enumerate}
 
+\pagebreak
 \subsection{Developing a new plugin}
 
 Follow these steps to develop a new plugin:
@@ -314,11 +316,11 @@ Follow these steps to develop a new plugin:
         \item Configure the new project in the same way as one of the other existing view projects
         \item Create views for each defined plugin step and inherit the \textit{BaseStepUserControl\linebreak <TVM,TS>} abstract class
     \end{enumerate}
-    \item Create a new project in \textit{Plugins} folder with the following naming scheme - \textbf{ModularDoc.Plugins.MY\_PLUGIN}
+    \item Create a new project in the \textit{Plugins} folder with the following naming scheme - \textbf{ModularDoc.Plugins.MY\_PLUGIN}
     \begin{enumerate}
         \item Configure the new project in the same way as one of the other existing plugins
         \item Reference the \textit{Libraries/Core/ModularDoc.Core} library
-        \item Create a type representing the plugin instance, inherit the plugin interface from the referenced core library, and inherit the \textit{Autofac.Module} class
+        \item Create a type representing the plugin instance, and inherit the plugin interface from the referenced core library, and inherit the \textit{Autofac.Module} class
         \item Create types representing plugin configuration steps that inherit the \textit{IPluginStep} interface
         \item Register all desired components
         \item Register all created view models

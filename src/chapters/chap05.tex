@@ -1,35 +1,37 @@
 \chapter{Evaluation and project planning} \label{chap:evalProjPlan}
 
 This milestone will focus on planning development steps and guidelines based on the evaluation of the previous milestone (see \ref{chap:proofConcept}).
-A concrete plan will help develop a maintainable, quality application with a clear vision of a path towards the target goal.
+A concrete plan will help develop a maintainable, quality application with a clear vision of a path toward the target goal.
 
 \section{Evaluation}
 
 \subsection{Project hosting platform}
 
-The final project shall be open source and will be hosted on GitHub.
-These decisions were made to allow external contributions, reach a niche target demographic, and to have access to freemium GitHub features, which are offered for free to open source projects.
+The final project shall be open-source and use GitHub to host its source code.
+That is to allow external contributions, reach a niche target demographic, and access freemium GitHub features, which accessible to open-source projects.
 
-GitHub was chosen over GitLab, the second best contender, because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
+GitHub was chosen over GitLab, the second-best contender because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
 
 \subsection{Technology stack}
 
+The technology stack defines what technology will be used for development.
+
 \subsubsection{Frameworks}
 
-The proof of concept application (see \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework} and is hosted on GitLab\footnote{https://gitlab.com/hailstorm75/markdoc}. The resulting project shall be developed using \nameref{sec:netCore}, as it is the new development platform from Microsoft (see \ref{chap:overviewNET}). There are no reasons to stick with the old development platform.
+The proof of concept application (see \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework}. The resulting project will use \nameref{sec:netCore} as it is Microsoft's latest development platform (see \ref{chap:overviewNET}). There are no reasons to stick with the old development platform.
 
 \subsubsection{Languages}
 
 C\# will be the primary programming language, as it is the dominant language for the \ref{gloss:dotnetlabel} platform.
-F\# shall be used sparsely to fulfill a personal goal of exploring said languages capabilities.
+F\# shall be used sparingly to fulfill a personal goal of exploring said language's capabilities.
 
 \subsubsection{DI Framework}
 
-For \ref{itm:di} the project shall use Autofac, which is a popular library with suitable features for this project. Choosing any other library would require investing additional time into learning how to use it; thus, no further analysis of available \ref{itm:di} frameworks was conducted.
+For \ref{itm:di}, the project shall use \textit{Autofac}, a popular library with suitable features for this project. Choosing any other library would require investing additional time into learning how to use it; thus, no further analysis of available \ref{itm:di} frameworks was conducted.
 
 \subsubsection{\ref{itm:gui} framework} \label{sec:guiFramework}
 
-The \ref{gloss:dotnetlabel} ecosystem offers a rich selection of \ref{itm:gui} frameworks to chose from. What follows is a list of available frameworks during the time of analysis.
+The \ref{gloss:dotnetlabel} ecosystem offers a rich selection of \ref{itm:gui} frameworks to choose from. What follows is a list of available frameworks during the time of analysis.
 
 \textbf{From Microsoft:}
 \begin{itemize}
@@ -41,38 +43,40 @@ The \ref{gloss:dotnetlabel} ecosystem offers a rich selection of \ref{itm:gui} f
     \item Blazor.
 \end{itemize}
 
-\textbf{From the open source community:}
+\textbf{From the open-source community:}
 \begin{itemize}
-    \item Avalonia UI.
+    \item \textit{AvaloniaUI}.
     \item UNO Platform.
     \item Eto.
 \end{itemize}
 
-The project is a developer tool for generating documentation; thus, it does not make sense to host it in the web, nor on mobile. This leaves only desktop \ref{itm:gui} frameworks. The only challenge is to pick one, which provides cross-platform capabilities. The cross-platform targets would be Windows \ref{itm:os}, Linux-based distributions, and Mac \ref{itm:os}.
-Linux is the most crucial platform, as developers might want to run the tool on their \ref{itm:cicd} servers. It is possible that some of those servers would have a desktop interface, instead of just a \ref{itm:cli}.
+The project is a developer tool for generating documentation; thus, it does not make sense to host it on the web or mobile. That leaves only desktop \ref{itm:gui} frameworks. The only challenge is to pick one which provides cross-platform capabilities. The cross-platform targets would be Windows \ref{itm:os}, Linux-based distributions, and Mac \ref{itm:os}.
+Linux is the most crucial platform, as developers might want to run the tool on their \ref{itm:cicd} servers. It is possible that some of those servers would have a desktop interface instead of just a \ref{itm:cli}.
 
-At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. And even when the company released their new framework, .NET MAUI, it did not include support for Linux.
+At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. Furthermore, even when the company released its new framework, .NET MAUI, it did not include support for Linux.
 
-This leaves community built solutions.
-Out of the three, Avalonia UI was the easiest to get up and running, and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The UNO Platform is very powerful on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was not possible to even start the demo application. Eto is also a cross-platform framework, but it has a small community with few to no additional libraries to use.
+That leaves community-built solutions.
+Of the three, \textit{AvaloniaUI} was the easiest to get up and running and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The UNO Platform is very ompelling on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was impossible even to start the demo application. Eto is also a cross-platform framework but has a small community with few additional libraries.
 
-Most \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks use \ref{itm:mvvm} as their architecture, including Avalonia UI.
+Most \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks use \ref{itm:mvvm} as their architecture, including \textit{AvaloniaUI}.
 
-Hence, the selected \ref{itm:gui} framework for the project is Avalonia UI.
+Hence, the selected \ref{itm:gui} framework for the project is \textit{AvaloniaUI}.
 
 \section{Development planning}
+
+Development planning analyzes how the application will be developed and summarizes everything in the development stages (see \ref{sec:developmentStages}).
 
 \subsection{Project architecture} \label{sec:projectArchitecture}
 
 Applying \ref{itm:solid} principles helped envision an architecture of a maintainable and extendable application.
-The primary principle, Single responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its individual key role in the application.
+The primary principle, Single responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its vital role in the application.
 
-The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every key dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped, and even rearranged at will. This factor allows for flexible extensibility and fulfills the Open-closed principle from \ref{itm:solid}.
+The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every critical dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped and rearranged at will. This factor allows for flexible extensibility and fulfills the Open-closed principle of \ref{itm:solid}.
 
 Implementing such an architecture would require defining said decoupled interfaces first.
-The next step would be to create specific implementations of said interfaces. E.g., \textit{Diagram Generator} would be the interface, while \textit{PlatUML Diagram generator}, or \textit{MermaidJS Diagram generator} would be the specific implementations deriving from said interface.
+The next step would be to create specific implementations of said interfaces. E.g., \textit{Diagram Generator} would be the interface, while \textit{PlatUML Diagram generator} or \textit{MermaidJS Diagram generator} would be the specific implementations deriving from said interface.
 
-Specific implementations of an interface will be referred to as \textbf{components}. Given that there might be various implementations of one interface, a group of specific implementations would be referred to as a \textbf{plugin}. A user would install only those plugins that they need for their task. And a developer would create a custom plugin by grouping specific components that either already exist, or they would have written themselves.
+Specific implementations of an interface will be referred to as \textbf{components}. Given that there might be various implementations of one interface, a group of specific implementations would be referred to as a \textbf{plugin}. A user would install only those plugins that they need for their task. Moreover, a developer would create a custom plugin by grouping specific components that already exist or they would have written themselves.
 
 \begin{figure}[H]
     \centering
@@ -174,13 +178,13 @@ Each such part will be represented using an interface, as described above (see \
 
 The member provider will be responsible for loading type and member data from a given collection of sources into a collection of a defined data structure.
 This collection will then be provided to the consumer of this key part via the relevant interface.
-A concrete implementation of the interface would define the source type and the method for processing said source.
+A concrete interface implementation would define the source type and the method for processing the given source.
 
 \subsubsection{Documentation provider}
 
-The documentation provider will be responsible for loading documentation for specific types and members from a given collection of sources and mapping said documentation to the relevant types and members.
+The documentation provider will be responsible for loading documentation for specific types and members from a given collection of sources, and mapping said documentation to the relevant types and members.
 The map will then be available for querying to consumers of this key part via the relevant interface.
-A concrete implementation of the interface would define the source type and the method for processing said source.
+A concrete interface implementation would define the source type and the method for processing given source source.
 
 \subsubsection{Element provider} \label{sec:elementProvider}
 
@@ -194,42 +198,42 @@ The element provider will be responsible for providing structural elements for t
     \item[Pages] content separators containing sections
 \end{description}
 
-Consumers of this provider would create required elements via the relevant interface.
+Consumers of this provider would create the required elements via the relevant interface.
 A concrete implementation of the interface would define how said elements are to be represented, e.g. \ref{gloss:markdown}, \ref{itm:html}, \LaTeX.
 
 \subsubsection{Diagram generator}
 
-The diagram generator will be primarily responsible for creating inheritance diagrams for the provided types. Additional diagram features such as a class structure, EF Core relational model, etc. won't be part of this thesis.
-A concrete implementation of this interface would define how said diagrams will be delivered, e.g., as text, or as a link to a file.
+The diagram generator will primarily create inheritance diagrams for the provided types. Additional diagram features, such as a class structure, relational database models, etc. won't be part of this thesis.
+A concrete interface implementation would define how said diagrams will be delivered, e.g., as text, or as a link to a file.
 In the case of text, they could be delivered as \ref{gloss:asciiart}, a PlantUML or MermaidJS diagrams.
 
 \subsubsection{Linker}
 
-The linker interface will be responsible for creating links between resolved types, and anchor links to sections of documentation pages.
+The linker interface will create links between resolved types and anchor links to sections of documentation pages.
 A concrete implementation of this interface would define how said links are to be generated to fit the target platform, e.g., GitHub and GitLab have different link formats.
 
 \subsubsection{Composer} \label{sec:composer}
 
-The composer interface will be responsible for iterating through the resolved data, combining and filtering it, then composing it into section and page elements from the respective provider (see \Nameref{sec:elementProvider}).
+The composer interface will iterate through the resolved data, combining and filtering it, then composing it into section and page elements from the respective provider (see \Nameref{sec:elementProvider}).
 Specific implementations of this interface would define the result of the composition.
 
 \subsubsection{Printer}
 
-The printer interface will be responsible for exporting the composed elements (see \Nameref{sec:composer}) into the desired format.
+The printer interface will export the composed elements (see \Nameref{sec:composer}) into the desired format.
 Specific implementations will define how and where the result is exported.
 
 \subsection{\ref{itm:gui} application}
 
 Based on the developer needs analysis (see \ref{sec:whatdouserswant}), users of such a tool expect a \ref{itm:cli} application. However, configuring such an extensible tool via the command line can be overwhelming.
-This can be solved by providing a \ref{itm:gui} application for creating configurations, testing them, and later creating a \ref{itm:cli} for executing the generated configurations in, for example, a \ref{itm:cicd} pipeline.
-To summarize, the purpose of this application would be to provide
+That is solved by providing a \ref{itm:gui} application for creating configurations, testing them, and later creating a \ref{itm:cli} for executing the generated configurations in, for example, a \ref{itm:cicd} pipeline.
+To summarize, the purpose of this application would be to provide.
 
 \subsection{Plugin structure}
 
-As described in \Nameref{sec:projectArchitecture}, plugins will wrap a combination of specific components that define the plugin's functionality.
-Since components are supposed to be independent from one another, they must be individually configured.
-Thus, the plugin must provide configuration steps for the application to consume, and display to the user.
-The internal architecture of the plugin is up-to its developer, the only mandatory conditions are:
+As described in \Nameref{sec:projectArchitecture}, plugins will combine specific components that define the plugin's functionality.
+Since components are supposed to be independent, they must be individually configured.
+Thus, the plugin must provide configuration steps for the application to consume and display to the user.
+The internal architecture of the plugin is up to its developer; the only mandatory conditions are:
 \begin{itemize}
     \item Provide configuration steps for the components.
     \item Provide an endpoint for executing the configured components.
@@ -252,13 +256,13 @@ Since the project is divided into interfaces, components, plugins, and the \ref{
     \item \label{num:stage10} Create the \ref{gloss:markdown} plugin
 \end{enumerate}
 
-Completing all these steps will be the solution to the goal of this thesis. For the sake of simplicity, said libraries will be developed specifically for processing \ref{gloss:dotnetlabel} projects written in C\#.
+Completing all these steps will be the solution to the goal of this thesis. For simplicity, said libraries will be developed specifically for processing \ref{gloss:dotnetlabel} projects written in C\#.
 
 \section{Project name}
 
-The last crucial decision is choosing a name for the custom documentation generating tool, as referring to it using said description is impractical at this stage of the project.
-As this is an open source project for developers, there are few to no constraints for the project name.
-Nevertheless, it is still a good idea to choose something easy to read, pronounce, and understand, while describing the project.
+The last crucial decision is choosing a name for the custom documentation-generating tool, as referring to it using said description is impractical at this project stage.
+As this is an open-source project for developers, there are few to no constraints on the project name.
+Nevertheless, choosing something easy to read, pronounce, and understand while describing the project is still a good idea.
 This requirement helps prevent naming the project using abbreviations, complex words, or words that have nothing to do with the project.
 
 Thus, the developed custom documentation generating tool will be called \textbf{ModularDoc} because this name is:

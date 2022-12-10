@@ -1,7 +1,7 @@
 \chapter{.NET documentation} \label{chap:netDocumentation}
 
-A complete understanding of the \ref{gloss:dotnetlabel} developer documentation system is essential for valid planning and development.
-This chapter describes the concept of \ref{gloss:dotnetlabel} documentation in general, and analyzes each type of documentation tag.
+A complete understanding of the \ref{gloss:dotnetlabel} developer documentation system is essential for proper planning and development.
+This chapter describes the concept of \ref{gloss:dotnetlabel} documentation in general and analyzes each type of documentation tag.
 
 \section{Concept}
 
@@ -50,10 +50,10 @@ All following examples will be in C\#, as it is the dominant language of the pla
 \section{Documentation tags}
 
 The following is a list of supported \ref{itm:xml} tags for documenting source code.
-Tags that are described as root tags are top-level; therefor, they cannot be placed within other documentation tags.
-Tags that are described as paired tags can contain a subset of other tags within themselves, along with text values.
+Tags described as root tags are top-level; therefore, they cannot exist within other documentation tags.
+Paired tags can contain a subset of other tags and text values.
 Meanwhile, non-paired tags can only provide additional information via their attributes.
-Style tags are used to change the way the documentation text is displayed.
+Finally, style tags change the way the documentation text is displayed.
 
 \subsection{General tags}
 
@@ -295,6 +295,7 @@ Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to d
 \begin{itemize}
     \item Specifies an example usage of given type or member
     \item Paired tag
+    \item Style tag
 \end{itemize}
 
 \begin{lstlisting}[caption=Example tag]

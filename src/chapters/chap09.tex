@@ -4,25 +4,26 @@ One of the goals of this thesis was to ensure that the resulting application per
 
 The thesis project source code would be used for benchmarking performance.
 Specifically, projects containing the shared interfaces shall be used as the source of processing\footnote{Located in the solution folder, \textit{Libraries/Core/}. Everything except the \textit{Constants} project.}.
-The tests will run on a Windows Operating System, and shall compare performance of the project to DocFX, and Doxygen. Source browser was excluded due to unclear instructions and inability to make it work using existing examples. Other solutions were also excluded as they do not produce proper documentation.
+The tests will run on a Windows \ref{itm:os} and shall compare the performance of ModularDoc to DocFX, and Doxygen. Source browser was excluded due to unclear instructions and the inability to make it work using existing examples. Other solutions were also excluded as they do not produce proper documentation.
 
-Testing will measure elapsed time for generating the documentation. This will be done by running each tool via Windows PowerShell using the \textit{Measure-Command}. If the resulting tool is consistently perceived to be considerably slower than existing tools, then the performance requirement can be deemed as unsatisfied.
+Testing will measure elapsed time for generating the documentation. This will be done by running each tool via Windows PowerShell using the \textit{Measure-Command}. If the resulting tool is consistently perceived to be considerably slower than existing tools, then the performance requirement can be deemed unsatisfactory.
 
 \section{Configurations}
 
-Each tool required configuration to work properly. What follows is a description of how said tools were configured.
+Each tool required configuration to work correctly. What follows is a description of how said tools were configured.
 
 \subsection{ModularDoc}
 
-The performed benchmarking is relevant for the \ref{gloss:markdown} for \ref{gloss:git} plugin, as it is currently the only available plugin for the tool.
-For consistency, a console-based application\footnote{The console can be found in the repository as \textit{ModularDoc.CLI}} was created that loads the defined configuration and simply executes it.
-The console application is missing crucial features such as argument validation, error handling, etc.; thus, it primarily serves for testing purposes.
+The performed benchmarking is relevant for the \ref{gloss:markdown} for \ref{gloss:git} plugin, as it is currently the only available plugin for the tool. For consistency, a console-based application was created that loads the defined configuration and executes it. The console application
+is missing crucial features such as argument validation and error handling; thus, it primarily serves testing purposes.
+
+The plugin was configured to output structured documentation for GitHub; however, modifications to the configuration affected performance insignificantly.
 
 \subsection{Doxygen}
 
-Configuring Doxygen was a simple and intuitive process, making it a worthy contender. The tool was configured to:
+Configuring Doxygen was simple and intuitive, making it a worthy contender. The tool was configured to:
 \begin{itemize}
-    \item Document all entities, and not exclude those without documentation.
+    \item Document all entities and include those without documentation.
     \item Optimize results for Java or C\# output.
     \item Generate plain \ref{itm:html} output with search capabilities.
     \item Use the built-in class diagram generator.
@@ -32,7 +33,7 @@ Version \textit{1.9.5} was used for testing.
 
 \subsection{DocFX}
 
-Configuring DocFX was not an intuitive process, as everything is done via the \ref{itm:cli}. However, the documentation was sufficient for configuring the tool to process only the desired input.
+Configuring DocFX could have been more intuitive, as everything is done via the \ref{itm:cli}. However, the documentation was sufficient for configuring the tool to process only the desired input.
 
 Version \textit{2.59.4} was used for testing.
 
@@ -53,6 +54,6 @@ Version \textit{2.59.4} was used for testing.
     \caption{Documentation generating tools performance comparison}
 \end{table}
 
-As clearly shown, ModularDoc is at least ten times faster than Doxygen, and a hundred times faster than DocFX.
-This is most likely because the ModularDoc is specifically designed for \ref{gloss:dotnetlabel} projects, whereas the other two are polyglots that support different languages and project types.
-Additionally, the tool was designed with performance in mind, and utilizes caching techniques, lazy loading, and, most importantly, generates documentation via reflection.
+As clearly shown, ModularDoc is at least ten times faster than Doxygen and a hundred times faster than DocFX.
+That is likely because the ModularDoc is designed explicitly for \ref{gloss:dotnetlabel} projects, whereas the other two are polyglots that support different languages and project types.
+Additionally, the tool was designed with performance in mind. ModularDoc utilizes caching techniques, lazy loading, and, most importantly, uses reflection instead of parsing source code.

@@ -108,33 +108,33 @@ The \ref{gloss:markdown} for \ref{gloss:git} plugin will be composed of componen
     \label{fig:pluginStructure}
 \end{figure}
 
-Figure \ref{fig:pluginStructure} depicts relations between each component, the input folder, and the output folder. The member and documentation providers operate in parallel, and supply necessary data to the composer component by processing files from the input folder.
-The composer component depends on the element provider, linker, and diagram generator for composing the extracted data into a structured documentation.
-Finally, the structured documentation is fed into the printer component, which simply generated the physical files into the designated output folder.
+Figure \ref{fig:pluginStructure} depicts the relations between each component, input folder, and output folder. First, the member and documentation providers operate in parallel and supply necessary data to the composer component by processing files from the input folder.
+Next, the composer component depends on the element provider, linker, and diagram generator for composing the extracted data into a structured documentation.
+Finally, the structured documentation is fed into the printer component, which generates the physical files into the designated output folder.
 
 \section{Plugin configuration steps}
 
-The plugin must provide configuration steps for the user to set how each component should operate. It is not necessary for the plugin to provide configuration steps for every component, as some might not be configurable. Additionally, the plugin might provide configurations that affect more than one component.
+The plugin must provide configuration steps for the user to set how each component should operate. The plugin does not need configuration steps for every component, as some might not be configurable. Additionally, the plugin might provide configurations that affect more than one component.
 
-In the case of the \ref{gloss:markdown} for \ref{gloss:git} plugin, the following configuration steps are necessary in this order specifically:
-\begin{itemize}
+In the case of the \ref{gloss:markdown} for \ref{gloss:git} plugin, the following configuration steps are necessary in this order precisely:
+\begin{enumerate}
     \item Member provider.
     \item Documentation provider.
     \item Linker.
     \item Global configuration.
-\end{itemize}
+\end{enumerate}
 
 \pagebreak
 \subsection{Member provider}
 
-The member provider configuration would be labeled to the user as the \textbf{Assembly} processing component, because they would select the desired paths to assemblies and executable \ref{gloss:dotnetlabel} files for processing. The selection process can be performed in the following ways:
+The member provider configuration would be labeled to the user as the \textbf{Assembly} processing component because they would select the desired paths to assemblies and executable \ref{gloss:dotnetlabel} files for processing. The selection process can be performed in the following ways:
 \begin{itemize}
-    \item By providing the path in the text input manually, and pressing the add button.
+    \item By providing the path in the text input manually and pressing the add button.
     \item By pressing the search button and selecting the desired paths via the file browser
     \item By pressing the add button when the text input is empty and selecting the desired paths via the file browser
 \end{itemize}
 
-The user can move to the next step once at least one path is provided. Paths can be removed individually, if needed. Each path has the filename highlighted for improved readability.
+The user can move to the next step once at least one path is provided. Individual paths can be removed if needed. Each path has the filename highlighted for improved readability.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockMember provider.png}
@@ -145,7 +145,7 @@ The user can move to the next step once at least one path is provided. Paths can
 \pagebreak
 \subsection{Documentation provider}
 
-The documentation provider step displays the automatically discovered documentation files, alongside those that are missing. The initial vision was to allow the user to resolve the missing files either by ignoring their absence, or locating them on their device. However, this was not implemented due to limited development time, and the missing paths are simply displayed without the options for ignoring and finding.
+The documentation provider step displays the automatically discovered documentation files alongside those missing. The initial vision was to allow the user to resolve the missing files by ignoring their absence or locating them on their device. However, this was not implemented due to limited development time, and the missing paths are simply displayed without the options for ignoring and finding.
 
 All paths have the filename highlighted for improved readability.
 
@@ -160,9 +160,9 @@ All paths have the filename highlighted for improved readability.
 
 The linker step displays configuration options that target specific \ref{gloss:git} platforms. The user can generate documentation either for GitHub or GitLab. The choice affects the generated link format, which is platform-specific.
 
-Next, they can decide whether the documentation will be hosted in the repository alongside the source code, or the wiki pages. This option is necessary for GitHub, since its wiki limits its users to a flat file structure, whereas GitLab allows structuring documentation into folder in their wiki. Moreover, GitHub does not allow uploading multiple pages to the wiki in bulk. Thus, if there is a lot of documentation, a user would most likely need to use the option for hosting documentation alongside the source code.
+Next, they can decide whether the documentation will be hosted in the repository alongside the source code or the wiki pages. This option is necessary for GitHub since its wiki limits its users to a flat file structure, whereas GitLab allows structuring documentation into folders in its wiki. Moreover, GitHub does not allow uploading multiple pages to the wiki in bulk. Thus, if there is much of documentation, a user would most likely need to use the option for hosting documentation alongside the source code.
 
-Finally, it is possible to explicitly choose whether the documentation is generated flat, or structured into individual folders. This option is relevant for GitLab, as it allows both.
+Finally, it is possible to explicitly choose whether the documentation is generated flat or structured into individual folders. This option is relevant for GitLab, as it allows both.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockLink provider.png}
@@ -173,9 +173,9 @@ Finally, it is possible to explicitly choose whether the documentation is genera
 \pagebreak
 \subsection{Global configuration}
 
-The global configuration affects all components, as it provides a filter for excluding specific namespaces and types from being processed. Additionally, it allows users to specify the output folder for the generated documentation.
+The global configuration affects all components. It provides a filter for excluding specific namespaces and types from being processed. Additionally, it allows users to specify the output folder for the generated documentation.
 
-Namespaces and types are ignored by unchecking nodes representing them. If a given node with children (e.g. a namespace) is unchecked, its children will also be ignored. Types are italicized for improved readability.
+Namespaces and types are ignored by unchecking the nodes representing them. If a given node with children (e.g., a namespace) is unchecked, its children will also be ignored. Types are italicized for improved readability.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockGlobal settings.png}
