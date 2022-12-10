@@ -124,11 +124,17 @@ In the case of the \ref{gloss:markdown} for \ref{gloss:git} plugin, the followin
     \item Global configuration.
 \end{itemize}
 
+\pagebreak
 \subsection{Member provider}
 
-The member provider configuration would be labeled to the user as the \textbf{Assembly} processing component, because the they would select the desired assemblies and executable \ref{gloss:dotnetlabel} files for processing.
+The member provider configuration would be labeled to the user as the \textbf{Assembly} processing component, because they would select the desired paths to assemblies and executable \ref{gloss:dotnetlabel} files for processing. The selection process can be performed in the following ways:
+\begin{itemize}
+    \item By providing the path in the text input manually, and pressing the add button.
+    \item By pressing the search button and selecting the desired paths via the file browser
+    \item By pressing the add button when the text input is empty and selecting the desired paths via the file browser
+\end{itemize}
 
-The user can move to the next step once at least one file is provided.
+The user can move to the next step once at least one path is provided. Paths can be removed individually, if needed. Each path has the filename highlighted for improved readability.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockMember provider.png}
@@ -136,9 +142,12 @@ The user can move to the next step once at least one file is provided.
     \caption{Mock of the assembly configuration step}
 \end{figure}
 
+\pagebreak
 \subsection{Documentation provider}
 
-The documentation provider step displays the automatically discovered documentation files, alongside those that are missing. Unfortunately, this configuration step does not allow ignoring, or manually specifying documentation file paths, because of limited development time.
+The documentation provider step displays the automatically discovered documentation files, alongside those that are missing. The initial vision was to allow the user to resolve the missing files either by ignoring their absence, or locating them on their device. However, this was not implemented due to limited development time, and the missing paths are simply displayed without the options for ignoring and finding.
+
+All paths have the filename highlighted for improved readability.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockDocumentation provider.png}
@@ -146,6 +155,7 @@ The documentation provider step displays the automatically discovered documentat
     \caption{Mock of the documentation configuration step}
 \end{figure}
 
+\pagebreak
 \subsection{Linker}
 
 The linker step displays configuration options that target specific \ref{gloss:git} platforms. The user can generate documentation either for GitHub or GitLab. The choice affects the generated link format, which is platform-specific.
@@ -160,9 +170,12 @@ Finally, it is possible to explicitly choose whether the documentation is genera
     \caption{Mock of the linker configuration step}
 \end{figure}
 
+\pagebreak
 \subsection{Global configuration}
 
 The global configuration affects all components, as it provides a filter for excluding specific namespaces and types from being processed. Additionally, it allows users to specify the output folder for the generated documentation.
+
+Namespaces and types are ignored by unchecking nodes representing them. If a given node with children (e.g. a namespace) is unchecked, its children will also be ignored. Types are italicized for improved readability.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockGlobal settings.png}
