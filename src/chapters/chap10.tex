@@ -154,26 +154,54 @@ Plugins are installed by placing them in the \textit{Plugins} folder (see figure
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocAssemblies.png}
     \label{fig:modularAssemblies}
-    \caption{Plugin assembly provider configuration}
+    \caption{Plugin assembly configuration step}
 \end{figure}
+
+\begin{enumerate}
+    \item Input field for supplying a path to an assembly or executable
+    \item Button for opening the file browser and selecting assemblies or executables
+    \item Button for adding the supplied path via the input field, or opening the file browser (see 2) whenever the input field is empty
+    \item Button for removing the entered path to an assembly or executable
+    \item The path with the filename highlighted
+\end{enumerate}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocDocumentation.png}
     \label{fig:modularDocumentation}
-    \caption{Plugin documentation provider configuration}
+    \caption{Plugin documentation configuration step}
 \end{figure}
+
+\begin{enumerate}
+    \item List of missing documentation files
+    \item List of automatically discovered documentation files
+\end{enumerate}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocLinker.png}
     \label{fig:modularLinker}
-    \caption{Plugin linker configuration}
+    \caption{Plugin linker configuration step}
 \end{figure}
+
+\begin{enumerate}
+    \item Selection of the target platform - GitHub or GitLab
+    \item Toggle for the output target - source or wiki
+    \item Toggle for the output structure - flat or structured
+\end{enumerate}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocGlobalSettings.png}
     \label{fig:modularGlobal}
-    \caption{Plugin global configuration}
+    \caption{Plugin global configuration step}
 \end{figure}
+
+\begin{enumerate}
+    \item Input field for supplying the generated documentation target output path
+    \item Button for opening the folder browser to selected the generated documentation target output path
+    \item Buttons for either expanding or collapsing the ignore list
+    \item Namespace entry
+    \item Type entries
+    \item Nested type entry
+\end{enumerate}
 
 \section{Extension guide}
 
