@@ -7,14 +7,14 @@ Creating a proof of concept application is the ideal first step when numerous un
 \subsection{Documentation extraction methods}
 When retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy involves writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, the source files might not even be compilable, or a radical update to the code syntax might occur that the tool must cover. That results in unknowns that would have to be handled by the source code parser.
 
-There might not be a need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code. Its capabilities are exposed via APIs that developers can access to create custom tools. That would be a great solution if not for the dependency on the Roslyn compiler. Unfortunately, with said dependency present, it is impossible to create a standalone tool that would work on any system, regardless of whether \ref{gloss:dotnetlabel} developer tools are present.
+There might not be a need to write a custom parser, as Microsoft has already done that - the \ref{gloss:dotnetlabel} compiler, Roslyn, is fully capable of parsing source code \cite{wagner_get_nodate}. Its capabilities are exposed via APIs that developers can access to create custom tools. That would be a great solution if not for the dependency on the Roslyn compiler. Unfortunately, with said dependency present, it is impossible to create a standalone tool that would work on any system, regardless of whether \ref{gloss:dotnetlabel} developer tools are present.
 
-Fortunately, reflection is also an option - the ability to examine or modify loaded assemblies during runtime. This feature allows developers to either reflect the running program and its references or load other non-obfuscated assemblies for reflection. This method would require correctly parsing the loaded data from the assemblies; however, unlike the previous alternatives, there is no dependency on the Roslyn compiler, nor is there uncertainty in the quality of the source of data. Given these facts, it should be possible to extract relevant data from assemblies and documentation from the \ref{itm:xml} files (see \ref{chap:netDocumentation}). Of course, both data sources will have to be mapped to each other, e.g., documentation for a given class is mapped to the parsed class signature.
+Fortunately, reflection is also an option - the ability to examine or modify loaded assemblies during runtime \cite{akopyan_introduction_2022}. This feature allows developers to either reflect the running program and its references or load other non-obfuscated assemblies for reflection. This method would require correctly parsing the loaded data from the assemblies; however, unlike the previous alternatives, there is no dependency on the Roslyn compiler, nor is there uncertainty in the quality of the source of data. Given these facts, it should be possible to extract relevant data from assemblies and documentation from the \ref{itm:xml} files (see chapter \ref{chap:netDocumentation}). Of course, both data sources will have to be mapped to each other, e.g., documentation for a given class is mapped to the parsed class signature.
 
 Thus, the proof of concept project will test the possibility of extracting all relevant information via reflection and \ref{itm:xml} files. If it proves possible, then this method could be applied in the real project. Otherwise, using Roslyn is the best alternative.
 
 \subsection{Open-source project hosting platforms}
-Developers have the following cloud platforms to choose from to host their open-source projects:
+Jason van Gumster states in their blogpost \cite{gumster_6_2018} that developers have the following cloud platforms to choose from to host their open-source projects:
 \begin{itemize}
     \item GitHub.
     \item GitLab.
@@ -27,15 +27,13 @@ There are solutions for hosting a project locally on dedicated hardware; however
 
 As an in-depth evaluation and description of each cloud platform would reach outside the scope of this thesis, excuse the brief introduction of said platforms:
 
-\textbf{GitHub}: the most popular platform for open-source projects, providing tools for managing projects and for discovering them.
-
-\textbf{GitLab}: a newcomer to the \ref{gloss:git} hosting space. Primarily focuses on corporate clients; however, it provides powerful features for free to open-source projects.
-
-\textbf{Bitbucket}: a platform commonly used by corporations and seldom for open-source projects
-
-\textbf{Azure DevOps}: just like Bitbucket, but slightly more popular with the open-source community due to integration features with GitHub
-
-\textbf{Sourceforge}: a classic platform for hosting open-source projects before \ref{gloss:git} became mainstream, declining in popularity and usage
+\begin{description}
+    \item[GitHub] the most popular platform for open-source projects, providing tools for managing projects and for discovering them \cite{gumster_6_2018}.
+    \item[GitLab] a leading contender to GitHub, with a comprehensive suite of tools for project management, \ref{itm:cicd}, and test management \cite{gumster_6_2018}.
+    \item[Bitbucket] an enterprise-first \ref{gloss:git} platform \cite{gumster_6_2018}.
+    \item[Azure DevOps] just like Bitbucket, but slightly more popular with the open-source community due to integration features with GitHub.
+    \item[Sourceforge] a classic platform for hosting open-source projects before \ref{gloss:git} became mainstream, declining in popularity and usage \cite{gumster_6_2018}.
+\end{description}
 
 Given previous experience with GitHub and Azure DevOps, the side goal of this stage would be to asses GitLab as potential alternative hosting platform to GitHub by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users could host the generated documentation by the custom tool.
 
@@ -57,6 +55,20 @@ This development stage would focus on analyzing the following questions:
 
 \section{Development results}
 
+The result of this development stage was a proof of concept console application that:
+\begin{itemize}
+    \item Proved reflection as a suitable method of data extraction.
+    \item Reminded the importance of proper design pattern use.
+    \item Provided necessary experience with GitLab as a project hosting platform.
+    \item Provided necessary experience with \ref{gloss:git} hosting platform's support for hosting \ref{gloss:markdown} documentation.
+    \item Helped write a Markdown generator.
+    \item Provided understanding of GitLab and its wiki for hosting the tools generated output.
+\end{itemize}
+
+Given these facts, it was undoubtedly a valuable investment of time and effort.
+
+What follows are details of each analysis.
+
 \subsection{Reflection for data extraction}
 
 Using reflection is sufficient for extracting type and member data from selected assemblies. Nevertheless, this method requires additional effort to work correctly for the following reasons:
@@ -74,14 +86,13 @@ Using reflection is sufficient for extracting type and member data from selected
 
 \subsection{Design pattern importance}
 
-One of the defined goals for this thesis is to produce an extensible application. Applying design patterns such as \ref{itm:solid}, \ref{itm:di}, and \ref{itm:mvvm} helps achieve this goal.
-The proof of concept application was rapidly developed without intentionally applying design patterns. That helped to develop a simple application quickly and showed that incorrect use or absence of design patterns would produce an unmaintainable application.
+The proof of concept application was rapidly developed without intentionally applying design patterns \cite{humblot_design_2021}. That helped to develop a simple application quickly and showed that incorrect use or absence of design patterns would produce an unmaintainable application.
 
 \subsection{Git platforms for hosting open-source projects}
 
 The proof of concept project source code was hosted on GitLab to test said platform's capabilities. Other platforms were not tested in the scope of this thesis.
 
-GitLab is a freemium platform that offers all its features for public open-source projects. In addition, it boasts a competent CI/CD platform and a complete set of tools for Agile development. GitLab includes features for discovering other projects, but it clearly shows that it is not the platform's primary focus.
+GitLab is a freemium platform that offers all its features for public open-source projects. In addition, it boasts a competent \ref{itm:cicd} platform and a complete set of tools for Agile development. GitLab includes features for discovering other projects, but it clearly shows that it is not the platform's primary focus.
 
 On the other hand, GitHub has the upper hand in project discoverability. GitHub is a social platform for developers. It hosts many of projects and has been on the market long enough to be considered a mature platform. Some might view the simplicity of its tools for project management as a downside. Nevertheless, if a project requires complex management tools, GitHub allows users to connect it to Azure DevOps, which has the complete tools for agile development.
 
@@ -89,12 +100,12 @@ On the other hand, GitHub has the upper hand in project discoverability. GitHub 
 
 This stage tested four platforms for their capabilities in hosting source code documentation in their wiki pages: GitLab, GitHub, Bitbucket, and Azure DevOps.
 
-Out of the four, GitLab has the best implementation of their wiki. It offers full support for Markdown and \ref{itm:html} tags.
+Out of the four, GitLab has the best implementation of their wiki. It offers full support for \ref{gloss:markdown} and \ref{itm:html} tags.
 Its wiki is delivered as a separate repository, enabling users to clone and edit pages in bulk. Moreover, its content can be structured into folders for better documentation organization.
 
 Azure DevOps is very similar to GitLab because it hosts wiki pages in a repository; thus, it can be cloned and edited in bulk. Again, the pages are separable into folders. However, the page \ref{itm:url}s contain an additional numeric parameter unique to each page, the purpose of which is unknown. Because of this unknown parameter and rules for its creation, supporting linking between generated documentation pages is impossible.
 
-On the other hadn, GitHub does not offer a way to structure the wiki using folders, nor does it allow users to edit pages in bulk since there is no ability to access the wiki pages as a repository. So, if the custom documentation generating tool would generate a \ref{gloss:markdown} file for each type, then the user would have to manually upload each file using GitHub's UI or upload the documentation with the source code.
+On the other hand, GitHub does not offer a way to structure the wiki using folders, nor does it allow users to edit pages in bulk since there is no ability to access the wiki pages as a repository. So, if the custom documentation-generating tool would generate a \ref{gloss:markdown} file for each type, then the user would have to manually upload each file to the wiki using GitHub's \ref{itm:ui} or upload the documentation with the source code.
 
 Bitbucket has the worst support for wikis.
 Just like GitHub, there is no ability to edit pages in bulk.
@@ -104,15 +115,3 @@ Nevertheless, this is not a problem for clients using Bitbucket, as Atlassian, t
 \subsection{Markdown generator}
 
 Creating a \ref{gloss:markdown} generator provided a deeper insight into the capabilities of the text markup language. In addition, developing the generator was straightforward and did not reveal any issues.
-
-\subsection{Results summary}
-
-The result of this development stage was a proof of concept console application that:
-\begin{itemize}
-    \item Proved reflection as a suitable method of data extraction.
-    \item Reminded the importance of proper design pattern use.
-    \item Helped write a Markdown generator.
-    \item Provided understanding of GitLab and its wiki for hosting the tools generated output.
-\end{itemize}
-
-Given these facts, it was undoubtedly a valuable investment of time and effort.

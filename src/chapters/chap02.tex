@@ -5,8 +5,7 @@ This chapter describes the concept of \ref{gloss:dotnetlabel} documentation in g
 
 \section{Concept}
 
-Source files of a language based on the \ref{gloss:dotnetlabel} platform can have structured comments that produce documentation for types and members defined in said source files. The respective language compiler\footnote{C\# and VB are compiled by Roslyn, while F\# has its own specific F\# compiler} produces an \ref{itm:xml} file that contains structured data representing comments bound to types and members.
-\cite{wagner_xml_2022}
+Source files of a language based on the \ref{gloss:dotnetlabel} platform can have structured comments that produce documentation for types and members defined in said source files \cite{wagner_xml_2022}. The respective language compiler (C\# and VB are compiled by Roslyn, while F\# has its own specific F\# compiler) produces an \ref{itm:xml} file that contains structured data representing comments bound to types and members \ref{gloss:dotnetlabel}.
 
 Documentation comments start with \lstinline{///} (or with \lstinline{'''} for Visual Basic) followed by \ref{itm:xml} tags.
 
@@ -178,6 +177,9 @@ Formatting tags are used style and format the documentation text for improved re
 \end{lstlisting}
 
 \subsubsection*{List} \label{sec:listTag}
+
+Description of the list tag is based on Richard Carr's post \cite{carr_adding_2012}.
+
 \begin{itemize}
     \item Complex style tag for creating:
     \begin{itemize}
@@ -191,7 +193,7 @@ Formatting tags are used style and format the documentation text for improved re
 
 Uses <item/>, <term/>, <description/>, and <listheader/> tags within itself to describe the list or table.
 
-\begin{lstlisting}[caption=List tag]
+\begin{lstlisting}[caption=List tag \cite{carr_adding_2012}]
     /// <summary>
     /// This method can do one of the following:
     /// <list type="bullet">

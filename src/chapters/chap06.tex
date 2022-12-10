@@ -6,7 +6,7 @@ This milestone summarizes the development results of stages \ref{num:stage2} - \
 
 The reflection-based member provider is the most important library of this project, as it shall provide type and member information, which will then be mapped to extracted documentation. If fully implementing this library using reflection fails, the project's complexity would skyrocket, as the only viable option is parsing source code directly.
 
-The proof of concept (see \ref{chap:proofConcept}) was built using \ref{gloss:dotnetlabel} Framework and utilized the built-in reflection capabilities. Moreover, all tests were done on non-complex assemblies without references. That was a fatal oversight. \ref{gloss:dotnetlabel} Core provides reflection capabilities; however, it does not allow loading an assembly without its references. That meant that the researched solution useless, and an alternative had to be found.
+The proof of concept (see chapter \ref{chap:proofConcept}) was built using \ref{gloss:dotnetlabel} Framework and utilized the built-in reflection capabilities. Moreover, all tests were done on non-complex assemblies without references. That was a fatal oversight. \ref{gloss:dotnetlabel} Core provides reflection capabilities; however, it does not allow loading an assembly without its references. That meant that the researched solution useless, and an alternative had to be found.
 
 Fortunately, after considerable effort, it was. The issue was solved by a third-party reflection library called \textit{dnlib}, which is most notably used for obfuscating code in \ref{gloss:dotnetlabel} assemblies using its assembly modification features. For the purposes of reading and extracting required data, \textit{dnlib} was more than sufficient.
 
@@ -72,11 +72,11 @@ Writing the \ref{itm:xml} documentation processing component involved:
 
 \subsection{Tags documentation}
 
-Microsoft's documentation for some tags, such as the list tag (see \ref{sec:listTag}), could be more specific. Such tags have missing examples and details that fully define how to use them. Moreover, Microsoft's IDE, Visual Studio, does not display some of the tags (including the list tag). Thus, research outside Microsft's documentation unnecessarily slowed defining logic for handling such tags.
+Microsoft's documentation for some tags, such as the list tag (see section \ref{sec:listTag}), could be more specific. Such tags have missing examples and details that fully define how to use them. Moreover, Microsoft's IDE, Visual Studio, does not display some of the tags (including the list tag). Thus, research outside Microsft's documentation unnecessarily slowed defining logic for handling such tags.
 
 \subsection{Dependency on the member provider}
 
-Because of the documentation inheritance tag (see \ref{sec:inheritdocTag}), the documentation provider must be capable of locating the source of inheritance. This information is not necessarily present in the source \ref{itm:xml}, as specifying the inheritance source is optional and only needed if more than one source provides unique documentation for a single inherited member.
+Because of the documentation inheritance tag (see section \ref{sec:inheritdocTag}), the documentation provider must be capable of locating the source of inheritance. This information is not necessarily present in the source \ref{itm:xml}, as specifying the inheritance source is optional and only needed if more than one source provides unique documentation for a single inherited member.
 
 Thus, the documentation resolver had to have access to retrieved data from the member provider. Inherited documentation would be lazily loaded once needed. That is to make the documentation provider and member provider work in parallel instead of waiting for one another. This lazy-loading technique is utilized throughout ModularDoc to improve the parallelization of processes dependent on each other.
 
@@ -90,7 +90,7 @@ This component is focused on providing link and anchor formats for a select numb
 
 \section{Markdown elements}
 
-The markdown elements provider component was researched in the proof of concept stage (see \ref{chap:proofConcept}), and the gained knowledge had proven sufficient for implementing this component.
+The markdown elements provider component was researched in the proof of concept stage (see chapter \ref{chap:proofConcept}), and the gained knowledge had proven sufficient for implementing this component.
 
 \section{MermaidJS diagram generator}
 
@@ -98,11 +98,11 @@ The diagram component can generate images and provide links to them or generate 
 
 \section{Composer}
 
-The composer component is one of the most complicated, as it maps the extracted data to each other and fills it into the provided elements. This component was developed in F\# for the same reasons as the linker (see \ref{sec:linker}). Whether or not that was a mistake, is still up to debate; nevertheless, the resulting code is complex and is difficult to maintain.
+The composer component is one of the most complicated, as it maps the extracted data to each other and fills it into the provided elements. This component was developed in F\# for the same reasons as the linker (see section \ref{sec:linker}). Whether or not that was a mistake, is still up to debate; nevertheless, the resulting code is complex and is difficult to maintain.
 
 \subsection{Composed structure}
 
-The composer is responsible for creating the documentation structure. The defined structure was inspired by the one generated by Doxygen (see \ref{sec:doxygen}):
+The composer is responsible for creating the documentation structure. The defined structure was inspired by the one generated by Doxygen (see section \ref{sec:doxygen}):
 \begin{itemize}
     \item Inheritance diagram.
     \item Table of contents for Methods and Properties.

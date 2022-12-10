@@ -1,6 +1,6 @@
 \chapter{Evaluation and project planning} \label{chap:evalProjPlan}
 
-This milestone will focus on planning development steps and guidelines based on the evaluation of the previous milestone (see \ref{chap:proofConcept}).
+This milestone will focus on planning development steps and guidelines based on the evaluation of the previous milestone (see chapter \ref{chap:proofConcept}).
 A concrete plan will help develop a maintainable, quality application with a clear vision of a path toward the target goal.
 
 \section{Evaluation}
@@ -18,11 +18,11 @@ The technology stack defines what technology will be used for development.
 
 \subsubsection{Frameworks}
 
-The proof of concept application (see \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework}. The resulting project will use \nameref{sec:netCore} as it is Microsoft's latest development platform (see \ref{chap:overviewNET}). There are no reasons to stick with the old development platform.
+The proof of concept application (see chapter \ref{chap:proofConcept}) was developed in November 2018 using \nameref{sec:netFramework}. The resulting project will use \nameref{sec:netCore} as it is Microsoft's latest development platform (see chapter \ref{chap:overviewNET}). There are no reasons to stick with the old development platform.
 
 \subsubsection{Languages}
 
-C\# will be the primary programming language, as it is the dominant language for the \ref{gloss:dotnetlabel} platform.
+C\# will be the primary programming language, as it is the dominant language for the \ref{gloss:dotnetlabel} platform \cite{noauthor_tiobe_2022}.
 F\# shall be used sparingly to fulfill a personal goal of exploring said language's capabilities.
 
 \subsubsection{DI Framework}
@@ -32,6 +32,8 @@ For \ref{itm:di}, the project shall use \textit{Autofac}, a popular library with
 \subsubsection{\ref{itm:gui} framework} \label{sec:guiFramework}
 
 The \ref{gloss:dotnetlabel} ecosystem offers a rich selection of \ref{itm:gui} frameworks to choose from. What follows is a list of available frameworks during the time of analysis.
+
+Available \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks, summarized in a blog post \cite{stilgar_state_2018}, are grouped into ones from Microsoft and the open-source community.
 
 \textbf{From Microsoft:}
 \begin{itemize}
@@ -45,33 +47,33 @@ The \ref{gloss:dotnetlabel} ecosystem offers a rich selection of \ref{itm:gui} f
 
 \textbf{From the open-source community:}
 \begin{itemize}
-    \item \textit{AvaloniaUI}.
+    \item AvaloniaUI.
     \item UNO Platform.
     \item Eto.
 \end{itemize}
 
-The project is a developer tool for generating documentation; thus, it does not make sense to host it on the web or mobile. That leaves only desktop \ref{itm:gui} frameworks. The only challenge is to pick one which provides cross-platform capabilities. The cross-platform targets would be Windows \ref{itm:os}, Linux-based distributions, and Mac \ref{itm:os}.
+The project is a developer tool for generating documentation; thus, it does not make sense to host it on the web or mobile. That leaves only desktop \ref{itm:gui} frameworks. The only challenge is to pick one which provides cross-platform capabilities. The cross-platform targets would be Windows \ref{itm:os}, Linux-based distributions, and macOS.
 Linux is the most crucial platform, as developers might want to run the tool on their \ref{itm:cicd} servers. It is possible that some of those servers would have a desktop interface instead of just a \ref{itm:cli}.
 
-At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. Furthermore, even when the company released its new framework, .NET MAUI, it did not include support for Linux.
+At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. Furthermore, even when the company released its new framework, \textit{.NET MAUI}, it did not include support for Linux \cite{anderson_net_2022}.
 
 That leaves community-built solutions.
-Of the three, \textit{AvaloniaUI} was the easiest to get up and running and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The UNO Platform is very ompelling on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was impossible even to start the demo application. Eto is also a cross-platform framework but has a small community with few additional libraries.
+Of the three, \textit{AvaloniaUI} was the easiest to get up and running and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The \textit{UNO Platform} is very ompelling on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was impossible even to start the demo application. \textit{Eto} is also a cross-platform framework but has a small community with few additional libraries.
 
-Most \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks use \ref{itm:mvvm} as their architecture, including \textit{AvaloniaUI}.
+Most \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks use \ref{itm:mvvm} as their architecture, including \textit{AvaloniaUI} \cite{katz_mvvm_2022}.
 
 Hence, the selected \ref{itm:gui} framework for the project is \textit{AvaloniaUI}.
 
 \section{Development planning}
 
-Development planning analyzes how the application will be developed and summarizes everything in the development stages (see \ref{sec:developmentStages}).
+Development planning analyzes how the application will be developed and summarizes everything in the development stages (see section \ref{sec:developmentStages}).
 
 \subsection{Project architecture} \label{sec:projectArchitecture}
 
-Applying \ref{itm:solid} principles helped envision an architecture of a maintainable and extendable application.
-The primary principle, Single responsibility, helps separate operations within the application into key parts (see \ref{sec:projectComponents}), where each part plays its vital role in the application.
+Applying \ref{itm:solid} principle helped envision an architecture of a maintainable and extendable application.
+The primary principle, Single responsibility \cite{hall_adaptive_2017}, helps separate operations within the application into key parts (see section \ref{sec:projectComponents}), where each part plays its vital role in the application.
 
-The \textit{Dependency inversion} principle is applied to inch closer to an extensible application. Every critical dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern; thus, parts of the application can be swapped and rearranged at will. This factor allows for flexible extensibility and fulfills the Open-closed principle of \ref{itm:solid}.
+The \textit{Dependency inversion} principle \cite{hall_adaptive_2017} is applied to inch closer to an extensible application. Every critical dependency is decoupled with an interface, allowing for the \textit{\ref{itm:di}} design pattern \cite{deursen_dependency_2019}; thus, parts of the application can be swapped and rearranged at will. This factor allows for flexible extensibility and fulfills the Open-closed principle of \ref{itm:solid} \cite{hall_adaptive_2017}.
 
 Implementing such an architecture would require defining said decoupled interfaces first.
 The next step would be to create specific implementations of said interfaces. E.g., \textit{Diagram Generator} would be the interface, while \textit{PlatUML Diagram generator} or \textit{MermaidJS Diagram generator} would be the specific implementations deriving from said interface.
@@ -161,7 +163,7 @@ Specific implementations of an interface will be referred to as \textbf{componen
 
 \subsection{Interfaces} \label{sec:projectComponents}
 
-The primary principle, Single responsibility, separated operations within the application into the following key parts:
+The primary principle, Single responsibility \cite{hall_adaptive_2017}, separated operations within the application into the following key parts:
 \begin{itemize}
     \item Member provider.
     \item Documentation provider.
@@ -172,7 +174,7 @@ The primary principle, Single responsibility, separated operations within the ap
     \item Printer.
 \end{itemize}
 
-Each such part will be represented using an interface, as described above (see \ref{sec:projectArchitecture}).
+Each such part will be represented using an interface, as described above (see section \ref{sec:projectArchitecture}).
 
 \subsubsection{Member provider}
 
@@ -224,7 +226,7 @@ Specific implementations will define how and where the result is exported.
 
 \subsection{\ref{itm:gui} application}
 
-Based on the developer needs analysis (see \ref{sec:whatdouserswant}), users of such a tool expect a \ref{itm:cli} application. However, configuring such an extensible tool via the command line can be overwhelming.
+Based on the developer needs analysis (see section \ref{sec:whatdouserswant}), users of such a tool expect a \ref{itm:cli} application. However, configuring such an extensible tool via the command line can be overwhelming.
 That is solved by providing a \ref{itm:gui} application for creating configurations, testing them, and later creating a \ref{itm:cli} for executing the generated configurations in, for example, a \ref{itm:cicd} pipeline.
 To summarize, the purpose of this application would be to provide.
 
