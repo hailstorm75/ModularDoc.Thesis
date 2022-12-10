@@ -27,13 +27,13 @@ The \ref{itm:gui} application serves only as a configuration creator for the ava
     \item Home page.
     \item Settings.
     \item About.
-    \item Configuration stepper.
+    \item Configuration wizard.
     \item Finalizer.
 \end{itemize}
 
 \subsection{Home page}
 
-The home page presents the user with the available plugins. The \ref{itm:ux} is simplistic, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel.
+The home page presents the user with the available plugins. The \ref{itm:ux} is simple, as the user should only select the desired plugin, see its description, and decide whether they wish to use said plugin, or cancel.
 Additionally, the user may wish to load a previously created configuration, so an option for loading that is available.
 In case the application has a larger amount of plugins to offer, the user can search for the desired one via the search filter.
 
@@ -51,7 +51,7 @@ In case the application has a larger amount of plugins to offer, the user can se
 
 \subsection{Settings}
 
-The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes.
+The settings page allows the user to configure the application. Since adding multicultural support would add more complexity to the project, the only setting provided on this page is a toggle between the light and dark mode themes. Any settings added in the future would be present on this page.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockSettings.png}
@@ -63,19 +63,23 @@ The settings page allows the user to configure the application. Since adding mul
 
 The about page would present the user with necessary information about the application, references to used libraries, and possibly usage instructions. However, the content of this page was neither designed, nor prepared, as it had a low priority and was left out of this development phase.
 
-\subsection{Configuration stepper}
+\subsection{Configuration wizard}
 
-The configuration stepper is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
+The configuration wizard is responsible for displaying configuration steps provided by the selected plugin. The \ref{itm:ui} of each step is provided by the plugin; thus, this page's design is only concerned about properly displaying the steps, and controls for navigating between them.
+
+The user is able to proceed to the next step only if the current one is configured correctly.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockConfigurator.png}
     \label{fig:configuratorPage}
-    \caption{Mock of configurator}
+    \caption{Mock of configuration wizard}
 \end{figure}
 
 \subsection{Summary}
 
 The summary is responsible for executing the selected plugin's configuration, either after loading it, or configuring it for the first time. It displays the progress of each plugin step, and logs what each process is doing.
+
+At this stage, the user can save the created configuration, return either back to the first configuration step, or to the home page without saving.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/mockSummary.png}
