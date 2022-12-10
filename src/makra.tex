@@ -25,6 +25,13 @@
 \let\cite\parencite
 \bibliography{literatura}
 
+% If you want to break on URL numbers
+\setcounter{biburlnumpenalty}{9000}
+% If you want to break on URL lower case letters
+\setcounter{biburllcpenalty}{9000}
+% If you want to break on URL UPPER CASE letters
+\setcounter{biburlucpenalty}{9000}
+
 %% Přepneme na českou sazbu, fonty Latin Modern a kódování češtiny
 \ifthenelse{\boolean{xetex}\OR\boolean{luatex}}
    { % use fontspec and OpenType fonts with utf8 engines
@@ -61,7 +68,7 @@
 \usepackage{booktabs}       % lepší vodorovné linky v tabulkách
 \usepackage{listings}       % Code formatting
 \usepackage{color}       % Code formatting
-
+\usepackage[final]{microtype}
 
 \definecolor{red}{rgb}{0.6,0,0} % for strings
 \definecolor{blue}{rgb}{0,0,0.6}
