@@ -64,10 +64,13 @@ Additionally, the user can load the created configuration, edit it or just run i
     \item Button for closing the selected plugin panel
 \end{enumerate}
 
+\pagebreak
+The configuration wizard presents the selected plugin's steps. Each step's settings are displayed for configuration. The user can view additional help for each active step. Navigating to the next step is possible only is the active one is configured correctly.
+
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocConfigurator.png}
     \label{fig:modularDocconfiguratorPage}
-    \caption{ModularDoc configurator}
+    \caption{ModularDoc configuration wizard}
 \end{figure}
 
 \begin{enumerate}
@@ -77,6 +80,9 @@ Additionally, the user can load the created configuration, edit it or just run i
     \item The current step configuration title and view
     \item Information for the user to help them configure the step correctly
 \end{enumerate}
+
+\pagebreak
+Completing the last plugin step navigates to the summary page, which executes the plugin using the created configuration. The execution processes are displayed, alongside their progress. Each process logs messages, that can be grouped by the process source and log type. At this stage, it is possible to save the configuration, go back to the configuration wizard, or return to the home page.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocSummary.png}
@@ -93,7 +99,7 @@ Additionally, the user can load the created configuration, edit it or just run i
     \item Log message text
     \item Log messages
     \item Button for saving the created configuration
-    \item Button for closing the configurator
+    \item Button for returning back to the home page
 \end{enumerate}
 
 \begin{figure}[H]
@@ -109,6 +115,7 @@ Additionally, the user can load the created configuration, edit it or just run i
     \item Groups by message source
 \end{enumerate}
 
+\pagebreak
 The applications settings allow the user to toggle its theme between dark mode and light mode.
 
 \begin{figure}[H]
