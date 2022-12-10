@@ -9,7 +9,23 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
 
 \section{User guide}
 
-ModularDoc is delivered as a portable application without an installer. Thus, mentioned files are in the context of the ones either provided with this thesis, or compiled from the source code. The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
+ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones either provided with this thesis, or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
+
+\begin{figure}[H]
+    \dirtree{%
+    .1 ~ModularDocInstallationRoot/.
+    .2 ModularDoc.App.exe.
+    .2 Components/.
+    .2 Libraries/.
+    .2 Plugins/.
+    .3 GitMarkdown/.
+    .4 ModularDoc.Plugins.GitMarkdown.dll.
+    .4 ...
+    .2 ...
+    }
+    \caption{ModularDoc simplified file and folder structure}
+    \label{fig:applicationFileStructure}
+\end{figure}
 
 \subsection{Prerequisites}
 
@@ -27,12 +43,12 @@ ModularDoc is delivered as a portable application without an installer. Thus, me
 
 \subsection{ModularDoc application}
 
-The ModularDoc application can be started by running the \textit{ModularDoc.App.exe} file.
+The ModularDoc application can be started by running the \textit{ModularDoc.App.exe} file (see figure \ref{fig:applicationFileStructure}).
 
 \subsubsection{General usage}
 
 Within the application, the user can selected one of the available plugins and start configuring it via the configuration stepper, then running and saving the configuration in the summary.
-Additionally, the user can load the created configuration, edit it or just run it. 
+Additionally, the user can load the created configuration, edit it or just run it.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{img/modularDocHomePage.png}
@@ -131,7 +147,7 @@ The applications settings allow the user to toggle its theme between dark mode a
 
 \subsubsection{Plugin installation and management}
 
-Plugins are installed by placing them in the \textit{Plugins} folder. ModularDoc will automatically load plugins upon startup.
+Plugins are installed by placing them in the \textit{Plugins} folder (see figure \ref{fig:applicationFileStructure}). ModularDoc will automatically load plugins upon startup and display them on the home page. ModularDoc can operate without plugins; however, it loses its purpose.
 
 \subsection{Markdown for Git plugin}
 
