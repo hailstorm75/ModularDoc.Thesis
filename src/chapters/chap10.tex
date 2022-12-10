@@ -9,7 +9,7 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
 
 \begin{figure}[H]
     \dirtree{%
-    .1 ~ModularDocInstallationRoot/.
+    .1 ModularDocInstallationRoot/.
     .2 ModularDoc.App.exe.
     .2 Components/.
     .2 Libraries/.
@@ -251,7 +251,7 @@ To access the latest source code, clone it from the projects repository on GitHu
 
 \begin{figure}[H]
     \dirtree{%
-    .1 ~ModularDocRepositoryRoot/.
+    .1 ModularDocRepositoryRoot/.
     .2 sourceWiki/.
     .2 src/.
     .3 Components/.
@@ -261,6 +261,15 @@ To access the latest source code, clone it from the projects repository on GitHu
     .4 ....
     .3 Libraries/.
     .4 Core/.
+    .5 ModularDoc.Constants/.
+    .5 ModularDoc.Core/.
+    .5 ModularDoc.Diagrams/.
+    .5 ModularDoc.Documentation/.
+    .5 ModularDoc.Elements/.
+    .5 ModularDoc.Generator/.
+    .5 ModularDoc.Linkers/.
+    .5 ModularDoc.Members/.
+    .5 ModularDoc.Printer/.
     .4 Helpers/.
     .4 ViewModels/.
     .4 Views/.
@@ -294,13 +303,25 @@ Follow these steps to develop a new component:
 
 Follow these steps to develop a new plugin:
 \begin{enumerate}
-    \item Create a new project in \textit{Plugins} folder with the following naming scheme - \textbf{ModularDoc.Plugins.MY\_PLUGIN}
-    \item Configure the new project in the same way as one of the other existing plugins
-    \item Reference the 
-    \item Create a type representing the plugin instance and implement the plugin interface from the referenced core library
     \item Create a new project in the \textit{Libraries/ViewModels} folder with the following naming scheme - \textbf{ModularDoc.ViewModels.MY\_PLUGIN}
-    \item Configure the new project in the same way as one of the other existing view model projects
+    \begin{enumerate}
+        \item Configure the new project in the same way as one of the other existing view model projects
+        \item Create view models for each defined plugin step and inherit the \textit{BaseStepViewModel<T>} abstract class
+        \item Create models if necessary
+    \end{enumerate}
     \item Create a new project in the \textit{Libraries/Views} folder with the following naming scheme - \textbf{ModularDoc.Views.MY\_PLUGIN}
-    \item Configure the new project in the same way as one of the other existing view projects
-
+    \begin{enumerate}
+        \item Configure the new project in the same way as one of the other existing view projects
+        \item Create views for each defined plugin step and inherit the \textit{BaseStepUserControl\linebreak <TVM,TS>} abstract class
+    \end{enumerate}
+    \item Create a new project in \textit{Plugins} folder with the following naming scheme - \textbf{ModularDoc.Plugins.MY\_PLUGIN}
+    \begin{enumerate}
+        \item Configure the new project in the same way as one of the other existing plugins
+        \item Reference the \textit{Libraries/Core/ModularDoc.Core} library
+        \item Create a type representing the plugin instance, inherit the plugin interface from the referenced core library, and inherit the \textit{Autofac.Module} class
+        \item Create types representing plugin configuration steps that inherit the \textit{IPluginStep} interface
+        \item Register all desired components
+        \item Register all created view models
+        \item Register all created views
+    \end{enumerate}
 \end{enumerate}
