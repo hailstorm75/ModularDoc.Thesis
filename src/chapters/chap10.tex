@@ -9,7 +9,30 @@ The extension guide is designated for those, who wish to extend ModularDoc with 
 
 \section{User guide}
 
+ModularDoc is delivered as a portable application without an installer. Thus, mentioned files are in the context of the ones either provided with this thesis, or compiled from the source code. The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
 
+\subsection{Prerequisites}
+
+\begin{itemize}
+    \item A desktop device running either of the following \ref{itm:os}'s:
+    \begin{itemize}
+        \item Windows 7+
+        \item macOS High Sierra 10.13+\footnote{ModularDoc was not tested on a macOS device, due to lack of Apple hardware}
+        \item  Debian 9 (Stretch)+, Fedora 30+, or Ubuntu 16.04+ (Linux distribution with \textit{glibc} 2.17 installed, or a newer version\footnote{ModularDoc was tested on PopOS 22.04 LTS, a Linux distribution from system76})
+    \end{itemize}
+    \item The \ref{itm:os} must be 64bit
+    \item \ref{gloss:dotnetlabel} Runtime 6.0.11+ is installed
+    \item Free 270 MB of disk space
+\end{itemize}
+
+\subsection{ModularDoc application}
+
+The ModularDoc application can be started by running the \textit{ModularDoc.App.exe} file. Within the application, the user can selected one of the available plugins and start configuring it via the configuration stepper, then running and saving the configuration in the summary.
+Additionally, the user can load the created configuration, edit it or just run it. The applications settings allow the user to toggle its theme between dark mode and light mode.
+
+Plugins are installed by placing them in the \textit{Plugins} folder. ModularDoc will automatically load plugins upon startup.
+
+\subsection{Markdown for Git plugin}
 
 \section{Extension guide}
 
