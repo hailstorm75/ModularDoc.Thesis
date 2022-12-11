@@ -4,6 +4,13 @@ Creating a proof of concept application is the ideal first step when numerous un
 
 \section{Milestone goals analysis}
 
+The following proof of concept analysis goals must be defined prior to development:
+\begin{itemize}
+    \item What method will be used for extracting documentation?
+    \item Where will the project be hosted?
+    \item What is needed for outputting \ref{gloss:markdown}?
+\end{itemize}
+
 \subsection{Documentation extraction methods}
 When retrieving documentation from source code, the most obvious method would be to parse said source code and extract all required data from it. Such a strategy involves writing a custom parser, probably utilizing complex regular expressions. The problem with this method is the unpredictable nature of written code, as a programmer might incorrectly format said code, the source files might not even be compilable, or a radical update to the code syntax might occur that the tool must cover. That results in unknowns that would have to be handled by the source code parser.
 
@@ -41,9 +48,6 @@ Given previous experience with GitHub and Azure DevOps, the side goal of this st
 \ref{gloss:markdown} is a simple markup language for writing formatted text. The resulting formatted text is generated from the markup by, e.g., a \ref{gloss:git} hosting platform.
 
 Implementing support for outputting \ref{gloss:markdown} documentation for the custom tool requires the study of the markup language.
-
-\subsection{Generating class inheritance diagrams}
-Class inheritance diagrams are a valuable part of source code documentation. Nevertheless, analysis of this topic will be omitted in this milestone, as it is not a core feature.
 
 \subsection{Development goals summary}
 This development stage would focus on analyzing the following questions:
@@ -92,9 +96,9 @@ The proof of concept application was rapidly developed without intentionally app
 
 The proof of concept project source code was hosted on GitLab to test said platform's capabilities. Other platforms were not tested in the scope of this thesis.
 
-GitLab is a freemium platform that offers all its features for public open-source projects. In addition, it boasts a competent \ref{itm:cicd} platform and a complete set of tools for Agile development. GitLab includes features for discovering other projects, but it clearly shows that it is not the platform's primary focus.
+GitLab is a freemium platform that offers all its features for public open-source projects \cite{gumster_6_2018}. In addition, it boasts a competent \ref{itm:cicd} platform and a complete set of tools for Agile development. GitLab includes features for discovering other projects, but it clearly shows that it is not the platform's primary focus.
 
-On the other hand, GitHub has the upper hand in project discoverability. GitHub is a social platform for developers. It hosts many of projects and has been on the market long enough to be considered a mature platform. Some might view the simplicity of its tools for project management as a downside. Nevertheless, if a project requires complex management tools, GitHub allows users to connect it to Azure DevOps, which has the complete tools for agile development.
+On the other hand, GitHub has the upper hand in project discoverability. It hosts many projects and has been on the market long enough to be considered a mature platform. Some might view the simplicity of its tools for project management as a downside. Nevertheless, if a project requires complex management tools, GitHub allows users to connect it to Azure DevOps, which has the complete tools for agile development.
 
 \subsection{Git platforms for hosting Markdown documentation}
 
