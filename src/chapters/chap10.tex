@@ -5,8 +5,10 @@ Consult this chapter to learn how to use and extend of ModularDoc.
 In the context of this thesis, ModularDoc was developed with only one plugin - \ref{gloss:markdown} for \ref{gloss:git}.
 Thus, the user guide covers the tool with this plugin in mind.
 
-The developer guide is designated for those who wish to extend ModularDoc with new components or plugins.
-ModularDoc also allows other areas of the application to be modified; however, due to the complexity and low necessity of these modifications, their description will be omitted from this guide.
+
+\section{User guide} \label{sec:userGuide}
+
+ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones provided with this thesis (see \Nameref{app:modularDocCompiled}) or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis (see \Nameref{app:modularDocSourceCode}); however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
 
 \begin{figure}[H]
     \dirtree{%
@@ -23,10 +25,6 @@ ModularDoc also allows other areas of the application to be modified; however, d
     \caption{ModularDoc simplified file and folder structure}
     \label{fig:applicationFileStructure}
 \end{figure}
-
-\section{User guide}
-
-ModularDoc is delivered as a portable application without an installer. Thus, mentioned files and folders are in the context of the ones provided with this thesis or compiled from the source code (see figure \ref{fig:applicationFileStructure}). The source code is also provided with this thesis; however, the most up-to-date version can be found on GitHub (see \Nameref{sec:openSource}).
 
 \subsection{Prerequisites}
 
@@ -234,6 +232,9 @@ Plugins are installed by placing them in the \textit{Plugins} folder (see figure
 
 \section{Developer guide}
 
+The developer guide is designated for those who wish to extend ModularDoc with new components or plugins.
+ModularDoc also allows other areas of the application to be modified; however, due to the complexity and low necessity of these modifications, their description will be omitted from this guide.
+
 \subsection{Prerequisites}
 
 \begin{itemize}
@@ -241,9 +242,9 @@ Plugins are installed by placing them in the \textit{Plugins} folder (see figure
     \item \ref{gloss:dotnetlabel} SDK 6.0.403+ is installed
 \end{itemize}
 
-\subsection{Accessing the source code}
+\subsection{Accessing the source code} \label{subsec:accessingSourceCode}
 
-This thesis is provided with source code for ModularDoc.
+This thesis is provided with source code for ModularDoc (see \Nameref{app:modularDocSourceCode}).
 To access the latest source code, clone it from the project's repository on GitHub:
 
 \begin{lstlisting}[caption=Script for cloning the ModularDoc project GitHub repository]

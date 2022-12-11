@@ -126,7 +126,6 @@ generate documentation from .NET libraries and is extensible via plugins.
 
 %%% List of tables in the thesis (optionally)
 \clearpage
-\listoftables
 \lstlistoflistings
 
 %%% List of abbreviations and glossary in the thesis (optionally)
@@ -155,11 +154,12 @@ generate documentation from .NET libraries and is extensible via plugins.
 
 %%% Attachments to thesis, if any. Each attachment must be referenced at
 %%% least once in your own text. The appendices are numbered.
-% \part*{\Prilohy}
-% \appendix
-% \include{appendices/app01}
-% \include{appendices/app02}
-% \include{...}
-% \include{...}
+\chapter*{Appendices}
+
+Appendices include files created in the context of this thesis.
+
+\addcontentsline{toc}{chapter}{Appendices}
+\input{appendices/app01}
+\input{appendices/app02}
 
 \end{document}
