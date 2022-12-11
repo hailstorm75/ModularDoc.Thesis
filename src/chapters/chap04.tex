@@ -35,14 +35,14 @@ There are solutions for hosting a project locally on dedicated hardware; however
 As an in-depth evaluation and description of each cloud platform would reach outside the scope of this thesis, excuse the brief introduction of said platforms:
 
 \begin{description}
-    \item[GitHub] the most popular platform for open-source projects, providing tools for managing projects and for discovering them \cite{gumster_6_2018}.
-    \item[GitLab] a leading contender to GitHub, with a comprehensive suite of tools for project management, \ref{itm:cicd}, and test management \cite{gumster_6_2018}.
-    \item[Bitbucket] an enterprise-first \ref{gloss:git} platform \cite{gumster_6_2018}.
-    \item[Azure DevOps] just like Bitbucket, but slightly more popular with the open-source community due to integration features with GitHub.
+    \item[GitHub] a prevelant version control hosting platform \cite{daniel_github_2022} with streamlined \ref{gloss:devops} features such as issue tracking, \ref{itm:cicd}, dependency management, etc. GitHub was introduced in 2008, making it an established platform with over two hundred million active repositories \cite{daniel_github_2022}.
+    \item[GitLab] a significant contender to GitHub \cite{gumster_6_2018}. It provides a comprehensive suite of \ref{gloss:devops} features and powerful \ref{itm:cicd} tools \cite{gumster_6_2018}.
+    \item[Bitbucket] one of Atlassian's products that hosts a version control system based on \ref{gloss:git} or Mercurial (an alternative version control system) \cite{atlassian_bitbucket_nodate}. The product offers public repositories for free; however, Atlassian primarily focuses on its corporate clients \cite{interviewbit_bitbucket_2022}.
+    \item[Azure DevOps] one of Microsoft's products that hosts a version control system based on \ref{gloss:git} or \ref{itm:tfs} (an alternative version control system) \cite{microsoft_azure_nodate}. The product offers comprehensive \ref{gloss:devops} features. It allows open-source projects and small teams to have access for free \cite{microsoft_azure_nodate}.
     \item[Sourceforge] a classic platform for hosting open-source projects before \ref{gloss:git} became mainstream, declining in popularity and usage \cite{gumster_6_2018}.
 \end{description}
 
-Given previous experience with GitHub and Azure DevOps, the side goal of this stage would be to asses GitLab as potential alternative hosting platform to GitHub by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users could host the generated documentation by the custom tool.
+Given previous experience with GitHub and Azure DevOps, the side goal of this stage would be to asses GitLab as a potential alternative hosting platform to GitHub by publishing the proof of concept project on it. Additionally, this is an opportunity to learn how GitLab users could host the generated documentation by the custom tool.
 
 \subsection{Parsing data into markdown}
 \ref{gloss:markdown} is a simple markup language for writing formatted text. The resulting formatted text is generated from the markup by, e.g., a \ref{gloss:git} hosting platform.
