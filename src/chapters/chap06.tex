@@ -6,7 +6,7 @@ This milestone summarizes the development results of stages \ref{num:stage2} - \
 
 The reflection-based member provider is the most important library of this project, as it shall provide type and member information, which will then be mapped to extracted documentation. If fully implementing this library using reflection fails, the project's complexity would skyrocket, as the only viable option is parsing source code directly.
 
-The proof of concept (see chapter \ref{chap:proofConcept}) was built using \ref{gloss:dotnetlabel} Framework and utilized the built-in reflection capabilities. Moreover, all tests were done on non-complex assemblies without references. That was a fatal oversight. \ref{gloss:dotnetlabel} Core provides reflection capabilities; however, it does not allow loading an assembly without its references. That meant that the researched solution useless, and an alternative had to be found.
+The proof of concept (see chapter \ref{chap:proofConcept}) was built using \ref{gloss:dotnetlabel} Framework and utilized the built-in reflection capabilities. Moreover, all tests were done on non-complex assemblies without references. That was a fatal oversight. \ref{gloss:dotnetlabel} Core provides reflection capabilities; however, it does not allow loading an assembly without its references. That meant that the researched solution was useless, and an alternative had to be found.
 
 Fortunately, after considerable effort, it was. The issue was solved by a third-party reflection library called \textit{dnlib}, which is most notably used for obfuscating code in \ref{gloss:dotnetlabel} assemblies using its assembly modification features. For the purposes of reading and extracting required data, \textit{dnlib} was more than sufficient.
 
@@ -98,7 +98,7 @@ The diagram component can generate images and provide links to them or generate 
 
 \section{Composer}
 
-The composer component is one of the most complicated, as it maps the extracted data to each other and fills it into the provided elements. This component was developed in F\# for the same reasons as the linker (see section \ref{sec:linker}). Whether or not that was a mistake, is still up to debate; nevertheless, the resulting code is complex and is difficult to maintain.
+The composer component is one of the most complicated, as it maps the extracted data to each other and fills it into the provided elements. This component was developed in F\# for the same reasons as the linker (see section \ref{sec:linker}). Whether or not that was a mistake is still up for debate; nevertheless, the resulting code is complex and difficult to maintain.
 
 \subsection{Composed structure}
 
@@ -128,4 +128,4 @@ The rest of the generated documentation for a given type covers all extracted da
 
 \section{Printer}
 
-The printer component was the simplest to implement, as it only processes the composer generated output, and writes it into \ref{gloss:markdown} files.
+The printer component was the simplest to implement, as it only processes the composer-generated output and writes it into \ref{gloss:markdown} files.

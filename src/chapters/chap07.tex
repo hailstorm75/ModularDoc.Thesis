@@ -9,7 +9,7 @@ Because \textit{AvaloniaUI} uses \ref{itm:xaml} for defining the \ref{itm:ui} an
 
 The only drawback of the framework is that it still needs a stable release. That entails the unreliability of the framework and the possibility of breaking changes. For example, \textit{AvaloniaUI} version 0.10.15 broke \ref{itm:ui} components for displaying images. Nevertheless, it is backed up by a passionate community of developers that ensure a quick resolution of any discovered issues.
 
-The open-source community added significant value to the framework by developing additional libraries such as \textit{AvaloniaBehaviors}, or \textit{FluentAvaloniaUI}, both of used by ModularDoc. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the \textit{Fluent} theme for \textit{AvaloniaUI}. \textit{Fluent} is Microsoft's modern design system that can be seen utilized across all of its applications \cite{microsoft_microsoft_nodate}. By default, the \textit{AvaloniaUI} uses an outdated version of \textit{Fluent} and, in some cases, does not respect the design system. So, the \textit{FluentAvaloniaUI} library is essential for having a modern, good-looking design.
+The open-source community added significant value to the framework by developing additional libraries such as \textit{AvaloniaBehaviors}, or \textit{FluentAvaloniaUI}, both of which are used by ModularDoc. The former extends missing features for manipulating the \ref{itm:ui} based on defined triggers. The latter provides the \textit{Fluent} theme for \textit{AvaloniaUI}. \textit{Fluent} is Microsoft's modern design system that can be seen utilized across all of its applications \cite{microsoft_microsoft_nodate}. By default, the \textit{AvaloniaUI} uses an outdated version of \textit{Fluent} and, in some cases, does not respect the design system. So, the \textit{FluentAvaloniaUI} library is essential for having a modern, good-looking design.
 
 \section{Decoupling via MVVM}
 
@@ -18,7 +18,7 @@ That is achieved using \ref{itm:mvvm} in combination with a \ref{itm:di} framewo
 
 \ref{itm:mvvm} (Model, View, View Model) allows natural decoupling of the \ref{itm:ui} (View), from the business logic (View Model) and data (Model) \cite{katz_mvvm_2022}. However, \ref{itm:mvvm} alone still introduces some coupling of the \ref{itm:ui} to the host application, as it must still reference the specific views for, e.g., navigation. Such references are decoupled by abstracting each view with its interface representation. The specific views would then be provided via \textit{Autofac}. This allows easy swapping of views either based on \textit{AvaloniaUI} or some other framework.
 
-To take it a step further, the view models are also be abstracted in the same way and provided via \textit{Autofac}. In this case, the benefit is higher application testability, as abstracted view models can be mocked.
+To take it a step further, the view models are also abstracted in the same way and provided via \textit{Autofac}. In this case, the benefit is higher application testability, as abstracted view models can be mocked.
 
 \section{Application structure}
 

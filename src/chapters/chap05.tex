@@ -5,13 +5,13 @@ A concrete plan will help develop a maintainable, quality application with a cle
 
 \section{Evaluation}
 
-Developing the proof of concept (see chapter \ref{chap:proofConcept}) application gave necessary insight for deciding where the project will be hosted, and what technology stack it shall use.
+Developing the proof of concept (see chapter \ref{chap:proofConcept}) application gave necessary insight for deciding where the project will be hosted and what technology stack it shall use.
 
 
 \subsection{Project hosting platform}
 
 The final project shall be open-source and use GitHub to host its source code.
-That is to allow external contributions, reach a niche target demographic, and access freemium GitHub features, which accessible to open-source projects.
+That is to allow external contributions, reach a niche target demographic, and access freemium GitHub features, which are accessible to open-source projects.
 
 GitHub was chosen over GitLab, the second-best contender because the former platform offers better visibility and access - a crucial factor for reaching the target demographic.
 
@@ -61,7 +61,7 @@ Linux is the most crucial platform, as developers might want to run the tool on 
 At the time of the analysis, none of the frameworks provided by Microsoft qualified for the task. Furthermore, even when the company released its new framework, \textit{.NET MAUI}, it did not include support for Linux \cite{anderson_net_2022}.
 
 That leaves community-built solutions.
-Of the three, \textit{AvaloniaUI} was the easiest to get up and running and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The \textit{UNO Platform} is very ompelling on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was impossible even to start the demo application. \textit{Eto} is also a cross-platform framework but has a small community with few additional libraries.
+Of the three, \textit{AvaloniaUI} was the easiest to get up and running and had a sizeable community, with extension libraries and other projects to support it. It is cross-platform and works primarily on desktop operating systems. The \textit{UNO Platform} is very compelling on paper and is both cross-platform and cross-device (desktop, mobile, web); however, after many attempts, it was impossible even to start the demo application. \textit{Eto} is also a cross-platform framework but has a small community with few additional libraries.
 
 Most \ref{gloss:dotnetlabel} \ref{itm:gui} frameworks use \ref{itm:mvvm} as their architecture, including \textit{AvaloniaUI} \cite{katz_mvvm_2022}.
 
@@ -189,7 +189,7 @@ A concrete interface implementation would define the source type and the method 
 
 The documentation provider will be responsible for loading documentation for specific types and members from a given collection of sources, and mapping said documentation to the relevant types and members.
 The map will then be available for querying to consumers of this key part via the relevant interface.
-A concrete interface implementation would define the source type and the method for processing given source source.
+A concrete interface implementation would define the source type and the method for processing given source.
 
 \subsubsection{Element provider} \label{sec:elementProvider}
 
@@ -209,8 +209,8 @@ A concrete implementation of the interface would define how said elements are to
 \subsubsection{Diagram generator}
 
 The diagram generator will primarily create inheritance diagrams for the provided types. Additional diagram features, such as a class structure, relational database models, etc. won't be part of this thesis.
-A concrete interface implementation would define how said diagrams will be delivered, e.g., as text, or as a link to a file.
-In the case of text, they could be delivered as \ref{gloss:asciiart}, a PlantUML or MermaidJS diagrams.
+A concrete interface implementation would define how said diagrams will be delivered, e.g., as text or as a link to a file.
+In the case of text, they could be delivered as \ref{gloss:asciiart}, PlantUML or MermaidJS diagrams.
 
 \subsubsection{Linker}
 
