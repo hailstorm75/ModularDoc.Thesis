@@ -1,4 +1,4 @@
-# MarkDoc Thesis
+# ModularDoc Thesis
 
 ## Description
 
