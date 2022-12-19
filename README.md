@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains the bachelor's thesis on the [MarkDoc.Core](https://github.com/hailstorm75/MarkDoc.Core) project.
+This repository contains the bachelor's thesis on the [ModularDoc](https://github.com/hailstorm75/ModularDoc) project.
 
 ## Abstract
 
